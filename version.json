@@ -1,13 +1,13 @@
 {
-  "version": "41.44",
+  "version": "41.45",
   "protocol": 86,
   "required": false,
-  "summary": "Current protected stable release.",
+  "summary": "Updater-enabled stable release with Hollow Nuke landscape speech-bubble centering.",
   "notes": [
-    "Touch-landscape combat shell and MOBA-style controls",
-    "Gojo Hollow Nuke landscape speech bubble fit",
-    "Gojo Red/Purple READY indicators",
-    "Multiplayer intro walk translation fix"
+    "Adds the in-game update checker and release notes prompt",
+    "Keeps update checks silent when offline",
+    "Warns when a multiplayer protocol update is required",
+    "Centers Gojo's Hollow Nuke manga speech bubble in landscape"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
