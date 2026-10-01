@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
-<title>Fidget Shooter v41.44</title>
+<title>Fidget Shooter v41.45</title>
 <style>
 :root{--card:#202d43;--border:#526987;--text:#f4f7fb;--muted:#9fb2cc;--gun:#ffd86b;--sans:#39a0ff;--suk:#e15a73;--gojo:#4d8dff;--fri:#63a9ff;--lan:#42db6c;--lan2:#c9ffd8}
 *{box-sizing:border-box}html{overscroll-behavior:none;background:#0b1220}body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;justify-content:center;padding:12px;min-height:100dvh;overscroll-behavior:none}button{font:inherit;color:inherit;touch-action:manipulation;user-select:none}.hide{display:none!important}#game{width:min(100%,640px);overscroll-behavior:none}
@@ -8207,19 +8207,26 @@
 
 
 
-/* v41.43w — Hollow Nuke landscape speech-card fit.
-   The original manga bubble used viewport-width sizing, which could make the card nearly as tall
-   as a phone landscape arena. In touch landscape only, size against the arena instead: a broader,
-   shallower card with responsive type and a compact detached tail. Portrait remains unchanged. */
+/* v41.44b — Hollow Nuke landscape speech-card centering.
+   Keep the v41.43w compact landscape dimensions, but center the manga bubble vertically as well
+   as horizontally inside the arena. The detached Host/Guest tail follows the centered card.
+   Portrait remains unchanged. */
+@keyframes mpHnSpeechBubbleLandscape{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.78) translateY(-12px)}
+  12%{opacity:1;transform:translate(-50%,-50%) scale(1.01) translateY(0)}
+  74%{opacity:1;transform:translate(-50%,-50%) scale(1) translateY(0)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.02) translateY(-2px)}
+}
 @media (orientation:landscape) and (pointer:coarse),
        (orientation:landscape) and (hover:none){
   #game.layout-landscape .mpHollowNukeCutscene .mpHnSpeechBubble{
     left:50%;
-    top:9%;
+    top:50%;
     width:min(70%,440px);
     height:clamp(122px,40%,178px);
     padding:12px 24px 14px;
-    border-radius:34px 46px 38px 44px / 28px 26px 40px 34px
+    border-radius:34px 46px 38px 44px / 28px 26px 40px 34px;
+    animation-name:mpHnSpeechBubbleLandscape
   }
   #game.layout-landscape .mpHollowNukeCutscene .mpHnSpeechBubble span{
     max-width:88%;
@@ -8233,7 +8240,7 @@
   }
   #game.layout-landscape .mpHollowNukeCutscene .mpHnSpeechTailWrap{
     left:30%;
-    top:calc(9% + clamp(122px,40%,178px) - 30px);
+    top:calc(50% + 42px);
     width:78px;
     height:50px
   }
@@ -8253,7 +8260,7 @@
 @media (orientation:landscape) and (max-height:390px) and (pointer:coarse),
        (orientation:landscape) and (max-height:390px) and (hover:none){
   #game.layout-landscape .mpHollowNukeCutscene .mpHnSpeechBubble{
-    top:7%;
+    top:50%;
     width:min(68%,410px);
     height:clamp(108px,36%,142px);
     padding:10px 20px 12px;
@@ -8265,7 +8272,7 @@
     letter-spacing:.85px
   }
   #game.layout-landscape .mpHollowNukeCutscene .mpHnSpeechTailWrap{
-    top:calc(7% + clamp(108px,36%,142px) - 24px);
+    top:calc(50% + 36px);
     width:68px;
     height:43px
   }
@@ -8280,6 +8287,7 @@
 <!-- v41.43o — DOMAIN COMMIT + RED CHARGE AUDIO + HUD STACK: moves the landscape HOST AUTHORITATIVE mode badge into the lower-middle HUD stack, hardens the full-Domain cinematic-to-authority handoff, and adds synchronized held-Red charge SFX. Protocol/gameplay values unchanged. -->
 <!-- v41.43m — LANDSCAPE HUD REPOSITION: lowers the Domain Clash timer and places the live cast/status bar at lower-center just above the PING/NET diagnostics in landscape. Portrait/gameplay/networking/protocol unchanged. -->
 <!-- v41.43l — LANDSCAPE ARC ALIGNMENT: pulls DOMAIN / Special 4 back into line with the surrounding MOBA arc and shifts the whole right-side combat cluster slightly diagonally up-right. Presentation only; portrait/gameplay/networking/protocol unchanged. -->
+<!-- v41.45 — PROTECTED STABLE: promotes the tested v41.44b updater + Hollow Nuke landscape-centering line. Adds the downloaded-build update framework backed by the public fidget-shooter-releases channel, while preserving v41.44 gameplay/network behavior and NET_PROTOCOL=86. -->
 <!-- v41.44 — PROTECTED STABLE: promotes the clean v41.43a–v41.43y landscape/cutscene/UI polish line after rolling back the temporary v41.43r–v41.43t multiplayer TURN experiments. Consolidates the touch-landscape combat shell and MOBA control layout, compact arena/HUD/fullscreen polish, Domain commit hardening and Red charge audio, Sukuna Boss World-Slash presentation cleanup, multiplayer intro walk translation, Hollow Nuke Host/Guest speech-tail parity and landscape bubble fit, plus stronger Red/Purple full-charge READY feedback with centered orb-origin pulses. Gameplay authority and wire schema remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.44 as v41.44a, v41.44b, etc. -->
 <!-- v41.43 — PROTECTED STABLE: promotes the completed v41.42a–v41.42q Gojo/Red tolerance and presentation line. Returning charged Red enemy tolerance is 0.11, owner self-impact tolerance remains 0.15, outbound charged Red is unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.43 as v41.43a, v41.43b, etc. -->
 <!-- v41.43a — LANDSCAPE FOUNDATION: adds a viewport/orientation state hook, safe-area variables, and a touch-landscape multiplayer combat shell. Arena presentation expands to the available landscape viewport while joystick/ability controls dock over the lower corners. Portrait layout, combat rules, authority, NET_PROTOCOL=86 and MP_PLAYER_IDS remain unchanged. -->
@@ -8325,11 +8333,20 @@
 <!-- v41.41au visual concept archived: true scarlet/crimson Gojo Red orb/VFX palette retained as a future-use reference, but not active in this live build. -->
 <!-- v41.41av — presentation-only: Gojo's Red ability button now uses a dedicated red/crimson palette. Red orb/VFX remain at their pre-v41.41au appearance; gameplay unchanged. -->
 <!-- v41.41aw — presentation-only: archived true-red v41.41au palette is now applied specifically to Chanted Red (travelling orb + Hollow orbit) and the Red component of the PURPLE/Hollow Nuke cinematic. Normal Red remains unchanged. -->
+
+<style id="fidgetUpdaterStyle">
+/* v41.44a — updater foundation. Presentation/network mechanics are otherwise unchanged. */
+.fidgetUpdateBanner{position:fixed;z-index:2147482000;left:50%;top:max(10px,env(safe-area-inset-top));transform:translate(-50%,-14px);width:min(92vw,560px);padding:12px 13px;border:1px solid rgba(179,207,255,.46);border-radius:16px;background:rgba(8,15,28,.96);box-shadow:0 16px 46px rgba(0,0,0,.52),0 0 28px rgba(77,141,255,.16);color:#f4f7fb;font:700 13px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;backdrop-filter:blur(12px)}
+.fidgetUpdateBanner.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.fidgetUpdateBanner.required{border-color:rgba(255,111,111,.72);box-shadow:0 16px 46px rgba(0,0,0,.52),0 0 30px rgba(255,80,80,.16)}
+.fidgetUpdateTop{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.fidgetUpdateTitle{font-size:14px;letter-spacing:.07em}.fidgetUpdateVersion{color:#a8c8ff;font-size:12px;white-space:nowrap}.fidgetUpdateText{margin-top:5px;color:#c6d2e4;font-weight:600}.fidgetUpdateNotes{margin:7px 0 0;padding-left:18px;color:#aebed4;font-weight:600;font-size:12px;max-height:82px;overflow:auto}.fidgetUpdateActions{display:flex;gap:8px;margin-top:10px;justify-content:flex-end}.fidgetUpdateBtn{appearance:none;border:1px solid rgba(180,207,255,.35);border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.07);color:#f4f7fb;font:800 11px/1 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.06em}.fidgetUpdateBtn.primary{background:linear-gradient(135deg,#4d8dff,#755cff);border-color:rgba(255,255,255,.42);box-shadow:0 0 18px rgba(77,141,255,.25)}.fidgetUpdateBtn:disabled{opacity:.52}.fidgetUpdateToast{position:fixed;z-index:2147481999;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translate(-50%,10px);padding:8px 12px;border-radius:999px;background:rgba(8,15,28,.94);border:1px solid rgba(179,207,255,.3);color:#dbe8fb;font:700 11px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;opacity:0;pointer-events:none;transition:.18s}.fidgetUpdateToast.show{opacity:1;transform:translate(-50%,0)}
+@media (orientation:landscape) and (pointer:coarse){.fidgetUpdateBanner{top:max(5px,env(safe-area-inset-top));width:min(70vw,620px);padding:9px 11px}.fidgetUpdateNotes{max-height:48px}.fidgetUpdateActions{margin-top:7px}.fidgetUpdateBtn{padding:7px 12px}}
+</style>
 </head>
 <body>
 <div id="game">
 <section class="modeGate">
-  <div class="versionTag">v41.44 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.45 · PROTECTED STABLE</div>
   <div class="title">CHOOSE GAME MODE</div>
   <div class="modeSub">Single Player is preserved exactly. Multiplayer begins as a separate, isolated prototype.</div>
   <div class="modeChoices">
@@ -8348,7 +8365,7 @@
   </div>
 </section>
 <section class="multiPrototype hide">
-  <div class="versionTag">v41.44 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.45 · PROTECTED STABLE</div>
   <div class="title">MULTIPLAYER PROTOTYPE</div>
   <div class="modeSub">Create a room as Host, connect as Guest, or train locally against Outlaw, Sukuna Boss, or the passive dummy.</div>
   <div class="protoCard"><b>HOST-AUTHORITATIVE FOUNDATION</b><p>The Host owns movement, HP, damage, collisions, status effects, cooldown validation, projectile outcomes and round results. Guest controls remain inputs only. No enemy AI or boss progression runs in PvP. <b>Hitbox Sync:</b> cast lanes and hurtboxes stay locked to authoritative positions while characters move and animate.</p></div>
@@ -24385,6 +24402,44 @@ if(spiegelHoleT>0&&p.kind!=='lanternPlane'){
 }
 const sp=frozen&&p.owner==='enemy'?0:p.kind==='purple'?255:p.kind==='bigslash'?360:p.kind==='bomb'?255:p.kind==='vollzanbel'?235:p.kind==='mahoSlash'?285:310;p.x+=(p.owner==='player'?sp:-sp)*dt;p.el.style.left=p.x+'px';p.el.style.top=p.y+'px';if(p.owner==='player'&&hit({x:p.x,y:p.y,w,h},eb)){const sansPass=stage===5;if(sansPass&&p.sansPassedBoss){}else{if(sansPass)p.sansPassedBoss=true;else if(spiegelHexT>0||p.kind!=='purple')p.dead=true;if(p.dead)p.el.remove();const head=p.y+h/2<eb.y+eb.h*.38,base=p.kind==='bigslash'?3:p.kind==='firearrow'?2.5:p.kind==='purple'?5:p.kind==='car'?2:p.kind==='bomb'?2:p.kind==='vollzanbel'?1.5:1,canCrit=!['firearrow','purple','car','bomb','vollzanbel'].includes(p.kind),d=head&&canCrit?base*2:base;damageEnemy(d,impactFor(p.kind,head),head&&canCrit,p.kind);if(p.kind==='redshot'&&stage!==5)gojoRedImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5);if(p.kind==='purple')gojoPurpleImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5);if(p.kind==='car')snd.carHit();if(p.kind==='bomb'){snd.bombHit();const ex=document.createElement('div');ex.className='bombBlast';ex.style.left=eb.x+eb.w*.5+'px';ex.style.top=eb.y+eb.h*.5+'px';effects.appendChild(ex);setTimeout(()=>ex.remove(),420)}if(p.kind==='firearrow'){if(stage!==5)fireArrowImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5,false);if(eHp>0)startFireBurn();}if(p.kind==='vollzanbel'&&eHp>0)startVollBurn()}}else if(p.owner==='enemy'&&!frozen&&char==='frieren'&&golemFx&&golemT>0&&golemHits>0&&!p.golemTagged&&hit({x:p.x,y:p.y,w,h},box(golemFx))){p.golemTagged=true;const gb=box(golemFx);consumeGolemHit(gb.x+gb.w*.5,gb.y+gb.h*.5)}else if(p.owner==='enemy'&&!frozen&&hit({x:p.x,y:p.y,w,h},pb)){if(char==='sans'){if(!p.sansPassedPlayer){p.sansPassedPlayer=true;damagePlayer(1)}}else{p.dead=true;p.el.remove();if(char==='greenlantern'&&parryT>0)perfectParry();else damagePlayer(1)}}if(!p.dead&&(p.x<(p.kind==='slash'?-260:-130)||p.x>arenaW+(p.kind==='slash'?260:140))){p.dead=true;p.el.remove()}}compactAlive(projs)}requestAnimationFrame(loop)}
 renderEnemy();renderAmmo();pos(true);requestAnimationFrame(loop);
+})();
+</script>
+
+<div id="fidgetUpdateBanner" class="fidgetUpdateBanner" role="status" aria-live="polite" aria-hidden="true">
+  <div class="fidgetUpdateTop"><div><div id="fidgetUpdateTitle" class="fidgetUpdateTitle">UPDATE AVAILABLE</div><div id="fidgetUpdateText" class="fidgetUpdateText"></div></div><div id="fidgetUpdateVersion" class="fidgetUpdateVersion"></div></div>
+  <ul id="fidgetUpdateNotes" class="fidgetUpdateNotes"></ul>
+  <div class="fidgetUpdateActions"><button id="fidgetUpdateLater" class="fidgetUpdateBtn" type="button">LATER</button><button id="fidgetUpdateNow" class="fidgetUpdateBtn primary" type="button">DOWNLOAD UPDATE</button></div>
+</div>
+<div id="fidgetUpdateToast" class="fidgetUpdateToast" role="status" aria-live="polite"></div>
+<script id="fidgetUpdaterScript">
+(()=>{
+'use strict';
+const FIDGET_UPDATE=Object.freeze({
+  build:'41.45',
+  release:'41.45',
+  protocol:86,
+  manifestUrl:'https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/version.json',
+  checkDelayMs:1400,
+  timeoutMs:6500
+});
+const $=id=>document.getElementById(id);
+const banner=$('fidgetUpdateBanner'), title=$('fidgetUpdateTitle'), text=$('fidgetUpdateText'), version=$('fidgetUpdateVersion'), notes=$('fidgetUpdateNotes'), later=$('fidgetUpdateLater'), now=$('fidgetUpdateNow'), toast=$('fidgetUpdateToast');
+let activeManifest=null, checking=false, toastTimer=0;
+function cleanVersion(v){return String(v??'').trim().replace(/^v/i,'')}
+function parseVersion(v){const m=cleanVersion(v).match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?([a-z]+)?$/i);return m?{n:[+m[1]||0,+m[2]||0,+m[3]||0],s:(m[4]||'').toLowerCase()}:null}
+function compareVersion(a,b){const A=parseVersion(a),B=parseVersion(b);if(!A||!B)return cleanVersion(a)===cleanVersion(b)?0:0;for(let i=0;i<3;i++){if(A.n[i]!==B.n[i])return A.n[i]>B.n[i]?1:-1}if(A.s===B.s)return 0;if(!A.s)return 1;if(!B.s)return -1;return A.s>B.s?1:-1}
+function safeStoreGet(k){try{return localStorage.getItem(k)||''}catch{return ''}}
+function safeStoreSet(k,v){try{localStorage.setItem(k,v)}catch{}}
+function showToast(msg,ms=2200){if(!toast)return;toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),ms)}
+function hideBanner(){if(!banner)return;banner.classList.remove('show','required');banner.setAttribute('aria-hidden','true')}
+function normalizeNotes(v){if(Array.isArray(v))return v.map(x=>String(x)).filter(Boolean).slice(0,5);if(typeof v==='string'&&v.trim())return [v.trim()];return []}
+function renderUpdate(m){activeManifest=m;const remote=cleanVersion(m.version);const protocol=Number(m.protocol);const protocolMismatch=Number.isFinite(protocol)&&protocol!==FIDGET_UPDATE.protocol;const required=Boolean(m.required)||protocolMismatch;title.textContent=required?'MULTIPLAYER UPDATE REQUIRED':'UPDATE AVAILABLE';version.textContent=`v${FIDGET_UPDATE.release} → v${remote}`;text.textContent=protocolMismatch?`This release uses multiplayer protocol ${protocol}; this build uses ${FIDGET_UPDATE.protocol}. Update before playing multiplayer.`:(m.summary||'A newer stable Fidget Shooter build is available.');notes.replaceChildren();for(const item of normalizeNotes(m.notes)){const li=document.createElement('li');li.textContent=item;notes.appendChild(li)}notes.hidden=!notes.children.length;later.textContent=required?'NOT NOW':'LATER';banner.classList.toggle('required',required);banner.classList.add('show');banner.setAttribute('aria-hidden','false')}
+async function fetchManifest({manual=false}={}){if(checking)return;checking=true;try{const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),FIDGET_UPDATE.timeoutMs);let res;try{res=await fetch(FIDGET_UPDATE.manifestUrl+'?t='+Date.now(),{cache:'no-store',signal:ctl.signal,headers:{Accept:'application/json'}})}finally{clearTimeout(timer)}if(!res.ok)throw new Error('manifest '+res.status);const m=await res.json();if(!m||!m.version)throw new Error('invalid manifest');const newer=compareVersion(m.version,FIDGET_UPDATE.release)>0;if(!newer){hideBanner();if(manual)showToast(`UP TO DATE · v${FIDGET_UPDATE.release}`);return}const dismissed=safeStoreGet('fidgetUpdateDismissed');const protocolMismatch=Number(m.protocol)!==FIDGET_UPDATE.protocol;if(dismissed===cleanVersion(m.version)&&!m.required&&!protocolMismatch&&!manual)return;renderUpdate(m)}catch(err){if(manual)showToast('UPDATE CHECK UNAVAILABLE');console.info('[Fidget updater] check skipped:',err?.message||err)}finally{checking=false}}
+async function downloadUpdate(){const m=activeManifest;if(!m)return;const url=String(m.downloadUrl||m.download||'').trim();const fallback=String(m.releasePage||m.page||url).trim();if(!url){if(fallback)window.open(fallback,'_blank','noopener');return}now.disabled=true;now.textContent='PREPARING…';try{const res=await fetch(url+(url.includes('?')?'&':'?')+'t='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error('download '+res.status);const body=await res.blob();const blob=new Blob([body],{type:'text/html;charset=utf-8'});const objectUrl=URL.createObjectURL(blob);const a=document.createElement('a');a.href=objectUrl;a.download=`fidget-shooter-v${cleanVersion(m.version)}.html`;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),30000);now.textContent='DOWNLOADED';showToast('NEW FILE DOWNLOADED · OPEN IT TO UPDATE',3800)}catch(err){console.info('[Fidget updater] direct download fallback:',err?.message||err);now.textContent='OPEN UPDATE';if(fallback)window.open(fallback,'_blank','noopener')}finally{setTimeout(()=>{now.disabled=false;now.textContent='DOWNLOAD UPDATE'},1600)}}
+later?.addEventListener('click',()=>{if(activeManifest&&!activeManifest.required&&Number(activeManifest.protocol)===FIDGET_UPDATE.protocol)safeStoreSet('fidgetUpdateDismissed',cleanVersion(activeManifest.version));hideBanner()});
+now?.addEventListener('click',downloadUpdate);
+window.FidgetUpdater=Object.freeze({check:()=>fetchManifest({manual:true}),config:FIDGET_UPDATE});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(fetchManifest,FIDGET_UPDATE.checkDelayMs),{once:true});else setTimeout(fetchManifest,FIDGET_UPDATE.checkDelayMs);
 })();
 </script>
 </body>
