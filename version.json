@@ -1,13 +1,13 @@
 {
-  "version": "41.45",
+  "version": "41.46",
   "protocol": 86,
   "required": false,
-  "summary": "Updater-enabled stable release with Hollow Nuke landscape speech-bubble centering.",
+  "summary": "Stable release with Sukuna/Gojo rivalry dialogue, Sans/Frisk intro, and Sukuna Black Flash landscape presentation.",
   "notes": [
-    "Adds the in-game update checker and release notes prompt",
-    "Keeps update checks silent when offline",
-    "Warns when a multiplayer protocol update is required",
-    "Centers Gojo's Hollow Nuke manga speech bubble in landscape"
+    "Adds Sukuna Black Flash lane-return presentation in landscape",
+    "Adds the synchronized Sans/Frisk special matchup intro",
+    "Updates Sukuna's special Gojo matchup dialogue",
+    "Keeps multiplayer protocol 86 unchanged"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
-<title>Fidget Shooter v41.45</title>
+<title>Fidget Shooter v41.46</title>
 <style>
 :root{--card:#202d43;--border:#526987;--text:#f4f7fb;--muted:#9fb2cc;--gun:#ffd86b;--sans:#39a0ff;--suk:#e15a73;--gojo:#4d8dff;--fri:#63a9ff;--lan:#42db6c;--lan2:#c9ffd8}
 *{box-sizing:border-box}html{overscroll-behavior:none;background:#0b1220}body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;justify-content:center;padding:12px;min-height:100dvh;overscroll-behavior:none}button{font:inherit;color:inherit;touch-action:manipulation;user-select:none}.hide{display:none!important}#game{width:min(100%,640px);overscroll-behavior:none}
@@ -6090,6 +6090,12 @@
 .mpRivalIntro.show{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
 .mpRivalIntro.gojo{--rival:#9ddcff;border-color:#8bd7ff66}
 .mpRivalIntro.sukuna{--rival:#f28aa1;border-color:#e15a7377}
+/* v41.45c — Sans/Frisk matchup intro reuses the synchronized rivalry card,
+   but gives each speaker a distinct readable palette and enough width for one-line beats. */
+.mpRivalIntro.sansFrisk{width:min(390px,88%);padding:8px 14px 9px}
+.mpRivalIntro.sans{--rival:#bfeaff;border-color:#8bdcff70;background:linear-gradient(90deg,#04080de8,#09121ce8,#04080de8)}
+.mpRivalIntro.frisk{--rival:#ff8aa3;border-color:#ff718d70;background:linear-gradient(90deg,#0d0508e8,#18080de8,#0d0508e8)}
+.mpRivalIntro.sansFrisk span{min-height:1.35em;line-height:1.35}
 .mpRivalIntro b{
   display:block;
   color:var(--rival,#fff);
@@ -8287,7 +8293,9 @@
 <!-- v41.43o — DOMAIN COMMIT + RED CHARGE AUDIO + HUD STACK: moves the landscape HOST AUTHORITATIVE mode badge into the lower-middle HUD stack, hardens the full-Domain cinematic-to-authority handoff, and adds synchronized held-Red charge SFX. Protocol/gameplay values unchanged. -->
 <!-- v41.43m — LANDSCAPE HUD REPOSITION: lowers the Domain Clash timer and places the live cast/status bar at lower-center just above the PING/NET diagnostics in landscape. Portrait/gameplay/networking/protocol unchanged. -->
 <!-- v41.43l — LANDSCAPE ARC ALIGNMENT: pulls DOMAIN / Special 4 back into line with the surrounding MOBA arc and shifts the whole right-side combat cluster slightly diagonally up-right. Presentation only; portrait/gameplay/networking/protocol unchanged. -->
+<!-- v41.46 — PROTECTED STABLE: promotes the tested v41.45a–v41.45e development line. Consolidates Sukuna Black Flash landscape lane-return presentation, the synchronized Sans/Frisk special matchup intro and typo fix, and Sukuna's updated Gojo rivalry dialogue. Development patch-layer infrastructure remains a dev-branch workflow only; this protected build is self-contained. Gameplay authority and wire schema remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.46 as v41.46a, v41.46b, etc. -->
 <!-- v41.45 — PROTECTED STABLE: promotes the tested v41.44b updater + Hollow Nuke landscape-centering line. Adds the downloaded-build update framework backed by the public fidget-shooter-releases channel, while preserving v41.44 gameplay/network behavior and NET_PROTOCOL=86. -->
+<!-- v41.45a DEV — Landscape Sukuna Black Flash Cleave exit: caster backflips to his lane while the victim is force-blasted back to theirs; mechanics unchanged. -->
 <!-- v41.44 — PROTECTED STABLE: promotes the clean v41.43a–v41.43y landscape/cutscene/UI polish line after rolling back the temporary v41.43r–v41.43t multiplayer TURN experiments. Consolidates the touch-landscape combat shell and MOBA control layout, compact arena/HUD/fullscreen polish, Domain commit hardening and Red charge audio, Sukuna Boss World-Slash presentation cleanup, multiplayer intro walk translation, Hollow Nuke Host/Guest speech-tail parity and landscape bubble fit, plus stronger Red/Purple full-charge READY feedback with centered orb-origin pulses. Gameplay authority and wire schema remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.44 as v41.44a, v41.44b, etc. -->
 <!-- v41.43 — PROTECTED STABLE: promotes the completed v41.42a–v41.42q Gojo/Red tolerance and presentation line. Returning charged Red enemy tolerance is 0.11, owner self-impact tolerance remains 0.15, outbound charged Red is unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.43 as v41.43a, v41.43b, etc. -->
 <!-- v41.43a — LANDSCAPE FOUNDATION: adds a viewport/orientation state hook, safe-area variables, and a touch-landscape multiplayer combat shell. Arena presentation expands to the available landscape viewport while joystick/ability controls dock over the lower corners. Portrait layout, combat rules, authority, NET_PROTOCOL=86 and MP_PLAYER_IDS remain unchanged. -->
@@ -8346,7 +8354,7 @@
 <body>
 <div id="game">
 <section class="modeGate">
-  <div class="versionTag">v41.45 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.46 · PROTECTED STABLE</div>
   <div class="title">CHOOSE GAME MODE</div>
   <div class="modeSub">Single Player is preserved exactly. Multiplayer begins as a separate, isolated prototype.</div>
   <div class="modeChoices">
@@ -8365,7 +8373,7 @@
   </div>
 </section>
 <section class="multiPrototype hide">
-  <div class="versionTag">v41.45 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.46 · PROTECTED STABLE</div>
   <div class="title">MULTIPLAYER PROTOTYPE</div>
   <div class="modeSub">Create a room as Host, connect as Guest, or train locally against Outlaw, Sukuna Boss, or the passive dummy.</div>
   <div class="protoCard"><b>HOST-AUTHORITATIVE FOUNDATION</b><p>The Host owns movement, HP, damage, collisions, status effects, cooldown validation, projectile outcomes and round results. Guest controls remain inputs only. No enemy AI or boss progression runs in PvP. <b>Hitbox Sync:</b> cast lanes and hurtboxes stay locked to authoritative positions while characters move and animate.</p></div>
@@ -11855,6 +11863,48 @@ const MP_MATCH_PRESENTATION_TIME=6.60,
       MP_MATCH_CUE_3_END=2.20,
       MP_MATCH_CUE_2_END=1.40,
       MP_MATCH_CUE_1_END=.60;
+/* v41.45c — Sans/Frisk special matchup intro. The authoritative countdown is extended,
+   while presentation time is remapped so the normal intro freezes at Sans' completed walk-in. */
+const MP_SANS_FRISK_INTRO_LINES=Object.freeze([
+  "It's a beautiful day outside",
+  'Birds are singing, flowers are blooming',
+  'On days like this, kids like you',
+  'Should be burning in hell'
+]);
+const MP_SANS_FRISK_REPLY="I didn't what I got into",
+      MP_SANS_FRISK_LINE_T=1.35,
+      MP_SANS_FRISK_SANS_T=MP_SANS_FRISK_LINE_T*MP_SANS_FRISK_INTRO_LINES.length,
+      MP_SANS_FRISK_FRISK_T=1.60,
+      MP_SANS_FRISK_INTRO_EXTRA=MP_SANS_FRISK_SANS_T+MP_SANS_FRISK_FRISK_T;
+function mpIsSansFriskMatchup(hostChar=getPlayerCharacter('p1'),guestChar=getPlayerCharacter('p2')){
+  return (hostChar==='sans'&&guestChar==='frisk')||(hostChar==='frisk'&&guestChar==='sans')
+}
+function mpPvpPresentationTime(){
+  return MP_MATCH_PRESENTATION_TIME+(mpIsSansFriskMatchup()?MP_SANS_FRISK_INTRO_EXTRA:0)
+}
+function mpSansFriskIntroTimeline(rawT,hostChar,guestChar){
+  rawT=Math.max(0,Number(rawT)||0);
+  if(!mpIsSansFriskMatchup(hostChar,guestChar))return{t:rawT,active:false,speaker:'',line:'',cue:''};
+  const sansHost=hostChar==='sans',holds=sansHost
+    ?[{threshold:MP_INTRO_HOST_WALK_END,duration:MP_SANS_FRISK_SANS_T,kind:'sans'},{threshold:MP_INTRO_GUEST_WALK_END,duration:MP_SANS_FRISK_FRISK_T,kind:'frisk'}]
+    :[{threshold:MP_INTRO_GUEST_WALK_END,duration:MP_SANS_FRISK_INTRO_EXTRA,kind:'both'}];
+  let remaining=holds.reduce((sum,h)=>sum+h.duration,0);
+  for(const hold of holds){
+    const start=hold.threshold+remaining,end=start-hold.duration;
+    if(rawT>start)return{t:rawT-remaining,active:false,speaker:'',line:'',cue:''};
+    if(rawT>=end){
+      const elapsed=clamp(start-rawT,0,Math.max(0,hold.duration-.001));
+      const sansTurn=hold.kind==='sans'||(hold.kind==='both'&&elapsed<MP_SANS_FRISK_SANS_T);
+      if(sansTurn){
+        const idx=Math.min(MP_SANS_FRISK_INTRO_LINES.length-1,Math.floor(elapsed/MP_SANS_FRISK_LINE_T));
+        return{t:hold.threshold+.001,active:true,speaker:'sans',line:MP_SANS_FRISK_INTRO_LINES[idx],cue:'sans-'+idx}
+      }
+      return{t:hold.threshold+.001,active:true,speaker:'frisk',line:MP_SANS_FRISK_REPLY,cue:'frisk-reply'}
+    }
+    remaining-=hold.duration
+  }
+  return{t:rawT,active:false,speaker:'',line:'',cue:''}
+}
 // Lobby fighter identity is sourced from MP_CHARACTERS.
 function mpStepLobbyArena(dir){
   if(!isNetHost()||multiplayerPrototype.matchPhase!=='characterSelect'||!multiplayerPrototype.connected)return;
@@ -12049,7 +12099,7 @@ function mpTryStartRematch(){
   if(!MP_PLAYER_IDS.every(id=>mpRematch(id)))return false;
   mpResetRematchVotes();
   mpPrepareFreshMatch();
-  mpSetMatchPhase('countdown',MP_MATCH_PRESENTATION_TIME,true);mpScheduleCharacterExtensionSync();
+  mpSetMatchPhase('countdown',mpPvpPresentationTime(),true);mpScheduleCharacterExtensionSync();
   return true
 }
 function mpSetLocalRematch(v){
@@ -12089,6 +12139,12 @@ function mpRivalIntroSfx(ch){
     tone(390,980,.30,.032,'sine');
     tone(860,1540,.22,.020,'triangle',.045);
     noise(.055,.014,.035);
+  }else if(ch==='sans'){
+    tone(215,178,.075,.020,'square');
+    tone(430,355,.060,.014,'square',.035);
+  }else if(ch==='frisk'){
+    tone(520,390,.080,.020,'triangle');
+    tone(780,620,.055,.012,'sine',.035);
   }else{
     tone(118,42,.34,.052,'sawtooth');
     tone(760,170,.18,.030,'triangle',.065);
@@ -12100,16 +12156,19 @@ function mpRenderMatchPresentation(){
         countdown=phase==='countdown',
         coop=multiplayerPrototype.matchMode==='coop',
         paused=!!multiplayerPrototype.connectionPaused,
-        t=Math.max(0,multiplayerPrototype.matchPhaseT||0),
+        rawT=Math.max(0,multiplayerPrototype.matchPhaseT||0),
         hostChar=getPlayerCharacter('p1'),
         guestChar=getPlayerCharacter('p2'),
         hostName=mpCharacterName(hostChar,hostChar||'HOST').toUpperCase(),
         guestName=mpCharacterName(guestChar,guestChar||'GUEST').toUpperCase(),
         gojoSukunaRivalry=(hostChar==='gojo'&&guestChar==='sukuna')||(hostChar==='sukuna'&&guestChar==='gojo'),
+        sansFriskRivalry=mpIsSansFriskMatchup(hostChar,guestChar),
+        sansFriskIntro=mpSansFriskIntroTimeline(rawT,hostChar,guestChar),
+        t=sansFriskIntro.t,
         ease=v=>{v=clamp(v,0,1);return v*v*(3-2*v)};
   mpPlay?.classList.toggle('matchEntering',countdown&&!coop);
   mpArena?.classList.toggle('matchIntro',countdown&&!coop);
-  mpArena?.classList.toggle('rivalIntroActive',countdown&&!coop&&gojoSukunaRivalry&&!paused);
+  mpArena?.classList.toggle('rivalIntroActive',countdown&&!coop&&!paused&&(gojoSukunaRivalry||(sansFriskRivalry&&sansFriskIntro.active)));
   mpControls?.classList.toggle('countdownLocked',countdown);
   mpArenaPicker?.classList.toggle('countdownLocked',countdown);
 
@@ -12188,6 +12247,16 @@ function mpRenderMatchPresentation(){
       guestIntroX=0
     }
 
+    // v41.45c — during the Sans/Frisk dialogue hold, both fighters stay planted at their lanes.
+    // The camera cuts to the current speaker without advancing the underlying entrance timeline.
+    if(sansFriskIntro.active&&!paused){
+      const speakerIsHost=(sansFriskIntro.speaker===hostChar);
+      camScale=1.48;camX=speakerIsHost?37:-37;
+      hostIntroX=0;guestIntroX=0;hostWalking=false;guestWalking=false;showIntro=false;
+      introTitle=sansFriskIntro.speaker==='sans'?'SANS':'FRISK';
+      introSub='SPECIAL MATCHUP'
+    }
+
     if(mpHostAvatar){
       mpHostAvatar.style.left=hostLeft.toFixed(2)+'%';
       mpHostAvatar.style.marginLeft=hostIntroX.toFixed(2)+'px';
@@ -12224,28 +12293,40 @@ function mpRenderMatchPresentation(){
   }
 
   if(mpRivalIntro){
-    let rivalCue='',rivalChar='',rivalSpeaker='',rivalLine='';
-    if(countdown&&!coop&&gojoSukunaRivalry&&!paused){
+    let rivalCue='',rivalChar='',rivalSpeaker='',rivalLine='',speakerSlot='';
+    if(countdown&&!coop&&sansFriskRivalry&&sansFriskIntro.active&&!paused){
+      rivalChar=sansFriskIntro.speaker;
+      rivalSpeaker=rivalChar==='sans'?'SANS':'FRISK';
+      rivalLine=sansFriskIntro.line;
+      speakerSlot=hostChar===rivalChar?'host':'guest';
+      rivalCue='sans-frisk-'+sansFriskIntro.cue
+    }else if(countdown&&!coop&&gojoSukunaRivalry&&!paused){
       if(t<=MP_INTRO_HOST_FOCUS_END&&t>MP_INTRO_HOST_WALK_END){
         rivalCue='host';
+        speakerSlot='host';
         rivalChar=hostChar;
         rivalSpeaker=hostName;
-        rivalLine=hostChar==='gojo'?"SO IT'S YOU. GOOD.":"SHOW ME WHERE INFINITY ENDS.";
+        rivalLine=hostChar==='gojo'?"SO IT'S YOU. GOOD.":"Let\'s start by peeling off those scales";
       }else if(t<=MP_INTRO_GUEST_FOCUS_END&&t>MP_INTRO_GUEST_WALK_END){
         rivalCue='guest';
+        speakerSlot='guest';
         rivalChar=guestChar;
         rivalSpeaker=guestName;
-        rivalLine=guestChar==='gojo'?"COME FIND OUT.":"THEN DON'T LOOK AWAY.";
+        rivalLine=guestChar==='gojo'?"COME FIND OUT.":"Let\'s start by peeling off those scales";
       }
     }
     const rivalShow=!!rivalCue;
     mpRivalIntro.classList.toggle('show',rivalShow);
+    mpRivalIntro.classList.toggle('sansFrisk',sansFriskRivalry&&sansFriskIntro.active);
     mpRivalIntro.classList.toggle('gojo',rivalChar==='gojo');
     mpRivalIntro.classList.toggle('sukuna',rivalChar==='sukuna');
+    mpRivalIntro.classList.toggle('sans',rivalChar==='sans');
+    mpRivalIntro.classList.toggle('frisk',rivalChar==='frisk');
+    mpRivalIntro.setAttribute('aria-hidden',rivalShow?'false':'true');
     if(mpRivalSpeaker)mpRivalSpeaker.textContent=rivalSpeaker;
     if(mpRivalLine)mpRivalLine.textContent=rivalLine;
-    if(mpHostAvatar)mpHostAvatar.classList.toggle('rivalSpeaking',rivalCue==='host');
-    if(mpGuestAvatar)mpGuestAvatar.classList.toggle('rivalSpeaking',rivalCue==='guest');
+    if(mpHostAvatar)mpHostAvatar.classList.toggle('rivalSpeaking',speakerSlot==='host');
+    if(mpGuestAvatar)mpGuestAvatar.classList.toggle('rivalSpeaking',speakerSlot==='guest');
     if(mpRivalIntro.dataset.cue!==rivalCue){
       mpRivalIntro.dataset.cue=rivalCue;
       if(rivalCue)mpRivalIntroSfx(rivalChar)
@@ -12418,7 +12499,7 @@ function mpHostStartMatch(){
   mpSetLobbyReady('p2',false);
   mpResetRematchVotes();
   mpPrepareFreshMatch();
-  mpSetMatchPhase('countdown',MP_MATCH_PRESENTATION_TIME,true);mpScheduleCharacterExtensionSync();
+  mpSetMatchPhase('countdown',mpPvpPresentationTime(),true);mpScheduleCharacterExtensionSync();
   return true
 }
 const MP_MOVE_SPEED=1.05;
@@ -19571,8 +19652,48 @@ function mpClearSukunaCleaveGrabVisual(){
   for(const av of [mpHostAvatar,mpGuestAvatar]){
     if(!av)continue;av.classList.remove('mpSukunaCleaveCaster','mpSukunaCleaveVictim','blackFlashHit');
     try{av.getAnimations().forEach(a=>{if(String(a.id||'').startsWith('sukuna-cleave-grab'))a.cancel()})}catch(_){}
-    if(av.dataset.cleaveReturn==='1'){delete av.dataset.cleaveReturn;av.style.transform=''}
+    if(av.dataset.cleaveReturn==='1')delete av.dataset.cleaveReturn;
+    av.style.transform=''
   }
+}
+function mpSukunaCleaveBlackFlashLandscapeExit(role,target,duration=720){
+  if(!mpArena||!document.getElementById('game')?.classList.contains('layout-landscape'))return false;
+  const scene=mpArena.querySelector('.mpCleaveGrabScene'),caster=mpAvatarFor(role),victim=mpAvatarFor(target);if(!caster||!victim)return false;
+  const face=mpVfxFacing(role)>=0?1:-1,base='translate(-50%,-50%) scale(.72)',ms=Math.max(520,Number(duration)||720);
+  const freeze=(av)=>{
+    let current=base;try{const t=getComputedStyle(av).transform;if(t&&t!=='none')current=t}catch(_){}
+    try{av.getAnimations().forEach(a=>{if(String(a.id||'').startsWith('sukuna-cleave-grab'))a.cancel()})}catch(_){}
+    av.dataset.cleaveReturn='1';av.style.transform=current;return current
+  };
+  const casterFrom=freeze(caster),victimFrom=freeze(victim);
+  if(scene)delete scene.dataset.blackFlashHold;
+  const casterArc='translate(-50%,-50%) translate(' + (-face*18) + 'px,-24px) rotate(' + (-face*235) + 'deg) scale(.72)';
+  const casterSettle='translate(-50%,-50%) translate(' + (-face*5) + 'px,-6px) rotate(' + (-face*338) + 'deg) scale(.72)';
+  const casterEnd='translate(-50%,-50%) rotate(' + (-face*360) + 'deg) scale(.72)';
+  const victimBlast='translate(-50%,-50%) translateX(' + (face*24) + 'px) rotate(' + (face*12) + 'deg) scale(.68,.76)';
+  const victimSettle='translate(-50%,-50%) translateX(' + (face*5) + 'px) rotate(' + (-face*4) + 'deg) scale(.71,.73)';
+  let ca=null,va=null;
+  try{
+    ca=caster.animate([
+      {transform:casterFrom,offset:0,easing:'cubic-bezier(.08,.84,.16,1)'},
+      {transform:casterArc,offset:.46},
+      {transform:casterSettle,offset:.78},
+      {transform:casterEnd,offset:1}
+    ],{duration:ms,easing:'linear',fill:'forwards'});ca.id='sukuna-cleave-grab-bf-return-caster-'+performance.now();
+    va=victim.animate([
+      {transform:victimFrom,offset:0,easing:'cubic-bezier(.05,.92,.12,1)'},
+      {transform:victimBlast,offset:.68},
+      {transform:victimSettle,offset:.88},
+      {transform:base,offset:1}
+    ],{duration:Math.max(480,ms*.88),easing:'linear',fill:'forwards'});va.id='sukuna-cleave-grab-bf-return-victim-'+performance.now();
+  }catch(_){mpClearSukunaCleaveGrabVisual();return false}
+  setTimeout(()=>scene?.remove(),90);
+  setTimeout(()=>{
+    try{ca?.cancel();va?.cancel()}catch(_){}
+    for(const av of [caster,victim]){if(av.dataset.cleaveReturn==='1')delete av.dataset.cleaveReturn;av.style.transform='';av.classList.remove('mpSukunaCleaveCaster','mpSukunaCleaveVictim','blackFlashHit')}
+    scene?.remove()
+  },ms+35);
+  return true
 }
 function mpSukunaCleaveGrabVisual(role,target,domain=false,duration=1500,hitAt=960){
   if(!mpArena)return;
@@ -19626,10 +19747,12 @@ function mpHoldSukunaCleaveForBlackFlash(role,target,holdMs=MP_BLACK_FLASH_CUTSC
   if(!mpArena)return null;
   const scene=mpArena.querySelector('.mpCleaveGrabScene'),caster=mpAvatarFor(role),victim=mpAvatarFor(target),arenaRect=mpArena.getBoundingClientRect();
   const point=(av)=>{const r=av?.getBoundingClientRect?.();return r?{x:r.left-arenaRect.left+r.width*.5,y:r.top-arenaRect.top+r.height*.5}:null};
-  const attackerPoint=point(caster),impactPoint=point(victim);
+  const attackerPoint=point(caster),impactPoint=point(victim),hold=Math.max(0,Number(holdMs)||0),landscape=document.getElementById('game')?.classList.contains('layout-landscape'),exitMs=720;
   if(scene)scene.dataset.blackFlashHold='1';
   for(const av of [caster,victim]){try{av?.getAnimations?.().forEach(a=>{if(String(a.id||'').startsWith('sukuna-cleave-grab'))a.pause()})}catch(_){}}
-  setTimeout(()=>{if(scene?.dataset.blackFlashHold==='1')mpClearSukunaCleaveGrabVisual()},Math.max(0,Number(holdMs)||0)+25);
+  if(landscape){
+    setTimeout(()=>{if(scene?.dataset.blackFlashHold==='1'&&!mpSukunaCleaveBlackFlashLandscapeExit(role,target,exitMs))mpClearSukunaCleaveGrabVisual()},Math.max(0,hold-exitMs));
+  }else setTimeout(()=>{if(scene?.dataset.blackFlashHold==='1')mpClearSukunaCleaveGrabVisual()},hold+25);
   return{attackerPoint,impactPoint}
 }
 function mpSukunaCleaveGrabEvent({role,data}){const target=data.targetPlayerId||data.target||selectEnemyTargetId(role);multiplayerPrototype.pvpSequenceT=Math.max(multiplayerPrototype.pvpSequenceT,(Number(data.duration)||1500)/1000+MP_CLEAVE_GRAB_RETURN_T);mpSetLocalMoveState?.(0);resetMpStick?.();mpSukunaCleaveGrabVisual(role,target,!!data.domain,data.duration,data.hitAt);renderMpPvpUI();renderMpAbilityUI();return true}
@@ -24415,8 +24538,8 @@ renderEnemy();renderAmmo();pos(true);requestAnimationFrame(loop);
 (()=>{
 'use strict';
 const FIDGET_UPDATE=Object.freeze({
-  build:'41.45',
-  release:'41.45',
+  build:'41.46',
+  release:'41.46',
   protocol:86,
   manifestUrl:'https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/version.json',
   checkDelayMs:1400,
