@@ -1,0 +1,14 @@
+{
+  "version": "41.44",
+  "protocol": 86,
+  "required": false,
+  "summary": "Current protected stable release.",
+  "notes": [
+    "Touch-landscape combat shell and MOBA-style controls",
+    "Gojo Hollow Nuke landscape speech bubble fit",
+    "Gojo Red/Purple READY indicators",
+    "Multiplayer intro walk translation fix"
+  ],
+  "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
+  "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
+}
