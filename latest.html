@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
-<title>Fidget Shooter v41.46</title>
+<title>Fidget Shooter v41.47</title>
 <style>
 :root{--card:#202d43;--border:#526987;--text:#f4f7fb;--muted:#9fb2cc;--gun:#ffd86b;--sans:#39a0ff;--suk:#e15a73;--gojo:#4d8dff;--fri:#63a9ff;--lan:#42db6c;--lan2:#c9ffd8}
 *{box-sizing:border-box}html{overscroll-behavior:none;background:#0b1220}body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;justify-content:center;padding:12px;min-height:100dvh;overscroll-behavior:none}button{font:inherit;color:inherit;touch-action:manipulation;user-select:none}.hide{display:none!important}#game{width:min(100%,640px);overscroll-behavior:none}
@@ -8293,6 +8293,7 @@
 <!-- v41.43o — DOMAIN COMMIT + RED CHARGE AUDIO + HUD STACK: moves the landscape HOST AUTHORITATIVE mode badge into the lower-middle HUD stack, hardens the full-Domain cinematic-to-authority handoff, and adds synchronized held-Red charge SFX. Protocol/gameplay values unchanged. -->
 <!-- v41.43m — LANDSCAPE HUD REPOSITION: lowers the Domain Clash timer and places the live cast/status bar at lower-center just above the PING/NET diagnostics in landscape. Portrait/gameplay/networking/protocol unchanged. -->
 <!-- v41.43l — LANDSCAPE ARC ALIGNMENT: pulls DOMAIN / Special 4 back into line with the surrounding MOBA arc and shifts the whole right-side combat cluster slightly diagonally up-right. Presentation only; portrait/gameplay/networking/protocol unchanged. -->
+<!-- v41.47 — PROTECTED STABLE: promotes the audited v41.46 source-organization/documentation line. Extracts canonical special-matchup dialogue and harmless character presentation metadata, moves the inert character template and approved historical/version ledger comments out of the runtime source, and repackages the protected artifact as one self-contained HTML file. Gameplay balance, cooldowns, damage, hitboxes, ability timing, camera timing, audio, network serialization and Host authority remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. -->
 <!-- v41.46 — PROTECTED STABLE: promotes the tested v41.45a–v41.45e development line. Consolidates Sukuna Black Flash landscape lane-return presentation, the synchronized Sans/Frisk special matchup intro and typo fix, and Sukuna's updated Gojo rivalry dialogue. Development patch-layer infrastructure remains a dev-branch workflow only; this protected build is self-contained. Gameplay authority and wire schema remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.46 as v41.46a, v41.46b, etc. -->
 <!-- v41.45 — PROTECTED STABLE: promotes the tested v41.44b updater + Hollow Nuke landscape-centering line. Adds the downloaded-build update framework backed by the public fidget-shooter-releases channel, while preserving v41.44 gameplay/network behavior and NET_PROTOCOL=86. -->
 <!-- v41.45a DEV — Landscape Sukuna Black Flash Cleave exit: caster backflips to his lane while the victim is force-blasted back to theirs; mechanics unchanged. -->
@@ -8350,11 +8351,65 @@
 .fidgetUpdateTop{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.fidgetUpdateTitle{font-size:14px;letter-spacing:.07em}.fidgetUpdateVersion{color:#a8c8ff;font-size:12px;white-space:nowrap}.fidgetUpdateText{margin-top:5px;color:#c6d2e4;font-weight:600}.fidgetUpdateNotes{margin:7px 0 0;padding-left:18px;color:#aebed4;font-weight:600;font-size:12px;max-height:82px;overflow:auto}.fidgetUpdateActions{display:flex;gap:8px;margin-top:10px;justify-content:flex-end}.fidgetUpdateBtn{appearance:none;border:1px solid rgba(180,207,255,.35);border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.07);color:#f4f7fb;font:800 11px/1 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.06em}.fidgetUpdateBtn.primary{background:linear-gradient(135deg,#4d8dff,#755cff);border-color:rgba(255,255,255,.42);box-shadow:0 0 18px rgba(77,141,255,.25)}.fidgetUpdateBtn:disabled{opacity:.52}.fidgetUpdateToast{position:fixed;z-index:2147481999;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translate(-50%,10px);padding:8px 12px;border-radius:999px;background:rgba(8,15,28,.94);border:1px solid rgba(179,207,255,.3);color:#dbe8fb;font:700 11px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;opacity:0;pointer-events:none;transition:.18s}.fidgetUpdateToast.show{opacity:1;transform:translate(-50%,0)}
 @media (orientation:landscape) and (pointer:coarse){.fidgetUpdateBanner{top:max(5px,env(safe-area-inset-top));width:min(70vw,620px);padding:9px 11px}.fidgetUpdateNotes{max-height:48px}.fidgetUpdateActions{margin-top:7px}.fidgetUpdateBtn{padding:7px 12px}}
 </style>
+<!-- v41.47 PROTECTED RELEASE PACKAGING: canonical low-risk data is inlined from src/data/characters.js and src/data/dialogue.js so the protected HTML remains self-contained. -->
+<script>
+/* A Fidget Game — canonical low-risk character presentation metadata.
+ * Data only. Gameplay stats, controls, networking, and ability behavior remain in index.html.
+ */
+(() => {
+  'use strict';
+
+  const root = window.FidgetData || (window.FidgetData = {});
+
+  root.characters = Object.freeze({
+    gunslinger: Object.freeze({id:"gunslinger", displayName:"Gunslinger", description:"Revolver • Chamber • Individual Skill Draft", selection:Object.freeze({icon:"🤠", soloLabel:"GUNSLINGER", soloDescription:"Revolver • Chamber • Skill Draft", multiplayerLabel:"GUNSLINGER"})}),
+    sans: Object.freeze({id:"sans", displayName:"Sans", description:"Bone • Gaster • Blue Power", selection:Object.freeze({icon:"💀", soloLabel:"SANS", soloDescription:"Bone • Gaster • Blue Power", multiplayerLabel:"SANS"})}),
+    sukuna: Object.freeze({id:"sukuna", displayName:"Sukuna", description:"Dismantle • Cleave • Fire Arrow • Chant • Domain", selection:Object.freeze({icon:"✦", soloLabel:"SUKUNA", soloDescription:"Dismantle • Cleave • Fire Arrow • Domain", multiplayerLabel:"SUKUNA"})}),
+    gojo: Object.freeze({id:"gojo", displayName:"Gojo", description:"Red • Blue / Maximum • Chanted Blue • Purple • Domain • Infinity", selection:Object.freeze({icon:"◉", soloLabel:"GOJO", soloDescription:"Red • Blue / Maximum • Purple • Domain • Infinity", multiplayerLabel:"GOJO"})}),
+    frieren: Object.freeze({id:"frieren", displayName:"Frieren", description:"Zoltraak • Hex Shield • Expanded Spellbook", selection:Object.freeze({icon:"✧", soloLabel:"FRIEREN", soloDescription:"Zoltraak • Hex Shield • Quick Spellbook", multiplayerLabel:"FRIEREN"})}),
+    frisk: Object.freeze({id:"frisk", displayName:"Frisk", description:"FIGHT • ITEM • LOVE • Tree Branch", selection:Object.freeze({icon:"♥", soloLabel:"FRISK", soloDescription:"FIGHT • ITEM • LOVE • Solo Preview", multiplayerLabel:"FRISK"})}),
+    greenlantern: Object.freeze({id:"greenlantern", displayName:"Green Lantern", description:"Construct • Parry • Ring Recharge", selection:Object.freeze({icon:"💚", soloLabel:"GREEN LANTERN", soloDescription:"Construct • Parry • Ring Recharge", multiplayerLabel:"LANTERN"})})
+  });
+})();
+
+</script>
+<script>
+/* A Fidget Game — canonical special-matchup dialogue.
+ * Data only. Intro timing, camera, SFX, rendering, and multiplayer state remain in index.html.
+ */
+(() => {
+  'use strict';
+
+  const root = window.FidgetData || (window.FidgetData = {});
+
+  root.dialogue = Object.freeze({
+    matchups: Object.freeze({
+      gojoSukuna: Object.freeze({
+        gojo: Object.freeze({
+          host: "SO IT'S YOU. GOOD.",
+          guest: 'COME FIND OUT.'
+        }),
+        sukuna: "Let's start by peeling off those scales"
+      }),
+      sansFrisk: Object.freeze({
+        sans: Object.freeze([
+          "It's a beautiful day outside",
+          'Birds are singing, flowers are blooming',
+          'On days like this, kids like you',
+          'Should be burning in hell'
+        ]),
+        frisk: "I didn't what I got into"
+      })
+    })
+  });
+})();
+
+</script>
 </head>
 <body>
 <div id="game">
 <section class="modeGate">
-  <div class="versionTag">v41.46 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.47 · PROTECTED STABLE</div>
   <div class="title">CHOOSE GAME MODE</div>
   <div class="modeSub">Single Player is preserved exactly. Multiplayer begins as a separate, isolated prototype.</div>
   <div class="modeChoices">
@@ -8373,7 +8428,7 @@
   </div>
 </section>
 <section class="multiPrototype hide">
-  <div class="versionTag">v41.46 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.47 · PROTECTED STABLE</div>
   <div class="title">MULTIPLAYER PROTOTYPE</div>
   <div class="modeSub">Create a room as Host, connect as Guest, or train locally against Outlaw, Sukuna Boss, or the passive dummy.</div>
   <div class="protoCard"><b>HOST-AUTHORITATIVE FOUNDATION</b><p>The Host owns movement, HP, damage, collisions, status effects, cooldown validation, projectile outcomes and round results. Guest controls remain inputs only. No enemy AI or boss progression runs in PvP. <b>Hitbox Sync:</b> cast lanes and hurtboxes stay locked to authoritative positions while characters move and animate.</p></div>
@@ -8607,14 +8662,10 @@ function mpTutorialTextChangeSfx(){
 const mpDummyControlsDock=$('.mpDummyControlsDock');
 let mpCoopPvEEl=null;
 if(mpAbilityPanel&&mpDummyControlsDock&&!mpAbilityPanel.contains(mpDummyControlsDock))mpAbilityPanel.appendChild(mpDummyControlsDock);
-// v41.21 — PROTECTED STABLE: Frisk integration audit passed. Strict registry contract, character-owned state bridge, round carry, reliable extension-state resync, registry-owned Frisk presentation events, and protocol-79 guard rails enabled.
-// v41.22 — PROTECTED STABLE: consolidated Frisk weapon/UI patch set through Ballet Shoes. Stick, Toy Knife and Ballet Shoes use standard left-origin FIGHT sweep; Tough Glove remains the only current two-sided special sweep.
-// v41.23 — PROTECTED STABLE: consolidated Frisk special-weapon branch through v41.22m. Ballet Shoes retain simultaneous triple timing with direction-aware individual locks, gold/red lock fades, multi-crit damage rewards and crit chimes; Tough Glove retains manual-aim bonus punches and front-side commitment.
 // v41.23c — Torn Notebook uses two simultaneous right-origin timing bars, individually confirmed into one combined hit.
 // v41.26a — Branch/Stick is now storable in WEAPONS. Worn Dagger added as the LOVE 19 Frisk weapon.
 // v41.27a — Worn Dagger LOVE 19 unlock now pauses PvP for a synchronized ~6s obtain cinematic.
 // v41.27d — Frisk desktop controls: LMB FIGHT, keyboard inventory slots/pages; Empty Gun Guest bullet nose corrected; LOVE charge accelerated.
-// v41.24 — Protected Frisk special checkpoint. Torn Notebook finalized with double right-origin timing, zone-scaled stored post-hit i-frames, blue crit fades, neutral fades, widened sweep spacing, soft-purple worn cover, and offset page peek.
 // v41.22c — Ballet Shoes triple markers launch simultaneously; each FIGHT press locks one marker while the others continue, and the third lock resolves one combined damage event.
 // v41.22e — Ballet confirmation is direction-aware: each press locks the currently leading unlocked marker, including after the sweep bounces and reverses.
 // v41.22f — Ballet timing markers all retain full glow regardless of order or lock state.
@@ -8656,125 +8707,10 @@ function mpSerializeGunslingerPublicState({state}){
 // v41.17p — central multiplayer ability input pipeline simplified to generic registry plumbing; protocol 79/gameplay unchanged.
 const MP_CHARACTER_FRAMEWORK_ID='p1p2-character-registry-v1';
 
-// v41.15r — inert developer reference for adding future fighters.
-// IMPORTANT: MP_CHARACTER_TEMPLATE is deliberately NOT inserted into MP_CHARACTERS,
-// MP_CHARACTER_IDS, ability-state defaults, UI binding, combat dispatch, or networking.
-// Copy/adapt the relevant pieces when registering a real fighter; this object itself
-// is never read by runtime gameplay code.
-const MP_CHARACTER_TEMPLATE=Object.freeze({
-  // Core registry metadata.
-  id:'newfighter',
-  framework:MP_CHARACTER_FRAMEWORK_ID,
-  playerModel:'p1p2',
-  displayName:'New Fighter',
-  description:'Primary • Special 1 • Special 2',
-  baseHp:10,
-  supportedControls:Object.freeze(['primary','special1','special2']),
-
-  // Character-owned hold-state lookup used by the generic input transition gate.
-  // Include only controls that genuinely have a down/up hold lifecycle; omitted
-  // controls return null and keep the legacy tap-only transition behavior.
-  holdState:Object.freeze({
-    primary:({state})=>!!state.primaryHold,
-    special1:({state})=>!!state.s1Hold,
-    special2:({state})=>!!state.s2Hold
-  }),
-
-  // Optional fighter-wide gate for bespoke states that temporarily lock other controls.
-  // Return false to reject the input before the per-control availability resolver runs.
-  inputGate:({playerId,player,role,state,character,control,phase,value})=>true,
-
-  // Character-specific authoritative availability rules. Universal match/authority/
-  // status/cinematic gates and generic hold-transition safety remain centralized.
-  // Each resolver receives p1/p2 identity, legacy role alias, state, phase/value and
-  // down/up booleans. Omitted controls are unavailable by default.
-  availability:Object.freeze({
-    primary:({playerId,player,role,state,phase,value,down,up})=>down&&state.p<=0,
-    special1:({playerId,player,role,state,phase,value,down,up})=>down&&state.s1<=0,
-    special2:({playerId,player,role,state,phase,value,down,up})=>down&&state.s2<=0
-  }),
-
-  // Character-owned state defaults. When a real fighter is registered, mirror these
-  // fields into MP_ABILITY_CHARACTER_DEFAULTS so the existing state-isolation layer
-  // can allocate its bucket without changing protocol behavior.
-  stateDefaults:Object.freeze({
-    exampleResource:0
-  }),
-
-  // Shared-state initialization metadata currently consumed by makeMpAbilityState().
-  initial:Object.freeze({domain:0,sansDodges:0}),
-
-  // Fighter-selection presentation.
-  selection:Object.freeze({
-    icon:'◆',
-    soloLabel:'NEW FIGHTER',
-    soloDescription:'Primary • Special 1 • Special 2',
-    multiplayerLabel:'NEW FIGHTER'
-  }),
-
-  // Optional development flags. `modelOnly` lets a selectable visual prototype use
-  // generic placeholder solo UI without adding a fighter-specific renderer branch.
-  development:Object.freeze({modelOnly:false}),
-
-  // Host-authoritative input handlers. New code should use playerId/player (p1/p2).
-  // `role` is supplied only as a legacy compatibility alias for older helpers.
-  // Universal match/authority/stun/cinematic gates remain centralized.
-  input:Object.freeze({
-    primary:({playerId,player,role,state,phase,value,down,up,cancelled})=>{},
-    special1:({playerId,player,role,state,phase,value,down,up,cancelled})=>{},
-    special2:({playerId,player,role,state,phase,value,down,up,cancelled})=>{}
-  }),
-
-  // Character-specific authoritative timers/state progression. Prefer playerId/player.
-  tick:({playerId,player,role,state,dt})=>{},
-
-  // Character-owned snapshot state. Under protocol 79, keys must already exist in
-  // MP_ABILITY_PUBLIC_LEGACY_KEYS; strict validation rejects silent payload expansion.
-  // New out-of-shape state should use syncState + eventHandlers unless the protocol is
-  // intentionally bumped and both snapshot serializer/sanitizer are updated together.
-  publicState:Object.freeze({
-    keys:Object.freeze([]),
-    serialize:()=>({}),
-    apply:()=>{}
-  }),
-
-  // Bespoke authoritative combat resolution. Add one handler per emitted combat
-  // action; unusual mechanics can remain in dedicated helper/state-machine code.
-  combatEvents:Object.freeze({
-    exampleAttack:({playerId,player,role,action,data,epoch,targetId,targetPlayer,target,castY,character,state})=>{}
-  }),
-
-  // Common multiplayer ability UI metadata. Use customUI only for fighter-specific
-  // widgets/resources that cannot be represented by the shared button renderer.
-  ui:Object.freeze({
-    theme:'newfighter',
-    controls:Object.freeze({
-      primary:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'PRIMARY',cooldown:({state})=>state.p,cooldownMax:()=>1,holding:({state})=>state.primaryHold}),
-      special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'SPECIAL 1',cooldown:({state})=>state.s1,cooldownMax:()=>1,holding:({state})=>state.s1Hold,showCooldown:()=>true}),
-      special2:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'SPECIAL 2',cooldown:({state})=>state.s2,cooldownMax:()=>1,holding:({state})=>state.s2Hold,showCooldown:()=>true}),
-      chant:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> 'CHANT',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
-      domain:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> 'DOMAIN',cooldown:({state})=>state.domain,cooldownMax:({state})=>state.domainMax||16,holding:({state})=>state.domainHold})
-    }),
-    status:({playerId,player,state})=>'',
-    customUI:null
-  }),
-
-  // Optional lifecycle/presentation extension points. `stateCreated` initializes
-  // non-snapshot presentation state; `roundCarry` preserves explicitly approved state
-  // across ability-state recreation; `syncState` emits reliable extension events after
-  // join/reconnect resync; eventHandlers owns the matching client presentation logic.
-  stateCreated:null,
-  roundCarry:null,
-  syncState:null,
-  vfx:Object.freeze({}),
-  eventHandlers:Object.freeze({})
-});
-
 // v41.20d — Frisk ITEM rules: item effects are mutually exclusive, and Butt. Pie regeneration cancels on the first landed hit. Existing values/networking/protocol 79 unchanged.
 // v41.20e — Gunslinger chamber tweaks: desktop chamber keys are screen-position based (12/2/4/6/8/10 o'clock), and specialty rounds may duplicate while preserving the protocol-79 state shape.
 // v41.27d — LOVE charge is now 2.0s normally and 1.2s with Last Dream; Last Dream remains the faster-charge inventory effect.
 // v41.27al — Frisk Guest parity audit: character-bucket fields remain Host-only; Guest UI/VFX/SFX read Frisk reliable presentation state, with reset/notebook/Real Knife reconciliation. Protocol 79 unchanged.
-// v41.28 — protected stable checkpoint. Consolidates the completed v41.27 Frisk/Real Knife/LOVE/Guest-parity patch line. Future development branches from v41.28.
 // v41.20i — Frisk inventory naming: regular slot-2 speed item renamed from Last Dream to Sea Tea; RNG EXP Last Dream unchanged.
 // v41.20l — Frisk LOVE UI fix: Special 2 is now registered, hold-owned and visible in Frisk's ability panel. LOVE mechanics unchanged.
 // v41.30c — Frisk secret LOVE 20 polish: secret charge keeps normal movement; completion triggers a ~6.5s True Real Knife awakening cutscene. True Real Knife is derived presentation only; combat values/protocol unchanged.
@@ -9941,9 +9877,12 @@ function mpGunslingerSyncState({playerId,role,state}){
   return entries
 }
 
+const FIDGET_CHARACTER_DATA=window.FidgetData?.characters;
+if(!FIDGET_CHARACTER_DATA)throw new Error('Missing canonical character presentation metadata');
+
 const MP_CHARACTERS=Object.freeze({
   gunslinger:Object.freeze({
-    id:'gunslinger',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Gunslinger',description:'Revolver • Chamber • Individual Skill Draft',baseHp:10,
+    id:FIDGET_CHARACTER_DATA.gunslinger.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.gunslinger.displayName,description:FIDGET_CHARACTER_DATA.gunslinger.description,baseHp:10,
     stateDefaults:Object.freeze({ammo:6,reloadDelay:0,reloadT:0,rollDir:1,rollInvuln:0,specialRound:'',specialRoundSlot:-1,keptRound:'',keptRoundSlot:-1,xShotSpawned:false,xShotReserveAvailable:false,xShotLoadedSlot:-1,xShotAimActive:false,xShotAimT:0,xShotAimY:.5,xShotAimSyncT:0,specialIncAvailable:true,specialExpAvailable:true,specialApAvailable:true,specialCryoAvailable:true,specialShockAvailable:true,specialIncSlot:-1,specialExpSlot:-1,specialApSlot:-1,specialCryoSlot:-1,specialShockSlot:-1}),
     supportedControls:Object.freeze(['primary','special1','reload','roundSelect']),
     holdState:Object.freeze({special2:({state})=>!!state.s2Hold}),
@@ -9992,10 +9931,10 @@ const MP_CHARACTERS=Object.freeze({
       customUI:mpUiGunslingerCustom
     }),
     initial:Object.freeze({domain:0,sansDodges:0}),
-    selection:Object.freeze({icon:'🤠',soloLabel:'GUNSLINGER',soloDescription:'Revolver • Chamber • Skill Draft',multiplayerLabel:'GUNSLINGER'})
+    selection:FIDGET_CHARACTER_DATA.gunslinger.selection
   }),
   sans:Object.freeze({
-    id:'sans',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Sans',description:'Bone • Gaster • Blue Power',baseHp:1,
+    id:FIDGET_CHARACTER_DATA.sans.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.sans.displayName,description:FIDGET_CHARACTER_DATA.sans.description,baseHp:1,
     stateDefaults:Object.freeze({teleT:0,sansDodges:0,sansDodgeRecharge:0,sansDodgeLock:0,sansDodgeDir:1,boneCdMax:.50,gasterCdMax:5.5}),
     supportedControls:Object.freeze(['primary','special1','special2','telepoint','spell']),
     holdState:Object.freeze({
@@ -10037,10 +9976,10 @@ const MP_CHARACTERS=Object.freeze({
       customUI:mpUiSansCustom
     }),
     initial:Object.freeze({domain:0,sansDodges:3}),
-    selection:Object.freeze({icon:'💀',soloLabel:'SANS',soloDescription:'Bone • Gaster • Blue Power',multiplayerLabel:'SANS'})
+    selection:FIDGET_CHARACTER_DATA.sans.selection
   }),
   sukuna:Object.freeze({
-    id:'sukuna',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Sukuna',description:'Dismantle • Cleave • Fire Arrow • Chant • Domain',baseHp:10,
+    id:FIDGET_CHARACTER_DATA.sukuna.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.sukuna.displayName,description:FIDGET_CHARACTER_DATA.sukuna.description,baseHp:10,
     stateDefaults:Object.freeze({fireArrowReady:false,fireArrowDomain:false,chantHold:false,chantHoldT:0,chantStage:0,chantWindow:0,chantCompleteT:0,worldSlashReady:0,worldSlashWindup:false,worldSlashWindupT:0,worldSlashCastY:.5,pvpDomainTick:0,pvpDomainHits:0,fugaDust:0,fugaReady:false,fugaCasting:false,fugaCastT:0,fugaUsed:false}),
     supportedControls:Object.freeze(['primary','special1','special2','chant','domain']),
     holdState:Object.freeze({
@@ -10096,13 +10035,13 @@ const MP_CHARACTERS=Object.freeze({
       customUI:mpUiSukunaCustom
     }),
     initial:Object.freeze({domain:6,sansDodges:0}),
-    selection:Object.freeze({icon:'✦',soloLabel:'SUKUNA',soloDescription:'Dismantle • Cleave • Fire Arrow • Domain',multiplayerLabel:'SUKUNA'})
+    selection:FIDGET_CHARACTER_DATA.sukuna.selection
   }),
   // v41.40ar — Gojo reuses the existing protocol-safe chantHold/chantHoldT/chantStage
   // snapshot fields for his Blue incantation. They are never active alongside Sukuna on the
   // same player, so this keeps NET_PROTOCOL=86 stable without registry key collisions.
   gojo:Object.freeze({
-    id:'gojo',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Gojo',description:'Red • Blue / Maximum • Chanted Blue • Purple • Domain • Infinity',baseHp:10,
+    id:FIDGET_CHARACTER_DATA.gojo.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.gojo.displayName,description:FIDGET_CHARACTER_DATA.gojo.description,baseHp:10,
     stateDefaults:Object.freeze({blueAbsorbCount:0,infReady:true,infCd:0}),
     supportedControls:Object.freeze(['primary','special1','special2','chant','domain']),
     holdState:Object.freeze({
@@ -10157,10 +10096,10 @@ const MP_CHARACTERS=Object.freeze({
     }),
     roundReset:({state})=>{if(!state)return;state.chantHold=false;state.chantHoldT=0;state.chantStage=0;state.blueAbsorbCount=0},
     initial:Object.freeze({domain:6,sansDodges:0}),
-    selection:Object.freeze({icon:'◉',soloLabel:'GOJO',soloDescription:'Red • Blue / Maximum • Purple • Domain • Infinity',multiplayerLabel:'GOJO'})
+    selection:FIDGET_CHARACTER_DATA.gojo.selection
   }),
   frieren:Object.freeze({
-    id:'frieren',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Frieren',description:'Zoltraak • Hex Shield • Expanded Spellbook',baseHp:10,
+    id:FIDGET_CHARACTER_DATA.frieren.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.frieren.displayName,description:FIDGET_CHARACTER_DATA.frieren.description,baseHp:10,
     stateDefaults:Object.freeze({spellIndex:0,golemT:0,golemCd:0,golemEchoReady:false,fieldT:0,blackHoleCd:0,blackHoleCasting:false,blackHoleCastT:0,blackHoleCastY:.5}),
     supportedControls:Object.freeze(['primary','special1','special2','spell']),
     holdState:Object.freeze({
@@ -10197,10 +10136,10 @@ const MP_CHARACTERS=Object.freeze({
       customUI:mpUiStandardCustom
     }),
     initial:Object.freeze({domain:0,sansDodges:0}),
-    selection:Object.freeze({icon:'✧',soloLabel:'FRIEREN',soloDescription:'Zoltraak • Hex Shield • Quick Spellbook',multiplayerLabel:'FRIEREN'})
+    selection:FIDGET_CHARACTER_DATA.frieren.selection
   }),
   frisk:Object.freeze({
-    id:'frisk',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Frisk',description:'FIGHT • ITEM • LOVE • Tree Branch',baseHp:10,
+    id:FIDGET_CHARACTER_DATA.frisk.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.frisk.displayName,description:FIDGET_CHARACTER_DATA.frisk.description,baseHp:10,
     stateDefaults:Object.freeze({friskSavePhase:0,friskSaveHold:false,friskSaveHoldT:0,friskSaveSnapshot:null,fightConfirmT:0,fightConfirmP:0,fightDir:1,notebookStep:0,notebookMask:0,notebookP:null,balletStep:0,balletMask:0,balletP:null,panStep:0,panMask:0,panP:null,gunStep:0,gunMask:0,gunP:null,fightMashT:0,fightMashHits:0,fightMashLanded:0,fightMashDamage:0,fightMashZone:'',fightMashTargetId:'',inventoryOpen:false,itemUsedMask:0,heartLocketSlot:-1,realKnifeUnlocked:false,rngItemIndex:-1,legHeroT:0,lastDreamSpeedT:0,buttPieT:0,buttPieHealAcc:0,rockCandyT:0,ghostFruitArmed:false,lastDreamExpBoost:false,stoicOnionArmed:false,notebookArmed:false,notebookStoredIframes:0,notebookInvulnT:0,exp:0,loveLevel:1,selectedWeaponId:'stick',weaponInventory:null}),
     supportedControls:Object.freeze(['primary','special1','special2','chant','spell','weaponSelect']),
     holdState:Object.freeze({special2:({state})=>!!state.s2Hold,chant:({state})=>!!mpCharacterAbilityState(state,'frisk')?.friskSaveHold}),
@@ -10270,11 +10209,11 @@ const MP_CHARACTERS=Object.freeze({
       customUI:mpUiFriskCustom
     }),
     initial:Object.freeze({domain:0,sansDodges:0}),
-    selection:Object.freeze({icon:'♥',soloLabel:'FRISK',soloDescription:'FIGHT • ITEM • LOVE • Solo Preview',multiplayerLabel:'FRISK'}),
+    selection:FIDGET_CHARACTER_DATA.frisk.selection,
     development:Object.freeze({modelOnly:true,strictRegistry:true}) // Solo remains preview-only; multiplayer behavior is registry-owned and strict-audited.
   }),
   greenlantern:Object.freeze({
-    id:'greenlantern',framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:'Green Lantern',description:'Construct • Parry • Ring Recharge',baseHp:10,
+    id:FIDGET_CHARACTER_DATA.greenlantern.id,framework:MP_CHARACTER_FRAMEWORK_ID,playerModel:'p1p2',displayName:FIDGET_CHARACTER_DATA.greenlantern.displayName,description:FIDGET_CHARACTER_DATA.greenlantern.description,baseHp:10,
     stateDefaults:Object.freeze({ring:100,recharging:false,rechargeT:0,constructUltFired:false}),
     supportedControls:Object.freeze(['primary','special1','special2']),
     holdState:Object.freeze({
@@ -10310,7 +10249,7 @@ const MP_CHARACTERS=Object.freeze({
       customUI:mpUiStandardCustom
     }),
     initial:Object.freeze({domain:0,sansDodges:0}),
-    selection:Object.freeze({icon:'💚',soloLabel:'GREEN LANTERN',soloDescription:'Construct • Parry • Ring Recharge',multiplayerLabel:'LANTERN'})
+    selection:FIDGET_CHARACTER_DATA.greenlantern.selection
   })
 });
 const MP_CHARACTER_IDS=Object.freeze(Object.keys(MP_CHARACTERS));
@@ -10770,10 +10709,6 @@ function mpRouteCombatCast(role,action,data={}){
 // v41.29c — existing fighter selection is matchMode-aware. PvP retains the protected v41.29 selector/ready/start path; Co-op reuses the same per-player selector and ownership sync, labels both players as allies, and hard-stops before combat with CO-OP MATCH NOT IMPLEMENTED. Protocol 79 unchanged.
 // v41.29b — synchronized multiplayer matchMode ('pvp'|'coop') added to the generic lobby. Host alone may change mode; reliable authoritative state updates Guest immediately and welcome snapshots restore mode after reconnect. Co-op may enter fighter selection but cannot start combat. Protocol 79 unchanged.
 // v41.29a — generic multiplayer lobby inserted between connection and fighter selection. Fresh Host/Guest sessions enter lobby; Host alone advances to characterSelect. PvP combat, fighter selection behavior and protocol 79 remain unchanged.
-// v41.29 — protected stable checkpoint. Consolidates v41.28a–k: stronger Frisk LV19 aura, multiplayer SFX parity work, Toy Knife 1.00x + confirm fade/no-glow, and Guest Zoltraak VFX/cooldown-prediction fixes. Protocol 79 unchanged.
-// v41.28k — Toy Knife confirmed timing bar keeps a flat white appearance with no glow, then fades after the existing short hold.
-// v41.28j — Toy Knife confirm bar now lingers briefly before fading; gameplay unchanged.
-// v41.28i — Frisk Toy Knife: confirmed single FIGHT timing bar now fades out. Gameplay timing/damage unchanged.
 // v41.28h — Frieren Guest: local Zoltraak charge-circle prediction is suppressed while synchronized primary cooldown is active. Host authority/gameplay unchanged.
 // v41.28g — Frieren: suppress Zoltraak cast-circle/beam animation on Guest client only. SFX, damage, cooldowns and Host presentation unchanged.
 // v41.28f — Frisk balance: Toy Knife FIGHT multiplier raised from 0.80x to 1.00x. No other gameplay or presentation changes.
@@ -11865,13 +11800,12 @@ const MP_MATCH_PRESENTATION_TIME=6.60,
       MP_MATCH_CUE_1_END=.60;
 /* v41.45c — Sans/Frisk special matchup intro. The authoritative countdown is extended,
    while presentation time is remapped so the normal intro freezes at Sans' completed walk-in. */
-const MP_SANS_FRISK_INTRO_LINES=Object.freeze([
-  "It's a beautiful day outside",
-  'Birds are singing, flowers are blooming',
-  'On days like this, kids like you',
-  'Should be burning in hell'
-]);
-const MP_SANS_FRISK_REPLY="I didn't what I got into",
+const FIDGET_MATCHUP_DIALOGUE=window.FidgetData?.dialogue?.matchups;
+if(!FIDGET_MATCHUP_DIALOGUE?.gojoSukuna||!FIDGET_MATCHUP_DIALOGUE?.sansFrisk)throw new Error('Missing canonical special-matchup dialogue');
+const MP_GOJO_SUKUNA_DIALOGUE=FIDGET_MATCHUP_DIALOGUE.gojoSukuna,
+      MP_SANS_FRISK_DIALOGUE=FIDGET_MATCHUP_DIALOGUE.sansFrisk,
+      MP_SANS_FRISK_INTRO_LINES=MP_SANS_FRISK_DIALOGUE.sans;
+const MP_SANS_FRISK_REPLY=MP_SANS_FRISK_DIALOGUE.frisk,
       MP_SANS_FRISK_LINE_T=1.35,
       MP_SANS_FRISK_SANS_T=MP_SANS_FRISK_LINE_T*MP_SANS_FRISK_INTRO_LINES.length,
       MP_SANS_FRISK_FRISK_T=1.60,
@@ -12296,7 +12230,7 @@ function mpRenderMatchPresentation(){
     let rivalCue='',rivalChar='',rivalSpeaker='',rivalLine='',speakerSlot='';
     if(countdown&&!coop&&sansFriskRivalry&&sansFriskIntro.active&&!paused){
       rivalChar=sansFriskIntro.speaker;
-      rivalSpeaker=rivalChar==='sans'?'SANS':'FRISK';
+      rivalSpeaker=mpCharacterName(rivalChar,rivalChar).toUpperCase();
       rivalLine=sansFriskIntro.line;
       speakerSlot=hostChar===rivalChar?'host':'guest';
       rivalCue='sans-frisk-'+sansFriskIntro.cue
@@ -12306,13 +12240,13 @@ function mpRenderMatchPresentation(){
         speakerSlot='host';
         rivalChar=hostChar;
         rivalSpeaker=hostName;
-        rivalLine=hostChar==='gojo'?"SO IT'S YOU. GOOD.":"Let\'s start by peeling off those scales";
+        rivalLine=hostChar==='gojo'?MP_GOJO_SUKUNA_DIALOGUE.gojo.host:MP_GOJO_SUKUNA_DIALOGUE.sukuna;
       }else if(t<=MP_INTRO_GUEST_FOCUS_END&&t>MP_INTRO_GUEST_WALK_END){
         rivalCue='guest';
         speakerSlot='guest';
         rivalChar=guestChar;
         rivalSpeaker=guestName;
-        rivalLine=guestChar==='gojo'?"COME FIND OUT.":"Let\'s start by peeling off those scales";
+        rivalLine=guestChar==='gojo'?MP_GOJO_SUKUNA_DIALOGUE.gojo.guest:MP_GOJO_SUKUNA_DIALOGUE.sukuna;
       }
     }
     const rivalShow=!!rivalCue;
@@ -16439,7 +16373,6 @@ function mpButtonState(btn,cd,max,holding=false){if(!btn)return;const cooling=cd
 // v41.32c — Stage-3 SHELLSHOCKED reverses vertical movement controls for 1.5s after its concussion stun ends. Protocol unchanged.
 // v41.32b — SHELLSHOCKED presentation tune: concussive ring lingers longer and reaction text removed; mechanics unchanged. Protocol unchanged.
 // v41.32a — SHELLSHOCKED: EXPLOSIVE striking CRY I/II or completed CRY III consumes the chill/freeze and resolves into stage-scaled blast damage + concussion stun with ice-fragment VFX. Protocol unchanged.
-// v41.33 — PROTECTED STABLE CHECKPOINT: consolidates v41.32a–ae, including SHELLSHOCKED/LAND MINE/NUCLEAR FISSION and the complete X-SHOT foundation through the 6s aim buildup, HEAD/TORSO lock, 8s first-person torso branch, 3 DMG + BLEED payoff, spy ambience, and immediate magnum report. Removes obsolete X-SHOT placeholder/no-lock residue and duplicate HEAD bang. Preserves protocol 86 and MP_PLAYER_IDS exactly ['p1','p2'].
 // v41.39l — GLACIER + EXP → RUPTURE: consumes a normal Glacier, keeps the EXP core blast, and throws damaging physical ice shards into a wider field.
 // v41.39k — GLACIER + INC → 50% PRESSURISED / 50% ICEBERG. Both preserve the Glacier's remaining lifespan; PRESSURISED retains wall behavior and adds trapped-heat/steam presentation.
 // v41.39i — SHK + SHK → EMOTIONALLY-CHARGED: standalone SHK primes for 4s; the next eligible SHK deals 1.5 total damage, 0.85s shock/stun and 3s JITTERS with a cracked-heart electric burst.
@@ -16448,17 +16381,12 @@ function mpButtonState(btn,cd,max,holding=false){if(!btn)return;const cooling=cd
 // v41.39e — MOLTEN BUBBLE BURST: preserve v41.39d hazard mechanics; bubbles now visibly inflate, pop and scatter hot flecks.
 // v41.39c — MOLTEN: SHK + TEMPERED consumes the heated wire into a fresh 8.5s molten-metal pool with melt + bubbling SFX.
 // v41.39a — TEMPERED: INC + BARBED WIRE keeps the wire's BLEED behavior and arms one 1.5× incoming-damage instance on crossing.
-// v41.32 — PROTECTED STABLE CHECKPOINT: consolidates Tripwire as Gunslinger's sixth specialty round with FROSTLINE, FIREWALL, LIVE WIRE + JITTERS, BOOBY TRAP/Bear Trap visual variant, and BARBED WIRE + BLEED slow/offense debuff. Preserves OVERCONDUCTED, OVERLOADED, KEEP 0.85s, chamber neutral-slide behavior, protocol 86, and MP_PLAYER_IDS exactly ['p1','p2'].
 // v41.31ak — BARBED WIRE now slows movement by 25% during BLEED instead of applying the normal Tripwire stun. Protocol unchanged.
 // v41.31aj — BARBED WIRE BLEED: crossing applies a 4s non-DoT offensive debuff (-20% outgoing damage); immediate hit reduced to 1.1. Protocol unchanged.
 // v41.31ai — BARBED WIRE: AP fired into an active Tripwire converts it; crossing deals an immediate physical hit with no DoT. Protocol unchanged.
 // v41.31z — TRIPWIRE added as sixth Gunslinger specialty type: zero-damage planted lane control that snaps on crossing for a brief stun. Protocol unchanged.
 // v41.31y — OVERLOADED gains small persistent bolt accents and PRIMARY backfire chance increases from 1/5 to 1/3. Protocol unchanged.
 // v41.31x — OVERLOADED VFX removes the persistent halo and uses stronger yellow/gold electrical accents. Protocol unchanged.
-// v41.31v — inspect chamber popup moved another 25px lower from v41.31u; scale and chamber interaction semantics unchanged. Protocol unchanged.
-// v41.31u — inspect chamber popup moved 25px lower from v41.31t; scale and chamber interaction semantics unchanged. Protocol unchanged.
-// v41.31t — inspect chamber popup scaled down slightly (1.49×) and lowered 20px from v41.31s; slide-out neutral cancel and gameplay semantics unchanged. Protocol unchanged.
-// v41.31s — inspect chamber visual anchor raised 90px; selection/KEEP/reload semantics unchanged. Protocol unchanged.
 const MP_GUN_PRIMARY_CD=.80,MP_GUN_RELOAD_T=.95,MP_GUN_BULLET_SPEED=1.32,MP_GUN_EXPLOSIVE_TOL=.26,MP_GUN_AP_DAMAGE=2,MP_GUN_KEEP_HOLD_MS=850;
 // v41.30m — BACKDRAFT: a landed Gunslinger Explosive round consumes only Gunslinger Incendiary's remaining burn ticks and resolves that remaining DoT instantly with the explosion.
 // v41.31k — SUPERCONDUCT stage 2: SHOCK gains a larger hit window only against active CRY-2 targets, plus inward suction VFX. Protocol unchanged.
@@ -16470,7 +16398,6 @@ const MP_GUN_PRIMARY_CD=.80,MP_GUN_RELOAD_T=.95,MP_GUN_BULLET_SPEED=1.32,MP_GUN_
 // v41.31d — SUPERCONDUCT: Shock into active CRY stage 1–2 consumes the chill buildup and extends Shock/Stun from 0.60s to 1.25s. Protocol unchanged.
 // v41.31c — when KEEP is the only reserved round left (0/6 chambered + 1 KEEP), auto-reload begins immediately without requiring another SHOOT press. Protocol unchanged.
 // v41.31b — KEEP hold requires 1.00s; when the extracted KEEP hole lies between live chambers, the cylinder physically skips it with a two-click 120° advance. Protocol unchanged.
-// v41.31 — protected stable checkpoint promoted from v41.30p after KEEP presentation cleanup; gameplay/protocol unchanged.
 // v41.30p — holding the empty chamber left by KEEP for 1.00s returns the reserved round to that slot and clears KEEP.
 // v41.30o — KEEP presentation now physically extracts the reserved specialty from the six-shot cylinder into an external reserve cartridge; commitment hold increased to 1.00s. Authority/ammo semantics remain v41.30n.
 // v41.30n — Gunslinger KEEP: hold a specialty round in the chamber selector to reserve one round across reloads. KEEP is authoritative/synchronized, so protocol 85 prevents mixed clients.
@@ -24538,8 +24465,8 @@ renderEnemy();renderAmmo();pos(true);requestAnimationFrame(loop);
 (()=>{
 'use strict';
 const FIDGET_UPDATE=Object.freeze({
-  build:'41.46',
-  release:'41.46',
+  build:'41.47',
+  release:'41.47',
   protocol:86,
   manifestUrl:'https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/version.json',
   checkDelayMs:1400,
@@ -24565,5 +24492,6 @@ window.FidgetUpdater=Object.freeze({check:()=>fetchManifest({manual:true}),confi
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(fetchManifest,FIDGET_UPDATE.checkDelayMs),{once:true});else setTimeout(fetchManifest,FIDGET_UPDATE.checkDelayMs);
 })();
 </script>
+
 </body>
 </html>

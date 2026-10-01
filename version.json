@@ -1,13 +1,13 @@
 {
-  "version": "41.46",
+  "version": "41.47",
   "protocol": 86,
   "required": false,
-  "summary": "Stable release with Sukuna/Gojo rivalry dialogue, Sans/Frisk intro, and Sukuna Black Flash landscape presentation.",
+  "summary": "Stable source-organization release with standalone packaging; gameplay and multiplayer behavior are unchanged.",
   "notes": [
-    "Adds Sukuna Black Flash lane-return presentation in landscape",
-    "Adds the synchronized Sans/Frisk special matchup intro",
-    "Updates Sukuna's special Gojo matchup dialogue",
-    "Keeps multiplayer protocol 86 unchanged"
+    "Extracts canonical special-matchup dialogue without changing intro timing, camera timing, audio, or multiplayer behavior",
+    "Extracts harmless character presentation metadata and documents the inert future-character template",
+    "Moves approved historical development ledger comments out of the runtime source",
+    "Keeps the protected download self-contained and multiplayer protocol 86 unchanged"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
