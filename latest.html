@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
-<title>Fidget Shooter v41.47</title>
+<title>Fidget Shooter v41.48</title>
 <style>
 :root{--card:#202d43;--border:#526987;--text:#f4f7fb;--muted:#9fb2cc;--gun:#ffd86b;--sans:#39a0ff;--suk:#e15a73;--gojo:#4d8dff;--fri:#63a9ff;--lan:#42db6c;--lan2:#c9ffd8}
 *{box-sizing:border-box}html{overscroll-behavior:none;background:#0b1220}body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;justify-content:center;padding:12px;min-height:100dvh;overscroll-behavior:none}button{font:inherit;color:inherit;touch-action:manipulation;user-select:none}.hide{display:none!important}#game{width:min(100%,640px);overscroll-behavior:none}
@@ -8293,6 +8293,7 @@
 <!-- v41.43o — DOMAIN COMMIT + RED CHARGE AUDIO + HUD STACK: moves the landscape HOST AUTHORITATIVE mode badge into the lower-middle HUD stack, hardens the full-Domain cinematic-to-authority handoff, and adds synchronized held-Red charge SFX. Protocol/gameplay values unchanged. -->
 <!-- v41.43m — LANDSCAPE HUD REPOSITION: lowers the Domain Clash timer and places the live cast/status bar at lower-center just above the PING/NET diagnostics in landscape. Portrait/gameplay/networking/protocol unchanged. -->
 <!-- v41.43l — LANDSCAPE ARC ALIGNMENT: pulls DOMAIN / Special 4 back into line with the surrounding MOBA arc and shifts the whole right-side combat cluster slightly diagonally up-right. Presentation only; portrait/gameplay/networking/protocol unchanged. -->
+<!-- v41.48 — PROTECTED STABLE: promotes the audited v41.47 presentation-refactor line, including canonical intro/camera/HUD helpers, desktop control labels and fixed ability labels for all seven characters. Self-contained HTML; gameplay, balance, timing, audio and multiplayer authority/serialization unchanged. NET_PROTOCOL=86; MP_PLAYER_IDS=['p1','p2']. -->
 <!-- v41.47 — PROTECTED STABLE: promotes the audited v41.46 source-organization/documentation line. Extracts canonical special-matchup dialogue and harmless character presentation metadata, moves the inert character template and approved historical/version ledger comments out of the runtime source, and repackages the protected artifact as one self-contained HTML file. Gameplay balance, cooldowns, damage, hitboxes, ability timing, camera timing, audio, network serialization and Host authority remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. -->
 <!-- v41.46 — PROTECTED STABLE: promotes the tested v41.45a–v41.45e development line. Consolidates Sukuna Black Flash landscape lane-return presentation, the synchronized Sans/Frisk special matchup intro and typo fix, and Sukuna's updated Gojo rivalry dialogue. Development patch-layer infrastructure remains a dev-branch workflow only; this protected build is self-contained. Gameplay authority and wire schema remain unchanged. Preserve NET_PROTOCOL=86 and MP_PLAYER_IDS exactly ['p1','p2']. Future patches branch from v41.46 as v41.46a, v41.46b, etc. -->
 <!-- v41.45 — PROTECTED STABLE: promotes the tested v41.44b updater + Hollow Nuke landscape-centering line. Adds the downloaded-build update framework backed by the public fidget-shooter-releases channel, while preserving v41.44 gameplay/network behavior and NET_PROTOCOL=86. -->
@@ -8351,7 +8352,7 @@
 .fidgetUpdateTop{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.fidgetUpdateTitle{font-size:14px;letter-spacing:.07em}.fidgetUpdateVersion{color:#a8c8ff;font-size:12px;white-space:nowrap}.fidgetUpdateText{margin-top:5px;color:#c6d2e4;font-weight:600}.fidgetUpdateNotes{margin:7px 0 0;padding-left:18px;color:#aebed4;font-weight:600;font-size:12px;max-height:82px;overflow:auto}.fidgetUpdateActions{display:flex;gap:8px;margin-top:10px;justify-content:flex-end}.fidgetUpdateBtn{appearance:none;border:1px solid rgba(180,207,255,.35);border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.07);color:#f4f7fb;font:800 11px/1 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.06em}.fidgetUpdateBtn.primary{background:linear-gradient(135deg,#4d8dff,#755cff);border-color:rgba(255,255,255,.42);box-shadow:0 0 18px rgba(77,141,255,.25)}.fidgetUpdateBtn:disabled{opacity:.52}.fidgetUpdateToast{position:fixed;z-index:2147481999;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translate(-50%,10px);padding:8px 12px;border-radius:999px;background:rgba(8,15,28,.94);border:1px solid rgba(179,207,255,.3);color:#dbe8fb;font:700 11px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;opacity:0;pointer-events:none;transition:.18s}.fidgetUpdateToast.show{opacity:1;transform:translate(-50%,0)}
 @media (orientation:landscape) and (pointer:coarse){.fidgetUpdateBanner{top:max(5px,env(safe-area-inset-top));width:min(70vw,620px);padding:9px 11px}.fidgetUpdateNotes{max-height:48px}.fidgetUpdateActions{margin-top:7px}.fidgetUpdateBtn{padding:7px 12px}}
 </style>
-<!-- v41.47 PROTECTED RELEASE PACKAGING: canonical low-risk data is inlined from src/data/characters.js and src/data/dialogue.js so the protected HTML remains self-contained. -->
+<!-- v41.48 PROTECTED RELEASE PACKAGING: canonical low-risk data/presentation modules are inlined from src/data/characters.js, src/data/dialogue.js, src/presentation/intros.js, src/presentation/camera.js, src/presentation/hud.js and src/presentation/control-labels.js so the protected HTML remains self-contained. -->
 <script>
 /* A Fidget Game — canonical low-risk character presentation metadata.
  * Data only. Gameplay stats, controls, networking, and ability behavior remain in index.html.
@@ -8405,11 +8406,299 @@
 })();
 
 </script>
+<script>
+/* A Fidget Game — canonical multiplayer intro presentation configuration and pure helpers.
+ * Presentation only. Gameplay, camera rendering, audio, networking, and Host authority remain in index.html.
+ */
+(() => {
+  'use strict';
+
+  const root = window.FidgetPresentation || (window.FidgetPresentation = {});
+
+  const timing = Object.freeze({
+    matchPresentationTime: 6.60,
+    coopCountdownTime: 3.00,
+    fullRevealEnd: 6.10,
+    hostFocusEnd: 5.65,
+    hostWalkEnd: 4.70,
+    guestFocusEnd: 4.20,
+    guestWalkEnd: 3.25,
+    matchRevealEnd: 3.00,
+    cue3End: 2.20,
+    cue2End: 1.40,
+    cue1End: .60
+  });
+
+  const sansFrisk = Object.freeze({
+    lineT: 1.35,
+    friskT: 1.60
+  });
+
+  function isSansFriskMatchup(hostChar, guestChar){
+    return (hostChar==='sans'&&guestChar==='frisk')||(hostChar==='frisk'&&guestChar==='sans')
+  }
+
+  function sansFriskTimeline(rawT,hostChar,guestChar,introLines,reply,lineT,sansT,friskT,introExtra,hostWalkEnd,guestWalkEnd,isMatchup,clampFn){
+    rawT=Math.max(0,Number(rawT)||0);
+    if(!isMatchup(hostChar,guestChar))return{t:rawT,active:false,speaker:'',line:'',cue:''};
+    const sansHost=hostChar==='sans',holds=sansHost
+      ?[{threshold:hostWalkEnd,duration:sansT,kind:'sans'},{threshold:guestWalkEnd,duration:friskT,kind:'frisk'}]
+      :[{threshold:guestWalkEnd,duration:introExtra,kind:'both'}];
+    let remaining=holds.reduce((sum,h)=>sum+h.duration,0);
+    for(const hold of holds){
+      const start=hold.threshold+remaining,end=start-hold.duration;
+      if(rawT>start)return{t:rawT-remaining,active:false,speaker:'',line:'',cue:''};
+      if(rawT>=end){
+        const elapsed=clampFn(start-rawT,0,Math.max(0,hold.duration-.001));
+        const sansTurn=hold.kind==='sans'||(hold.kind==='both'&&elapsed<sansT);
+        if(sansTurn){
+          const idx=Math.min(introLines.length-1,Math.floor(elapsed/lineT));
+          return{t:hold.threshold+.001,active:true,speaker:'sans',line:introLines[idx],cue:'sans-'+idx}
+        }
+        return{t:hold.threshold+.001,active:true,speaker:'frisk',line:reply,cue:'frisk-reply'}
+      }
+      remaining-=hold.duration
+    }
+    return{t:rawT,active:false,speaker:'',line:'',cue:''}
+  }
+
+  root.intros = Object.freeze({
+    timing,
+    sansFrisk,
+    isSansFriskMatchup,
+    sansFriskTimeline
+  });
+})();
+
+</script>
+<script>
+/* A Fidget Game — canonical multiplayer camera presentation configuration and pure helpers.
+ * Presentation only. DOM writes, camera application, audio, networking, gameplay, and Host authority remain in index.html.
+ */
+(() => {
+  'use strict';
+
+  const root = window.FidgetPresentation || (window.FidgetPresentation = {});
+
+  const intro = Object.freeze({
+    baseScale: 1,
+    focusScale: 1.48,
+    focusScaleDelta: .48,
+    focusPan: 37,
+    focusPanSpan: 74,
+    introTravelMinPx: 120,
+    introTravelArenaFraction: .30,
+    walkingCutoff: .98,
+    backgroundShiftFactor: .30
+  });
+
+  function smoothstep01(v, clampFn){
+    v=clampFn(v,0,1);
+    return v*v*(3-2*v)
+  }
+
+  function introTravelPx(arenaWidth){
+    return Math.max(intro.introTravelMinPx,(arenaWidth||0)*intro.introTravelArenaFraction)
+  }
+
+  function backgroundShift(camX){
+    return -camX*intro.backgroundShiftFactor
+  }
+
+  function cameraTransform(camX,camScale){
+    return 'translate3d('+camX.toFixed(2)+'%,0,0) scale('+camScale.toFixed(4)+')'
+  }
+
+  function backgroundTransform(bgShift){
+    return 'translate3d('+bgShift.toFixed(2)+'%,0,0)'
+  }
+
+  root.camera = Object.freeze({
+    intro,
+    smoothstep01,
+    introTravelPx,
+    backgroundShift,
+    cameraTransform,
+    backgroundTransform
+  });
+})();
+
+</script>
+<script>
+/* A Fidget Game — canonical multiplayer HUD presentation pure helpers.
+ * Presentation only. DOM writes, animation retriggers, audio, networking, gameplay, and Host authority remain in index.html.
+ */
+(() => {
+  'use strict';
+
+  const root = window.FidgetPresentation || (window.FidgetPresentation = {});
+
+  function phaseCue(countdown,paused,t,matchRevealEnd,cue3End,cue2End,cue1End){
+    let cue='';
+    if(countdown){
+      if(paused)cue='PAUSED';
+      else if(t>matchRevealEnd)cue='';
+      else if(t>cue3End)cue='3';
+      else if(t>cue2End)cue='2';
+      else if(t>cue1End)cue='1';
+      else cue='FIGHT!'
+    }
+    return cue
+  }
+
+  function rivalryCard({countdown,coop,sansFriskRivalry,sansFriskIntro,paused,gojoSukunaRivalry,t,hostChar,guestChar,hostName,guestName,mpCharacterName,MP_GOJO_SUKUNA_DIALOGUE,MP_INTRO_HOST_FOCUS_END,MP_INTRO_HOST_WALK_END,MP_INTRO_GUEST_FOCUS_END,MP_INTRO_GUEST_WALK_END}){
+    let rivalCue='',rivalChar='',rivalSpeaker='',rivalLine='',speakerSlot='';
+    if(countdown&&!coop&&sansFriskRivalry&&sansFriskIntro.active&&!paused){
+      rivalChar=sansFriskIntro.speaker;
+      rivalSpeaker=mpCharacterName(rivalChar,rivalChar).toUpperCase();
+      rivalLine=sansFriskIntro.line;
+      speakerSlot=hostChar===rivalChar?'host':'guest';
+      rivalCue='sans-frisk-'+sansFriskIntro.cue
+    }else if(countdown&&!coop&&gojoSukunaRivalry&&!paused){
+      if(t<=MP_INTRO_HOST_FOCUS_END&&t>MP_INTRO_HOST_WALK_END){
+        rivalCue='host';
+        speakerSlot='host';
+        rivalChar=hostChar;
+        rivalSpeaker=hostName;
+        rivalLine=hostChar==='gojo'?MP_GOJO_SUKUNA_DIALOGUE.gojo.host:MP_GOJO_SUKUNA_DIALOGUE.sukuna;
+      }else if(t<=MP_INTRO_GUEST_FOCUS_END&&t>MP_INTRO_GUEST_WALK_END){
+        rivalCue='guest';
+        speakerSlot='guest';
+        rivalChar=guestChar;
+        rivalSpeaker=guestName;
+        rivalLine=guestChar==='gojo'?MP_GOJO_SUKUNA_DIALOGUE.gojo.guest:MP_GOJO_SUKUNA_DIALOGUE.sukuna;
+      }
+    }
+    const rivalShow=!!rivalCue;
+    return {rivalCue,rivalChar,rivalSpeaker,rivalLine,speakerSlot,rivalShow}
+  }
+
+  root.hud = Object.freeze({
+    phaseCue,
+    rivalryCard
+  });
+})();
+
+</script>
+<script>
+/* A Fidget Game — canonical desktop control presentation labels.
+ * Labels only. Key bindings, persistence, input routing, and DOM operations remain in index.html.
+ */
+(() => {
+  'use strict';
+
+  const root = window.FidgetPresentation || (window.FidgetPresentation = {});
+  const desktopBindLabels={moveUp:'Move Up',moveDown:'Move Down',primary:'Primary',special1:'Special 1',special2:'Special 2',domain:'Domain',chant:'Chant',gunslingerRoll:'Gunslinger Roll',reload:'Gunslinger Reload',chamber:'Gunslinger Chamber',gunXShotLoad:'Gunslinger Load X-SHOT',gunReturnKeep:'Gunslinger Return KEEP',gunSlot1:"Chamber 12 o'clock",gunSlot2:"Chamber 2 o'clock",gunSlot3:"Chamber 4 o'clock",gunSlot4:"Chamber 6 o'clock",gunSlot5:"Chamber 8 o'clock",gunSlot6:"Chamber 10 o'clock",frieren1:'Frieren Spell 1',frieren2:'Frieren Spell 2',frieren3:'Frieren Spell 3',frieren4:'Frieren Spell 4',frieren5:'Frieren Spell 5'};
+
+  const friskAbilityLabels=Object.freeze({
+    fight:'FIGHT',
+    item:'ITEM',
+    love:'LOVE',
+    save:'SAVE',
+    load:'LOAD',
+    saveUsed:'SAVE / LOAD · USED',
+    saveLocked:'SAVE / LOAD · LOCKED'
+  });
+
+  const sansAbilityLabels=Object.freeze({
+    boneStackReady:'BONE STACK READY',
+    boneHoldPrefix:'BONE · HOLD ',
+    boneTapHold:'TAP / HOLD BONE',
+    gasterHoldPrefix:'GASTER ',
+    gasterTapHold:'TAP / HOLD GASTER',
+    telekinesis:'TELEKINESIS'
+  });
+
+  const sukunaAbilityLabels=Object.freeze({
+    blackFlash:'BLACK FLASH',
+    worldCuttingWindup:'WORLD-CUTTING…',
+    worldCuttingSlash:'WORLD-CUTTING SLASH',
+    dismantle:'DISMANTLE',
+    spiderwebReady:'SPIDERWEB READY',
+    cleaveWebPrefix:'CLEAVE WEB ',
+    cleaveTapHold:'TAP CLEAVE / HOLD WEB',
+    sightReady:'SIGHT READY',
+    drawDomainPrefix:'DRAW DOMAIN ',
+    drawPrefix:'DRAW ',
+    fugaPrefix:'FUGA ',
+    fuga:'FUGA',
+    holdFireArrow:'HOLD FIRE ARROW',
+    chantComplete:'CHANT COMPLETE',
+    holdChant:'HOLD CHANT',
+    domainHoldPrefix:'DOMAIN ',
+    holdDomain:'HOLD DOMAIN'
+  });
+
+  const gojoAbilityLabels=Object.freeze({
+    chantedRed:'CHANTED RED',
+    redCommitted:'RED COMMITTED',
+    redOrbiting:'RED ORBITING',
+    redReady:'RED READY',
+    redPrefix:'RED ',
+    returnRed:'RETURN RED',
+    detonateRed:'DETONATE RED',
+    red:'RED',
+    chantedPrefix:'CHANTED ',
+    maxBluePrefix:'MAX BLUE ',
+    blueAbsorbSuffix:' / 3.0 · ABS ',
+    chantedMaxBlue:'CHANTED MAX BLUE',
+    blueTapHold:'BLUE / MAX BLUE',
+    purpleReady:'PURPLE READY',
+    purplePrefix:'PURPLE ',
+    purple:'PURPLE',
+    strike:'STRIKE',
+    reinforceBluePrefix:'REINFORCE BLUE ',
+    chantRedPrefix:'CHANT RED ',
+    amplifyBluePrefix:'AMPLIFY BLUE ',
+    chantBluePrefix:'CHANT BLUE ',
+    chantedBlueReady:'CHANTED BLUE READY',
+    reinforceBlue:'REINFORCE BLUE',
+    chantRed:'CHANT RED',
+    chantedRedReady:'CHANTED RED READY',
+    amplifyBlue:'AMPLIFY BLUE',
+    redInFlight:'RED IN FLIGHT',
+    blueAmplifiedTimed:'BLUE AMPLIFIED · TIMED',
+    amplificationClosed:'AMPLIFICATION CLOSED',
+    chantBlue:'CHANT BLUE',
+    domainPrefix:'DOMAIN ',
+    followUp:'FOLLOW-UP',
+    voidDomain:'0.2 VOID / DOMAIN'
+  });
+
+  const frierenAbilityLabels=Object.freeze({
+    zoltraakPrefix:'ZOLTRAAK ',
+    zoltraakTapHold:'TAP / HOLD ZOLTRAAK',
+    hexShield:'HEX SHIELD',
+    formingPrefix:'FORMING '
+  });
+
+  const greenLanternAbilityLabels=Object.freeze({
+    constructPrefix:'CONSTRUCT ',
+    constructTapHold:'TAP / HOLD CONSTRUCT',
+    shield:'SHIELD',
+    rechargePrefix:'RECHARGE ',
+    ringRecharge:'RING RECHARGE',
+    ultimatePrefix:'ULT ',
+    holdPrefix:'HOLD ',
+    tapHold:'TAP / HOLD',
+    shieldPrefix:'SHIELD '
+  });
+
+  const gunslingerAbilityLabels=Object.freeze({
+    shoot:'SHOOT',
+    confirm:'CONFIRM',
+    roll:'ROLL'
+  });
+
+  root.controlLabels = {desktopBindLabels,friskAbilityLabels,sansAbilityLabels,sukunaAbilityLabels,gojoAbilityLabels,frierenAbilityLabels,greenLanternAbilityLabels,gunslingerAbilityLabels};
+})();
+
+</script>
 </head>
 <body>
 <div id="game">
 <section class="modeGate">
-  <div class="versionTag">v41.47 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.48 · PROTECTED STABLE</div>
   <div class="title">CHOOSE GAME MODE</div>
   <div class="modeSub">Single Player is preserved exactly. Multiplayer begins as a separate, isolated prototype.</div>
   <div class="modeChoices">
@@ -8428,7 +8717,7 @@
   </div>
 </section>
 <section class="multiPrototype hide">
-  <div class="versionTag">v41.47 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.48 · PROTECTED STABLE</div>
   <div class="title">MULTIPLAYER PROTOTYPE</div>
   <div class="modeSub">Create a room as Host, connect as Guest, or train locally against Outlaw, Sukuna Boss, or the passive dummy.</div>
   <div class="protoCard"><b>HOST-AUTHORITATIVE FOUNDATION</b><p>The Host owns movement, HP, damage, collisions, status effects, cooldown validation, projectile outcomes and round results. Guest controls remain inputs only. No enemy AI or boss progression runs in PvP. <b>Hitbox Sync:</b> cast lanes and hurtboxes stay locked to authoritative positions while characters move and animate.</p></div>
@@ -9829,16 +10118,23 @@ function mpFriskCombatGloveMash({playerId,targetId,data}){
   if(!mpFriskGloveAimHit(playerId,target,castY))return false;
   return pvpApplyDamage(playerId,target,damage,{heavy:false,knock:.015,nonProjectile:true,sourceKind:'friskGloveMash'})
 }
+const FIDGET_GUNSLINGER_ABILITY_LABELS=window.FidgetPresentation.controlLabels.gunslingerAbilityLabels;
+const FIDGET_GREEN_LANTERN_ABILITY_LABELS=window.FidgetPresentation.controlLabels.greenLanternAbilityLabels;
+const FIDGET_FRIEREN_ABILITY_LABELS=window.FidgetPresentation.controlLabels.frierenAbilityLabels;
+const FIDGET_GOJO_ABILITY_LABELS=window.FidgetPresentation.controlLabels.gojoAbilityLabels;
+const FIDGET_SUKUNA_ABILITY_LABELS=window.FidgetPresentation.controlLabels.sukunaAbilityLabels;
+const FIDGET_SANS_ABILITY_LABELS=window.FidgetPresentation.controlLabels.sansAbilityLabels;
+const FIDGET_FRISK_ABILITY_LABELS=window.FidgetPresentation.controlLabels.friskAbilityLabels;
 function mpUiFriskFightLabel(){
-  return 'FIGHT'
+  return FIDGET_FRISK_ABILITY_LABELS.fight
 }
 function mpUiFriskLoveLabel(){
-  return 'LOVE'
+  return FIDGET_FRISK_ABILITY_LABELS.love
 }
 function mpUiFriskSaveLabel(ctx){
-  const phase=mpFriskPresentedSavePhase(ctx.playerId,ctx.bucket);if(phase>=2)return 'SAVE / LOAD · USED';
-  if(mpFriskSaveLoadLockedByRealKnife(ctx.playerId,ctx.bucket))return 'SAVE / LOAD · LOCKED';
-  return phase===0?'SAVE':'LOAD'
+  const phase=mpFriskPresentedSavePhase(ctx.playerId,ctx.bucket);if(phase>=2)return FIDGET_FRISK_ABILITY_LABELS.saveUsed;
+  if(mpFriskSaveLoadLockedByRealKnife(ctx.playerId,ctx.bucket))return FIDGET_FRISK_ABILITY_LABELS.saveLocked;
+  return phase===0?FIDGET_FRISK_ABILITY_LABELS.save:FIDGET_FRISK_ABILITY_LABELS.load
 }
 function mpUiFriskSaveHolding(ctx){return !!ctx.bucket?.friskSaveHold||(getPlayerId(ctx.playerId)===getLocalPlayerId()&&!!multiplayerPrototype.localHoldUI?.chant)}
 function mpUiFriskStatus(ctx){
@@ -9921,8 +10217,8 @@ const MP_CHARACTERS=Object.freeze({
     ui:Object.freeze({
       theme:'gunslinger',
       controls:Object.freeze({
-        primary:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:({state})=>state.xShotAimActive?'CONFIRM':'SHOOT',cooldown:({state})=>state.p,cooldownMax:()=>MP_GUN_PRIMARY_CD,holding:({state})=>state.primaryHold}),
-        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'ROLL',cooldown:({state})=>state.s1,cooldownMax:()=>2.8,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
+        primary:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:({state})=>state.xShotAimActive? FIDGET_GUNSLINGER_ABILITY_LABELS.confirm: FIDGET_GUNSLINGER_ABILITY_LABELS.shoot,cooldown:({state})=>state.p,cooldownMax:()=>MP_GUN_PRIMARY_CD,holding:({state})=>state.primaryHold}),
+        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> FIDGET_GUNSLINGER_ABILITY_LABELS.roll,cooldown:({state})=>state.s1,cooldownMax:()=>2.8,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
         special2:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=>'',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false,showCooldown:()=>false}),
         chant:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> 'CHANT',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
         domain:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> '',cooldown:()=>0,cooldownMax:()=>16,holding:()=>false})
@@ -9968,7 +10264,7 @@ const MP_CHARACTERS=Object.freeze({
       controls:Object.freeze({
         primary:Object.freeze({inputType:'tapHold',holdBehavior:'release',visible:true,label:mpUiSansPrimaryLabel,cooldown:({state})=>state.p,cooldownMax:({state})=>state.boneCdMax||.50,holding:({state})=>state.primaryHold}),
         special1:Object.freeze({inputType:'tapHold',holdBehavior:'release',visible:true,label:mpUiSansGasterLabel,cooldown:({state})=>state.s1,cooldownMax:({state})=>state.gasterCdMax||5.5,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
-        special2:Object.freeze({inputType:'custom',holdBehavior:'teleTarget',visible:true,label:()=> 'TELEKINESIS',cooldown:({state})=>state.s2,cooldownMax:()=>8.5,holding:({state})=>state.s2Hold,showCooldown:({state})=>!state.s2Hold,pointer:Object.freeze({down:mpUiSansTelePointerDown,move:mpUiSansTelePointerMove,end:mpUiSansTelePointerEnd})}),
+        special2:Object.freeze({inputType:'custom',holdBehavior:'teleTarget',visible:true,label:()=> FIDGET_SANS_ABILITY_LABELS.telekinesis,cooldown:({state})=>state.s2,cooldownMax:()=>8.5,holding:({state})=>state.s2Hold,showCooldown:({state})=>!state.s2Hold,pointer:Object.freeze({down:mpUiSansTelePointerDown,move:mpUiSansTelePointerMove,end:mpUiSansTelePointerEnd})}),
         chant:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> 'CHANT',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
         domain:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> '',cooldown:()=>0,cooldownMax:()=>16,holding:()=>false})
       }),
@@ -10127,7 +10423,7 @@ const MP_CHARACTERS=Object.freeze({
       theme:'frieren',
       controls:Object.freeze({
         primary:Object.freeze({inputType:'tapHold',holdBehavior:'release',visible:true,label:mpUiFrierenZolLabel,cooldown:({state})=>state.p,cooldownMax:()=>1.25,holding:({state})=>state.primaryHold}),
-        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'HEX SHIELD',cooldown:({state})=>state.s1,cooldownMax:()=>8.2,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
+        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> FIDGET_FRIEREN_ABILITY_LABELS.hexShield,cooldown:({state})=>state.s1,cooldownMax:()=>8.2,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
         special2:Object.freeze({inputType:'custom',holdBehavior:'spellWheel',visible:true,label:mpUiFrierenSpellLabel,cooldown:mpUiFrierenSpellCooldown,cooldownMax:mpUiFrierenSpellCooldownMax,holding:({state})=>state.s2Hold||state.blackHoleCasting,showCooldown:({state})=>!state.s2Hold,pointer:Object.freeze({down:mpUiFrierenSpellPointerDown,move:mpUiFrierenSpellPointerMove,end:mpUiFrierenSpellPointerEnd})}),
         chant:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> 'CHANT',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
         domain:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> '',cooldown:()=>0,cooldownMax:()=>16,holding:()=>false})
@@ -10200,7 +10496,7 @@ const MP_CHARACTERS=Object.freeze({
       theme:'frisk',
       controls:Object.freeze({
         primary:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:mpUiFriskFightLabel,cooldown:({state})=>state.p,cooldownMax:()=>MP_FRISK_FIGHT_COOLDOWN,holding:()=>false,showCooldown:({state})=>!mpFriskFightActive(state)}),
-        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'ITEM',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
+        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> FIDGET_FRISK_ABILITY_LABELS.item,cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
         special2:Object.freeze({inputType:'hold',holdBehavior:'release',visible:true,label:mpUiFriskLoveLabel,cooldown:()=>0,cooldownMax:({playerId,bucket})=>mpFriskPresentedLoveChargeDuration(playerId,bucket),holding:({state})=>state.s2Hold,showCooldown:()=>false}),
         chant:Object.freeze({inputType:'hold',holdBehavior:'release',visible:true,label:mpUiFriskSaveLabel,cooldown:()=>0,cooldownMax:()=>1,holding:mpUiFriskSaveHolding,showCooldown:()=>false}),
         domain:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> '',cooldown:()=>0,cooldownMax:16,holding:()=>false})
@@ -10240,7 +10536,7 @@ const MP_CHARACTERS=Object.freeze({
       theme:'greenlantern',
       controls:Object.freeze({
         primary:Object.freeze({inputType:'tapHold',holdBehavior:'release',visible:true,label:mpUiGreenLanternConstructLabel,cooldown:({state})=>state.p,cooldownMax:()=>1.05,holding:({state})=>state.primaryHold}),
-        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> 'SHIELD',cooldown:({state})=>state.s1,cooldownMax:()=>5.5,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
+        special1:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:()=> FIDGET_GREEN_LANTERN_ABILITY_LABELS.shield,cooldown:({state})=>state.s1,cooldownMax:()=>5.5,holding:({state})=>state.s1Hold,showCooldown:({state})=>!state.s1Hold}),
         special2:Object.freeze({inputType:'tap',holdBehavior:'none',visible:true,label:mpUiGreenLanternRechargeLabel,cooldown:({state})=>state.s2,cooldownMax:()=>2.6,holding:({state})=>state.s2Hold,showCooldown:({state})=>!state.s2Hold}),
         chant:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> 'CHANT',cooldown:()=>0,cooldownMax:()=>1,holding:()=>false}),
         domain:Object.freeze({inputType:'hold',holdBehavior:'release',visible:false,label:()=> '',cooldown:()=>0,cooldownMax:()=>16,holding:()=>false})
@@ -11787,17 +12083,23 @@ function mpUpdateArenaParallax(now=performance.now()){
 }
 const MP_MATCH_PHASES=new Set(['room','lobby','characterSelect','countdown','match','results']),
       MP_MATCH_MODES=new Set(['pvp','coop']);
-const MP_MATCH_PRESENTATION_TIME=6.60,
-      MP_COOP_COUNTDOWN_TIME=3.00,
-      MP_INTRO_FULL_REVEAL_END=6.10,
-      MP_INTRO_HOST_FOCUS_END=5.65,
-      MP_INTRO_HOST_WALK_END=4.70,
-      MP_INTRO_GUEST_FOCUS_END=4.20,
-      MP_INTRO_GUEST_WALK_END=3.25,
-      MP_MATCH_REVEAL_END=3.00,
-      MP_MATCH_CUE_3_END=2.20,
-      MP_MATCH_CUE_2_END=1.40,
-      MP_MATCH_CUE_1_END=.60;
+const FIDGET_INTRO_PRESENTATION=window.FidgetPresentation?.intros;
+if(!FIDGET_INTRO_PRESENTATION)throw new Error('Missing canonical intro presentation configuration');
+const FIDGET_CAMERA_PRESENTATION=window.FidgetPresentation?.camera;
+if(!FIDGET_CAMERA_PRESENTATION)throw new Error('Missing canonical camera presentation configuration');
+const FIDGET_HUD_PRESENTATION=window.FidgetPresentation?.hud;
+if(!FIDGET_HUD_PRESENTATION)throw new Error('Missing canonical HUD presentation helpers');
+const MP_MATCH_PRESENTATION_TIME=FIDGET_INTRO_PRESENTATION.timing.matchPresentationTime,
+      MP_COOP_COUNTDOWN_TIME=FIDGET_INTRO_PRESENTATION.timing.coopCountdownTime,
+      MP_INTRO_FULL_REVEAL_END=FIDGET_INTRO_PRESENTATION.timing.fullRevealEnd,
+      MP_INTRO_HOST_FOCUS_END=FIDGET_INTRO_PRESENTATION.timing.hostFocusEnd,
+      MP_INTRO_HOST_WALK_END=FIDGET_INTRO_PRESENTATION.timing.hostWalkEnd,
+      MP_INTRO_GUEST_FOCUS_END=FIDGET_INTRO_PRESENTATION.timing.guestFocusEnd,
+      MP_INTRO_GUEST_WALK_END=FIDGET_INTRO_PRESENTATION.timing.guestWalkEnd,
+      MP_MATCH_REVEAL_END=FIDGET_INTRO_PRESENTATION.timing.matchRevealEnd,
+      MP_MATCH_CUE_3_END=FIDGET_INTRO_PRESENTATION.timing.cue3End,
+      MP_MATCH_CUE_2_END=FIDGET_INTRO_PRESENTATION.timing.cue2End,
+      MP_MATCH_CUE_1_END=FIDGET_INTRO_PRESENTATION.timing.cue1End;
 /* v41.45c — Sans/Frisk special matchup intro. The authoritative countdown is extended,
    while presentation time is remapped so the normal intro freezes at Sans' completed walk-in. */
 const FIDGET_MATCHUP_DIALOGUE=window.FidgetData?.dialogue?.matchups;
@@ -11806,38 +12108,24 @@ const MP_GOJO_SUKUNA_DIALOGUE=FIDGET_MATCHUP_DIALOGUE.gojoSukuna,
       MP_SANS_FRISK_DIALOGUE=FIDGET_MATCHUP_DIALOGUE.sansFrisk,
       MP_SANS_FRISK_INTRO_LINES=MP_SANS_FRISK_DIALOGUE.sans;
 const MP_SANS_FRISK_REPLY=MP_SANS_FRISK_DIALOGUE.frisk,
-      MP_SANS_FRISK_LINE_T=1.35,
+      MP_SANS_FRISK_LINE_T=FIDGET_INTRO_PRESENTATION.sansFrisk.lineT,
       MP_SANS_FRISK_SANS_T=MP_SANS_FRISK_LINE_T*MP_SANS_FRISK_INTRO_LINES.length,
-      MP_SANS_FRISK_FRISK_T=1.60,
+      MP_SANS_FRISK_FRISK_T=FIDGET_INTRO_PRESENTATION.sansFrisk.friskT,
       MP_SANS_FRISK_INTRO_EXTRA=MP_SANS_FRISK_SANS_T+MP_SANS_FRISK_FRISK_T;
 function mpIsSansFriskMatchup(hostChar=getPlayerCharacter('p1'),guestChar=getPlayerCharacter('p2')){
-  return (hostChar==='sans'&&guestChar==='frisk')||(hostChar==='frisk'&&guestChar==='sans')
+  return FIDGET_INTRO_PRESENTATION.isSansFriskMatchup(hostChar,guestChar)
 }
 function mpPvpPresentationTime(){
   return MP_MATCH_PRESENTATION_TIME+(mpIsSansFriskMatchup()?MP_SANS_FRISK_INTRO_EXTRA:0)
 }
 function mpSansFriskIntroTimeline(rawT,hostChar,guestChar){
-  rawT=Math.max(0,Number(rawT)||0);
-  if(!mpIsSansFriskMatchup(hostChar,guestChar))return{t:rawT,active:false,speaker:'',line:'',cue:''};
-  const sansHost=hostChar==='sans',holds=sansHost
-    ?[{threshold:MP_INTRO_HOST_WALK_END,duration:MP_SANS_FRISK_SANS_T,kind:'sans'},{threshold:MP_INTRO_GUEST_WALK_END,duration:MP_SANS_FRISK_FRISK_T,kind:'frisk'}]
-    :[{threshold:MP_INTRO_GUEST_WALK_END,duration:MP_SANS_FRISK_INTRO_EXTRA,kind:'both'}];
-  let remaining=holds.reduce((sum,h)=>sum+h.duration,0);
-  for(const hold of holds){
-    const start=hold.threshold+remaining,end=start-hold.duration;
-    if(rawT>start)return{t:rawT-remaining,active:false,speaker:'',line:'',cue:''};
-    if(rawT>=end){
-      const elapsed=clamp(start-rawT,0,Math.max(0,hold.duration-.001));
-      const sansTurn=hold.kind==='sans'||(hold.kind==='both'&&elapsed<MP_SANS_FRISK_SANS_T);
-      if(sansTurn){
-        const idx=Math.min(MP_SANS_FRISK_INTRO_LINES.length-1,Math.floor(elapsed/MP_SANS_FRISK_LINE_T));
-        return{t:hold.threshold+.001,active:true,speaker:'sans',line:MP_SANS_FRISK_INTRO_LINES[idx],cue:'sans-'+idx}
-      }
-      return{t:hold.threshold+.001,active:true,speaker:'frisk',line:MP_SANS_FRISK_REPLY,cue:'frisk-reply'}
-    }
-    remaining-=hold.duration
-  }
-  return{t:rawT,active:false,speaker:'',line:'',cue:''}
+  return FIDGET_INTRO_PRESENTATION.sansFriskTimeline(
+    rawT,hostChar,guestChar,
+    MP_SANS_FRISK_INTRO_LINES,MP_SANS_FRISK_REPLY,
+    MP_SANS_FRISK_LINE_T,MP_SANS_FRISK_SANS_T,MP_SANS_FRISK_FRISK_T,
+    MP_SANS_FRISK_INTRO_EXTRA,MP_INTRO_HOST_WALK_END,MP_INTRO_GUEST_WALK_END,
+    mpIsSansFriskMatchup,clamp
+  )
 }
 // Lobby fighter identity is sourced from MP_CHARACTERS.
 function mpStepLobbyArena(dir){
@@ -12099,7 +12387,7 @@ function mpRenderMatchPresentation(){
         sansFriskRivalry=mpIsSansFriskMatchup(hostChar,guestChar),
         sansFriskIntro=mpSansFriskIntroTimeline(rawT,hostChar,guestChar),
         t=sansFriskIntro.t,
-        ease=v=>{v=clamp(v,0,1);return v*v*(3-2*v)};
+        ease=v=>FIDGET_CAMERA_PRESENTATION.smoothstep01(v,clamp);
   mpPlay?.classList.toggle('matchEntering',countdown&&!coop);
   mpArena?.classList.toggle('matchIntro',countdown&&!coop);
   mpArena?.classList.toggle('rivalIntroActive',countdown&&!coop&&!paused&&(gojoSukunaRivalry||(sansFriskRivalry&&sansFriskIntro.active)));
@@ -12108,8 +12396,8 @@ function mpRenderMatchPresentation(){
 
   // v41.43q — entrance translation is independent from the fighters' combat left anchors.
   // This prevents layout/character CSS from pinning an avatar while its walk cycle keeps playing.
-  const introTravelPx=Math.max(120,(mpArena?.clientWidth||0)*.30);
-  let camScale=1,camX=0,bgShift=0,
+  const introTravelPx=FIDGET_CAMERA_PRESENTATION.introTravelPx(mpArena?.clientWidth);
+  let camScale=FIDGET_CAMERA_PRESENTATION.intro.baseScale,camX=0,bgShift=0,
       hostLeft=16,
       guestLeft=coop?16:84,
       hostIntroX=countdown&&!coop?-introTravelPx:0,
@@ -12127,8 +12415,8 @@ function mpRenderMatchPresentation(){
     // 2) Push in toward Host.
     else if(t>MP_INTRO_HOST_FOCUS_END){
       const p=ease((MP_INTRO_FULL_REVEAL_END-t)/(MP_INTRO_FULL_REVEAL_END-MP_INTRO_HOST_FOCUS_END));
-      camScale=1+.48*p;
-      camX=37*p;
+      camScale=FIDGET_CAMERA_PRESENTATION.intro.baseScale+FIDGET_CAMERA_PRESENTATION.intro.focusScaleDelta*p;
+      camX=FIDGET_CAMERA_PRESENTATION.intro.focusPan*p;
       introTitle=hostName;
       introSub='HOST';
       showIntro=!paused
@@ -12136,10 +12424,10 @@ function mpRenderMatchPresentation(){
     // 3) Hold Host shot while Host walks in.
     else if(t>MP_INTRO_HOST_WALK_END){
       const p=ease((MP_INTRO_HOST_FOCUS_END-t)/(MP_INTRO_HOST_FOCUS_END-MP_INTRO_HOST_WALK_END));
-      camScale=1.48;
-      camX=37;
+      camScale=FIDGET_CAMERA_PRESENTATION.intro.focusScale;
+      camX=FIDGET_CAMERA_PRESENTATION.intro.focusPan;
       hostIntroX=-introTravelPx*(1-p);
-      hostWalking=!paused&&p<.98;
+      hostWalking=!paused&&p<FIDGET_CAMERA_PRESENTATION.intro.walkingCutoff;
       introTitle=hostName;
       introSub='HOST ENTERS';
       showIntro=!paused
@@ -12147,8 +12435,8 @@ function mpRenderMatchPresentation(){
     // 4) Pan across to Guest.
     else if(t>MP_INTRO_GUEST_FOCUS_END){
       const p=ease((MP_INTRO_HOST_WALK_END-t)/(MP_INTRO_HOST_WALK_END-MP_INTRO_GUEST_FOCUS_END));
-      camScale=1.48;
-      camX=37-74*p;
+      camScale=FIDGET_CAMERA_PRESENTATION.intro.focusScale;
+      camX=FIDGET_CAMERA_PRESENTATION.intro.focusPan-FIDGET_CAMERA_PRESENTATION.intro.focusPanSpan*p;
       hostIntroX=0;
       introTitle=guestName;
       introSub='GUEST';
@@ -12157,11 +12445,11 @@ function mpRenderMatchPresentation(){
     // 5) Hold Guest shot while Guest walks in.
     else if(t>MP_INTRO_GUEST_WALK_END){
       const p=ease((MP_INTRO_GUEST_FOCUS_END-t)/(MP_INTRO_GUEST_FOCUS_END-MP_INTRO_GUEST_WALK_END));
-      camScale=1.48;
-      camX=-37;
+      camScale=FIDGET_CAMERA_PRESENTATION.intro.focusScale;
+      camX=-FIDGET_CAMERA_PRESENTATION.intro.focusPan;
       hostIntroX=0;
       guestIntroX=introTravelPx*(1-p);
-      guestWalking=!paused&&p<.98;
+      guestWalking=!paused&&p<FIDGET_CAMERA_PRESENTATION.intro.walkingCutoff;
       introTitle=guestName;
       introSub='GUEST ENTERS';
       showIntro=!paused
@@ -12169,8 +12457,8 @@ function mpRenderMatchPresentation(){
     // 6) Pull back to the full arena before countdown.
     else if(t>MP_MATCH_REVEAL_END){
       const p=ease((MP_INTRO_GUEST_WALK_END-t)/(MP_INTRO_GUEST_WALK_END-MP_MATCH_REVEAL_END));
-      camScale=1.48-.48*p;
-      camX=-37*(1-p);
+      camScale=FIDGET_CAMERA_PRESENTATION.intro.focusScale-FIDGET_CAMERA_PRESENTATION.intro.focusScaleDelta*p;
+      camX=-FIDGET_CAMERA_PRESENTATION.intro.focusPan*(1-p);
       hostIntroX=0;
       guestIntroX=0;
       introTitle=MP_ARENA_BACKGROUNDS[multiplayerPrototype.arenaBg]?.name||'CLASSIC GRID';
@@ -12185,7 +12473,7 @@ function mpRenderMatchPresentation(){
     // The camera cuts to the current speaker without advancing the underlying entrance timeline.
     if(sansFriskIntro.active&&!paused){
       const speakerIsHost=(sansFriskIntro.speaker===hostChar);
-      camScale=1.48;camX=speakerIsHost?37:-37;
+      camScale=FIDGET_CAMERA_PRESENTATION.intro.focusScale;camX=speakerIsHost?FIDGET_CAMERA_PRESENTATION.intro.focusPan:-FIDGET_CAMERA_PRESENTATION.intro.focusPan;
       hostIntroX=0;guestIntroX=0;hostWalking=false;guestWalking=false;showIntro=false;
       introTitle=sansFriskIntro.speaker==='sans'?'SANS':'FRISK';
       introSub='SPECIAL MATCHUP'
@@ -12205,9 +12493,9 @@ function mpRenderMatchPresentation(){
     // Slide the actual arena art beneath the cinematic camera instead of widening it.
     // The shift compensates only while the camera is pushed toward either fighter.
     if(t>MP_MATCH_REVEAL_END){
-      bgShift=-camX*.30;
-      if(mpCameraStage)mpCameraStage.style.transform='translate3d('+camX.toFixed(2)+'%,0,0) scale('+camScale.toFixed(4)+')';
-      if(mpBgSystem)mpBgSystem.style.transform='translate3d('+bgShift.toFixed(2)+'%,0,0)'
+      bgShift=FIDGET_CAMERA_PRESENTATION.backgroundShift(camX);
+      if(mpCameraStage)mpCameraStage.style.transform=FIDGET_CAMERA_PRESENTATION.cameraTransform(camX,camScale);
+      if(mpBgSystem)mpBgSystem.style.transform=FIDGET_CAMERA_PRESENTATION.backgroundTransform(bgShift)
     }else{
       // Countdown starts from the exact normal arena presentation.
       if(mpCameraStage)mpCameraStage.style.transform='';
@@ -12227,29 +12515,11 @@ function mpRenderMatchPresentation(){
   }
 
   if(mpRivalIntro){
-    let rivalCue='',rivalChar='',rivalSpeaker='',rivalLine='',speakerSlot='';
-    if(countdown&&!coop&&sansFriskRivalry&&sansFriskIntro.active&&!paused){
-      rivalChar=sansFriskIntro.speaker;
-      rivalSpeaker=mpCharacterName(rivalChar,rivalChar).toUpperCase();
-      rivalLine=sansFriskIntro.line;
-      speakerSlot=hostChar===rivalChar?'host':'guest';
-      rivalCue='sans-frisk-'+sansFriskIntro.cue
-    }else if(countdown&&!coop&&gojoSukunaRivalry&&!paused){
-      if(t<=MP_INTRO_HOST_FOCUS_END&&t>MP_INTRO_HOST_WALK_END){
-        rivalCue='host';
-        speakerSlot='host';
-        rivalChar=hostChar;
-        rivalSpeaker=hostName;
-        rivalLine=hostChar==='gojo'?MP_GOJO_SUKUNA_DIALOGUE.gojo.host:MP_GOJO_SUKUNA_DIALOGUE.sukuna;
-      }else if(t<=MP_INTRO_GUEST_FOCUS_END&&t>MP_INTRO_GUEST_WALK_END){
-        rivalCue='guest';
-        speakerSlot='guest';
-        rivalChar=guestChar;
-        rivalSpeaker=guestName;
-        rivalLine=guestChar==='gojo'?MP_GOJO_SUKUNA_DIALOGUE.gojo.guest:MP_GOJO_SUKUNA_DIALOGUE.sukuna;
-      }
-    }
-    const rivalShow=!!rivalCue;
+    const {rivalCue,rivalChar,rivalSpeaker,rivalLine,speakerSlot,rivalShow}=FIDGET_HUD_PRESENTATION.rivalryCard({
+      countdown,coop,sansFriskRivalry,sansFriskIntro,paused,gojoSukunaRivalry,t,
+      hostChar,guestChar,hostName,guestName,mpCharacterName,MP_GOJO_SUKUNA_DIALOGUE,
+      MP_INTRO_HOST_FOCUS_END,MP_INTRO_HOST_WALK_END,MP_INTRO_GUEST_FOCUS_END,MP_INTRO_GUEST_WALK_END
+    });
     mpRivalIntro.classList.toggle('show',rivalShow);
     mpRivalIntro.classList.toggle('sansFrisk',sansFriskRivalry&&sansFriskIntro.active);
     mpRivalIntro.classList.toggle('gojo',rivalChar==='gojo');
@@ -12277,15 +12547,10 @@ function mpRenderMatchPresentation(){
   }
 
   if(!mpPhaseBanner)return;
-  let cue='';
-  if(countdown){
-    if(paused)cue='PAUSED';
-    else if(t>MP_MATCH_REVEAL_END)cue='';
-    else if(t>MP_MATCH_CUE_3_END)cue='3';
-    else if(t>MP_MATCH_CUE_2_END)cue='2';
-    else if(t>MP_MATCH_CUE_1_END)cue='1';
-    else cue='FIGHT!'
-  }
+  const cue=FIDGET_HUD_PRESENTATION.phaseCue(
+    countdown,paused,t,
+    MP_MATCH_REVEAL_END,MP_MATCH_CUE_3_END,MP_MATCH_CUE_2_END,MP_MATCH_CUE_1_END
+  );
   if(mpPhaseBanner.dataset.cue!==cue){
     mpPhaseBanner.dataset.cue=cue;
     mpPhaseBanner.classList.remove('cuePop','fightCue','pausedCue');
@@ -16119,8 +16384,8 @@ function mpUiButton(control){return control==='primary'?mpPrimary:control==='spe
 function mpUiCurrentControlContext(control){const role=mpLocalRole();if(!role)return null;const state=mpStateFor(role),ch=mpRoleChar(role),character=mpCharacterDef(ch),ui=character?.ui||null,spec=ui?.controls?.[control]||null;return{role,state,bucket:mpCharacterAbilityState(state,ch),ch,character,ui,spec,control}}
 function mpUiDomainActiveStatus(state){return state.domainT>0?(state.domainQuick?'0.2 VOID':'DOMAIN')+' '+state.domainT.toFixed(1)+'s':''}
 function mpUiGunslingerStatus({state}){if(state.xShotAimActive)return'X-SHOT · CONFIRM '+Math.max(0,Number(state.xShotAimT)||0).toFixed(1)+'s';const hasKeep=!!mpGunKeptEntry(state),keep=hasKeep?' · KEEP '+String(state.keptRound).replace('armorPiercing','AP').replace('incendiary','INC').replace('explosive','EXP').replace('cryo','CRY').replace('shock','SHK').replace('tripwire','TRP').replace('xshot','X').toUpperCase():'',chamber=Math.min(6,Math.max(0,(Number(state.ammo)||0)-(hasKeep?1:0))+(mpGunXShotLoadedSlot(state)>=0?1:0)),x=mpGunXShotReserveReady(state)?' · X RESERVE':mpGunXShotLoadedSlot(state)>=0?' · X LOADED':'';return'CHAMBER '+chamber+' / 6'+(state.reloadT>0||state.reloadDelay>0?' · RELOADING':'')+keep+x}
-function mpUiSansPrimaryLabel({state}){return state.primaryHold?(mpSansBoneHeld(state.primaryHoldT||0)?'BONE STACK READY':'BONE · HOLD '+Math.min(MP_BONE_TAP_HOLD,state.primaryHoldT).toFixed(2)):'TAP / HOLD BONE'}
-function mpUiSansGasterLabel({state}){return state.s1Hold?'GASTER '+Math.min(.72,state.s1HoldT).toFixed(1):'TAP / HOLD GASTER'}
+function mpUiSansPrimaryLabel({state}){return state.primaryHold?(mpSansBoneHeld(state.primaryHoldT||0)?FIDGET_SANS_ABILITY_LABELS.boneStackReady:FIDGET_SANS_ABILITY_LABELS.boneHoldPrefix+Math.min(MP_BONE_TAP_HOLD,state.primaryHoldT).toFixed(2)):FIDGET_SANS_ABILITY_LABELS.boneTapHold}
+function mpUiSansGasterLabel({state}){return state.s1Hold?FIDGET_SANS_ABILITY_LABELS.gasterHoldPrefix+Math.min(.72,state.s1HoldT).toFixed(1):FIDGET_SANS_ABILITY_LABELS.gasterTapHold}
 function mpUiSansStatus({role,state}){const tele=multiplayerPrototype.matchMode==='coop'?multiplayerPrototype.coopSansTelekinesis:multiplayerPrototype.telekinesis,next=Math.max(0,3.2-(state.sansDodgeRecharge||0));if(tele?.active&&tele.controller===role){const ally=multiplayerPrototype.matchMode==='coop'&&tele.targetType==='ally';return tele.phase==='mark'?'TELEKINESIS · '+(ally?'ALLY':'ENEMY')+' · WAIT '+Math.max(0,tele.t||0).toFixed(1)+'s':'TELEKINESIS · '+(ally?'ALLY ':'')+'↑ / ↓'}return'DODGE '+(state.sansDodges||0)+' / 3'+((state.sansDodges||0)<3?' · +1 '+next.toFixed(1)+'s':'')}
 /* v41.42g — Sukuna Cleave Black Flash opportunity uses Dismantle/Primary during the grab; Cleave remains on normal cooldown. */
 /* v41.42h — Dismantle/Primary remains enabled during the RNG Cleave Black Flash window and gains a high-contrast black/crimson pulsing BLACK FLASH state so the opportunity is visible and tappable during the grab. */
@@ -16164,11 +16429,11 @@ function mpSukunaCleaveStrikeConfirmed(role,targetId){
   const cur=multiplayerPrototype.sukunaCleaveStrike,attackerId=getPlayerId(role),resolvedTarget=getPlayerId(targetId);
   return !!(cur&&cur.confirmed&&attackerId&&resolvedTarget&&cur.attackerId===attackerId&&cur.targetId===resolvedTarget&&cur.epoch===multiplayerPrototype.pvpEpoch&&cur.until>performance.now())
 }
-function mpUiSukunaPrimaryLabel({role,state}){if(mpSukunaCleaveStrikeTarget(role))return'BLACK FLASH';return state.worldSlashWindup?'WORLD-CUTTING…':state.worldSlashReady>0?'WORLD-CUTTING SLASH':'DISMANTLE'}
-function mpUiSukunaCleaveLabel({state}){return state.s1Hold?(state.s1HoldT>=MP_CLEAVE_WEB_HOLD?'SPIDERWEB READY':'CLEAVE WEB '+Math.min(MP_CLEAVE_WEB_HOLD,state.s1HoldT).toFixed(1)):'TAP CLEAVE / HOLD WEB'}
-function mpUiSukunaFireLabel({state}){if(state.s2Hold)return state.fireArrowReady?'SIGHT READY':(state.fireArrowDomain?'DRAW DOMAIN '+Math.min(MP_FIRE_ARROW_CHARGE,state.s2HoldT).toFixed(1):'DRAW '+Math.min(MP_FIRE_ARROW_CHARGE,state.s2HoldT).toFixed(1));if(state.fugaCasting)return'FUGA '+Math.round(clamp((state.fugaCastT||0)/MP_FUGA_CAST_T,0,1)*100)+'%';if(mpSukunaFugaReady(state))return'FUGA';return'HOLD FIRE ARROW'}
-function mpUiSukunaChantLabel({state}){const line=mpChantNextLine(state);if(state.chantCompleteT>0)return'CHANT COMPLETE';if(state.chantHold)return line.toUpperCase()+' '+Math.round(clamp(state.chantHoldT/MP_CHANT_HOLD,0,1)*100)+'%';if(state.chantStage>0)return line.toUpperCase()+' '+Math.max(0,state.chantWindow).toFixed(1)+'s';return'HOLD CHANT'}
-function mpUiSukunaDomainLabel({state}){return state.domainHold?'DOMAIN '+Math.min(2,state.domainHoldT).toFixed(1):'HOLD DOMAIN'}
+function mpUiSukunaPrimaryLabel({role,state}){if(mpSukunaCleaveStrikeTarget(role))return FIDGET_SUKUNA_ABILITY_LABELS.blackFlash;return state.worldSlashWindup? FIDGET_SUKUNA_ABILITY_LABELS.worldCuttingWindup:state.worldSlashReady>0? FIDGET_SUKUNA_ABILITY_LABELS.worldCuttingSlash: FIDGET_SUKUNA_ABILITY_LABELS.dismantle}
+function mpUiSukunaCleaveLabel({state}){return state.s1Hold?(state.s1HoldT>=MP_CLEAVE_WEB_HOLD? FIDGET_SUKUNA_ABILITY_LABELS.spiderwebReady: FIDGET_SUKUNA_ABILITY_LABELS.cleaveWebPrefix+Math.min(MP_CLEAVE_WEB_HOLD,state.s1HoldT).toFixed(1)): FIDGET_SUKUNA_ABILITY_LABELS.cleaveTapHold}
+function mpUiSukunaFireLabel({state}){if(state.s2Hold)return state.fireArrowReady? FIDGET_SUKUNA_ABILITY_LABELS.sightReady:(state.fireArrowDomain? FIDGET_SUKUNA_ABILITY_LABELS.drawDomainPrefix+Math.min(MP_FIRE_ARROW_CHARGE,state.s2HoldT).toFixed(1): FIDGET_SUKUNA_ABILITY_LABELS.drawPrefix+Math.min(MP_FIRE_ARROW_CHARGE,state.s2HoldT).toFixed(1));if(state.fugaCasting)return FIDGET_SUKUNA_ABILITY_LABELS.fugaPrefix+Math.round(clamp((state.fugaCastT||0)/MP_FUGA_CAST_T,0,1)*100)+'%';if(mpSukunaFugaReady(state))return FIDGET_SUKUNA_ABILITY_LABELS.fuga;return FIDGET_SUKUNA_ABILITY_LABELS.holdFireArrow}
+function mpUiSukunaChantLabel({state}){const line=mpChantNextLine(state);if(state.chantCompleteT>0)return FIDGET_SUKUNA_ABILITY_LABELS.chantComplete;if(state.chantHold)return line.toUpperCase()+' '+Math.round(clamp(state.chantHoldT/MP_CHANT_HOLD,0,1)*100)+'%';if(state.chantStage>0)return line.toUpperCase()+' '+Math.max(0,state.chantWindow).toFixed(1)+'s';return FIDGET_SUKUNA_ABILITY_LABELS.holdChant}
+function mpUiSukunaDomainLabel({state}){return state.domainHold? FIDGET_SUKUNA_ABILITY_LABELS.domainHoldPrefix+Math.min(2,state.domainHoldT).toFixed(1): FIDGET_SUKUNA_ABILITY_LABELS.holdDomain}
 function mpUiSukunaStatus({role,state}){if(multiplayerPrototype.domainClash?.active&&[multiplayerPrototype.domainClash.leftRole,multiplayerPrototype.domainClash.rightRole].includes(role))return'DOMAIN CLASH · '+Math.max(0,Number(multiplayerPrototype.domainClash.t)||0).toFixed(1)+'s';if(state.fugaCasting)return'FUGA · CHANT '+Math.round(clamp((state.fugaCastT||0)/MP_FUGA_CAST_T,0,1)*100)+'%';if(state.domainT>0&&state.domainType==='sukuna')return state.fugaReady?'MALEVOLENT SHRINE · FUGA READY':('MALEVOLENT SHRINE '+state.domainT.toFixed(1)+'s · DUST '+Math.min(MP_FUGA_DUST_REQUIRED,Number(state.fugaDust)||0)+' / '+MP_FUGA_DUST_REQUIRED);const domain=mpUiDomainActiveStatus(state);if(domain)return domain;if(state.worldSlashWindup)return'WORLD-CUTTING SLASH · WIND-UP '+Math.round(clamp(state.worldSlashWindupT/MP_WORLD_SLASH_WINDUP,0,1)*100)+'%';if(state.worldSlashReady>0)return'WORLD-CUTTING SLASH READY · '+state.worldSlashReady.toFixed(1)+'s';if(state.chantHold)return mpChantNextLine(state).toUpperCase()+' · '+Math.round(clamp(state.chantHoldT/MP_CHANT_HOLD,0,1)*100)+'%';if(state.chantCompleteT>0)return'CHANT COMPLETE · 3 / 3';if(state.chantStage>0)return'CHANT '+state.chantStage+' / 3 · NEXT '+Math.max(0,state.chantWindow).toFixed(1)+'s';if(state.s1Hold)return state.s1HoldT>=MP_CLEAVE_WEB_HOLD?'SPIDERWEB CLEAVE READY':'GROUND CUT '+Math.round(clamp(state.s1HoldT/MP_CLEAVE_WEB_HOLD,0,1)*100)+'%';if(state.s2Hold)return'DRAW SPEED '+Math.round(mpSukunaDrawMoveScale(role)*100)+'%';if(state.domainHold)return'DOMAIN MOVE '+Math.round(mpDomainCastMoveScale(role)*100)+'%';return'HOST-AUTHORITATIVE'}
 /* v41.41bl — returning Red setup temporarily replaces Gojo's Chant button with STRIKE. One tap consumes the setup window; the Host rolls a 50% Black Flash proc. Normal Strike deals 1.0, Black Flash deals 2.75, with synchronized presentation. */
 /* v41.41bm — Red → STRIKE setup now behaves as a short Tap-Blue-like mini-cutscene: combat/movement pause, the victim remains held in Gojo's lane through the Strike presentation, and STRIKE is the only Gojo ability allowed through the sequence lock. */
@@ -16179,19 +16444,19 @@ function mpUiSukunaStatus({role,state}){if(multiplayerPrototype.domainClash?.act
 /* v41.41bh — recalled charged Red now automatically uses the same detonation VFX/payoff on successful return contact: 1.5 direct explosion damage with strong knockback, without stacking the old projectile hit. */
 /* v41.41bj — returning charged Red impact now launches the victim deep into Gojo's horizontal setup lane and temporarily updates their arena X for future follow-ups. Black Flash itself is not implemented. */
 /* v41.41bi — returning charged Red impact detonation now overrides the ordinary recoil with a pure horizontal shove toward Red's owner side of the arena. Victim Y is untouched; the shove does not aim at Gojo's live position. */
-function mpUiGojoRedLabel({playerId,role,state}){if(state.chantStage===4)return'CHANTED RED';if(state.chantStage===6)return'RED COMMITTED';if(state.chantStage===5||state.chantStage===7||state.chantStage===8)return'RED ORBITING';const localPredict=(role===mpLocalRole()&&!!multiplayerPrototype.localHoldUI.primary),q=mpGojoRedChargeProgress(role||playerId);if(state.primaryHold||localPredict)return q>=.999?'RED READY':('RED '+Math.round(q*100)+'%');const active=mpActiveChargedRedProjectile(playerId);if(active)return active.redOffscreen?'RETURN RED':'DETONATE RED';return'RED'}
-function mpUiGojoBlueLabel({state}){const ready=state.chantStage===1,prefix=ready?'CHANTED ':'';return state.s1Hold?prefix+'MAX BLUE '+Math.min(MP_BLUE_MAX_CHARGE,state.s1HoldT).toFixed(1)+' / 3.0 · ABS '+(state.blueAbsorbCount||0):(ready?'CHANTED MAX BLUE':'BLUE / MAX BLUE')}
-function mpUiGojoPurpleLabel({role,state}){const localPredict=(role===mpLocalRole()&&!!multiplayerPrototype.localHoldUI.special2),q=mpGojoPurpleChargeProgress(role);if(state.s2Hold||localPredict)return q>=.999?'PURPLE READY':('PURPLE '+Math.round(q*100)+'%');return'PURPLE'}
-function mpUiGojoChantLabel({role,state}){if(mpGojoStrikeTarget(role))return'STRIKE';if(state.chantHold){const p=state.chantStage===2?'REINFORCE BLUE ':state.chantStage===3?'CHANT RED ':state.chantStage===5?'AMPLIFY BLUE ':'CHANT BLUE ';return p+Math.round(clamp((state.chantHoldT||0)/MP_GOJO_BLUE_CHANT_HOLD,0,1)*100)+'%'}if(state.chantStage===1)return'CHANTED BLUE READY';if(state.chantStage===2)return'REINFORCE BLUE';if(state.chantStage===3)return'CHANT RED';if(state.chantStage===4)return'CHANTED RED READY';if(state.chantStage===5)return'AMPLIFY BLUE';if(state.chantStage===6)return'RED IN FLIGHT';if(state.chantStage===7)return'BLUE AMPLIFIED · TIMED';if(state.chantStage===8)return'AMPLIFICATION CLOSED';return'CHANT BLUE'}
-function mpUiGojoDomainLabel({state}){return state.domainHold?'DOMAIN '+Math.min(2,state.domainHoldT).toFixed(1):(state.followupReady?'FOLLOW-UP':'0.2 VOID / DOMAIN')}
+function mpUiGojoRedLabel({playerId,role,state}){if(state.chantStage===4)return FIDGET_GOJO_ABILITY_LABELS.chantedRed;if(state.chantStage===6)return FIDGET_GOJO_ABILITY_LABELS.redCommitted;if(state.chantStage===5||state.chantStage===7||state.chantStage===8)return FIDGET_GOJO_ABILITY_LABELS.redOrbiting;const localPredict=(role===mpLocalRole()&&!!multiplayerPrototype.localHoldUI.primary),q=mpGojoRedChargeProgress(role||playerId);if(state.primaryHold||localPredict)return q>=.999? FIDGET_GOJO_ABILITY_LABELS.redReady:( FIDGET_GOJO_ABILITY_LABELS.redPrefix+Math.round(q*100)+'%');const active=mpActiveChargedRedProjectile(playerId);if(active)return active.redOffscreen? FIDGET_GOJO_ABILITY_LABELS.returnRed: FIDGET_GOJO_ABILITY_LABELS.detonateRed;return FIDGET_GOJO_ABILITY_LABELS.red}
+function mpUiGojoBlueLabel({state}){const ready=state.chantStage===1,prefix=ready? FIDGET_GOJO_ABILITY_LABELS.chantedPrefix:'';return state.s1Hold?prefix+ FIDGET_GOJO_ABILITY_LABELS.maxBluePrefix+Math.min(MP_BLUE_MAX_CHARGE,state.s1HoldT).toFixed(1)+ FIDGET_GOJO_ABILITY_LABELS.blueAbsorbSuffix+(state.blueAbsorbCount||0):(ready? FIDGET_GOJO_ABILITY_LABELS.chantedMaxBlue: FIDGET_GOJO_ABILITY_LABELS.blueTapHold)}
+function mpUiGojoPurpleLabel({role,state}){const localPredict=(role===mpLocalRole()&&!!multiplayerPrototype.localHoldUI.special2),q=mpGojoPurpleChargeProgress(role);if(state.s2Hold||localPredict)return q>=.999? FIDGET_GOJO_ABILITY_LABELS.purpleReady:( FIDGET_GOJO_ABILITY_LABELS.purplePrefix+Math.round(q*100)+'%');return FIDGET_GOJO_ABILITY_LABELS.purple}
+function mpUiGojoChantLabel({role,state}){if(mpGojoStrikeTarget(role))return FIDGET_GOJO_ABILITY_LABELS.strike;if(state.chantHold){const p=state.chantStage===2? FIDGET_GOJO_ABILITY_LABELS.reinforceBluePrefix:state.chantStage===3? FIDGET_GOJO_ABILITY_LABELS.chantRedPrefix:state.chantStage===5? FIDGET_GOJO_ABILITY_LABELS.amplifyBluePrefix: FIDGET_GOJO_ABILITY_LABELS.chantBluePrefix;return p+Math.round(clamp((state.chantHoldT||0)/MP_GOJO_BLUE_CHANT_HOLD,0,1)*100)+'%'}if(state.chantStage===1)return FIDGET_GOJO_ABILITY_LABELS.chantedBlueReady;if(state.chantStage===2)return FIDGET_GOJO_ABILITY_LABELS.reinforceBlue;if(state.chantStage===3)return FIDGET_GOJO_ABILITY_LABELS.chantRed;if(state.chantStage===4)return FIDGET_GOJO_ABILITY_LABELS.chantedRedReady;if(state.chantStage===5)return FIDGET_GOJO_ABILITY_LABELS.amplifyBlue;if(state.chantStage===6)return FIDGET_GOJO_ABILITY_LABELS.redInFlight;if(state.chantStage===7)return FIDGET_GOJO_ABILITY_LABELS.blueAmplifiedTimed;if(state.chantStage===8)return FIDGET_GOJO_ABILITY_LABELS.amplificationClosed;return FIDGET_GOJO_ABILITY_LABELS.chantBlue}
+function mpUiGojoDomainLabel({state}){return state.domainHold? FIDGET_GOJO_ABILITY_LABELS.domainPrefix+Math.min(2,state.domainHoldT).toFixed(1):(state.followupReady? FIDGET_GOJO_ABILITY_LABELS.followUp: FIDGET_GOJO_ABILITY_LABELS.voidDomain)}
 function mpUiGojoStatus({role,state}){if(multiplayerPrototype.domainClash?.active&&[multiplayerPrototype.domainClash.leftRole,multiplayerPrototype.domainClash.rightRole].includes(role))return'DOMAIN CLASH · '+Math.max(0,Number(multiplayerPrototype.domainClash.t)||0).toFixed(1)+'s';const domain=mpUiDomainActiveStatus(state);if(domain)return domain;if(state.chantHold){const p=state.chantStage===2?'BLUE REINFORCEMENT · ':state.chantStage===3?'RED INCANTATION · ':state.chantStage===5?'BLUE AMPLIFICATION · ':'BLUE INCANTATION · ';return p+Math.round(clamp((state.chantHoldT||0)/MP_GOJO_BLUE_CHANT_HOLD,0,1)*100)+'%'}if(state.chantStage===1)return'CHANTED MAX BLUE · ARMED';if(state.chantStage===2)return'CHANTED BLUE · NEEDS REINFORCEMENT';if(state.chantStage===3)return'CHANTED BLUE · HOLLOW READY';if(state.chantStage===4)return'CHANTED RED · ARMED';if(state.chantStage===6)return'POLARISED RED · COMMITTED';if(state.chantStage===5)return'RED + BLUE · VULNERABLE FUSION';if(state.chantStage===7)return'RED + BLUE · SUCTION AMPLIFIED';if(state.chantStage===8)return'RED + BLUE · AMPLIFICATION CLOSED';return state.infReady?'∞ READY':'∞ '+Math.max(0,state.infCd||0).toFixed(1)+'s'}
-function mpUiFrierenZolLabel({state}){return state.primaryHold?'ZOLTRAAK '+Math.min(.7,state.primaryHoldT).toFixed(1):'TAP / HOLD ZOLTRAAK'}
-function mpUiFrierenSpellLabel({state}){const sp=MP_SPELLS[state.spellIndex]||MP_SPELLS[0];return state.blackHoleCasting?'FORMING '+Math.round(clamp(state.blackHoleCastT/MP_BLACK_HOLE_CAST,0,1)*100)+'%':sp.name}
+function mpUiFrierenZolLabel({state}){return state.primaryHold? FIDGET_FRIEREN_ABILITY_LABELS.zoltraakPrefix+Math.min(.7,state.primaryHoldT).toFixed(1): FIDGET_FRIEREN_ABILITY_LABELS.zoltraakTapHold}
+function mpUiFrierenSpellLabel({state}){const sp=MP_SPELLS[state.spellIndex]||MP_SPELLS[0];return state.blackHoleCasting? FIDGET_FRIEREN_ABILITY_LABELS.formingPrefix+Math.round(clamp(state.blackHoleCastT/MP_BLACK_HOLE_CAST,0,1)*100)+'%':sp.name}
 function mpUiFrierenSpellCooldown({state}){return state.spellIndex===4?(state.blackHoleCd||0):state.s2}
 function mpUiFrierenSpellCooldownMax({state}){return state.spellIndex===4?MP_BLACK_HOLE_SUCCESS_CD:(MP_SPELLS[state.spellIndex]?.cd||9)}
 function mpUiFrierenStatus({role,state}){return state.blackHoleCasting?'BLACK HOLE CASTING'+(state.fieldT>0?' · FIELD BOOST':''):(multiplayerPrototype.blackHole?.active&&multiplayerPrototype.blackHole.role===role?'EVENT HORIZON':(state.golemT>0?'GOLEM '+state.golemT.toFixed(1)+'s'+(state.golemEchoReady?' · ECHO READY':''):(state.fieldT>0?'FLOWER FIELD · CAST 30% FASTER':(state.golemCd>0?'GOLEM '+state.golemCd.toFixed(1)+'s':(state.blackHoleCd>0?'BLACK HOLE '+state.blackHoleCd.toFixed(1)+'s':'SPELLBOOK READY')))))}
-function mpUiGreenLanternConstructLabel({state}){return state.primaryHold?'CONSTRUCT '+state.primaryHoldT.toFixed(1):'TAP / HOLD CONSTRUCT'}
-function mpUiGreenLanternRechargeLabel({state}){return state.recharging?'RECHARGE '+Math.max(0,state.rechargeT).toFixed(1):'RING RECHARGE'}
+function mpUiGreenLanternConstructLabel({state}){return state.primaryHold? FIDGET_GREEN_LANTERN_ABILITY_LABELS.constructPrefix+state.primaryHoldT.toFixed(1): FIDGET_GREEN_LANTERN_ABILITY_LABELS.constructTapHold}
+function mpUiGreenLanternRechargeLabel({state}){return state.recharging? FIDGET_GREEN_LANTERN_ABILITY_LABELS.rechargePrefix+Math.max(0,state.rechargeT).toFixed(1): FIDGET_GREEN_LANTERN_ABILITY_LABELS.ringRecharge}
 function mpUiGreenLanternStatus({state}){return'RING '+Math.round(state.ring)+'%'}
 function mpEnsureFriskFightMeter(){
   if(!mpControls)return null;
@@ -23484,7 +23749,7 @@ const MP_DESKTOP_BIND_DEFAULTS=Object.freeze({
   gunSlot1:'Digit1',gunSlot2:'Digit2',gunSlot3:'Digit3',gunSlot4:'Digit4',gunSlot5:'Digit5',gunSlot6:'Digit6',
   frieren1:'Digit1',frieren2:'Digit2',frieren3:'Digit3',frieren4:'Digit4',frieren5:'Digit5'
 });
-const MP_DESKTOP_BIND_LABELS={moveUp:'Move Up',moveDown:'Move Down',primary:'Primary',special1:'Special 1',special2:'Special 2',domain:'Domain',chant:'Chant',gunslingerRoll:'Gunslinger Roll',reload:'Gunslinger Reload',chamber:'Gunslinger Chamber',gunXShotLoad:'Gunslinger Load X-SHOT',gunReturnKeep:'Gunslinger Return KEEP',gunSlot1:"Chamber 12 o'clock",gunSlot2:"Chamber 2 o'clock",gunSlot3:"Chamber 4 o'clock",gunSlot4:"Chamber 6 o'clock",gunSlot5:"Chamber 8 o'clock",gunSlot6:"Chamber 10 o'clock",frieren1:'Frieren Spell 1',frieren2:'Frieren Spell 2',frieren3:'Frieren Spell 3',frieren4:'Frieren Spell 4',frieren5:'Frieren Spell 5'};
+const MP_DESKTOP_BIND_LABELS=window.FidgetPresentation.controlLabels.desktopBindLabels;
 const MP_DESKTOP_BIND_STORAGE='fidgetShooterDesktopBindsV1';
 let mpDesktopBinds={...MP_DESKTOP_BIND_DEFAULTS},mpRebindCaptureAction='';
 function mpLoadDesktopBinds(){
@@ -24224,7 +24489,7 @@ function updateGojoDomainRush(dt){if(gojoRushState==='idle')return;if(gojoRushSt
 function sukunaFireCastVfx(){const p=box(player),cx=p.x+p.w*.78,cy=p.y+p.h*.5,ring=document.createElement('div');ring.className='fireCastRing';ring.style.left=cx+'px';ring.style.top=cy+'px';effects.appendChild(ring);setTimeout(()=>ring.remove(),360);const count=PERF_LITE?3:7;for(let i=0;i<count;i++){const sp=document.createElement('i');sp.className='fireCastSpark';sp.style.left=cx+'px';sp.style.top=cy+'px';sp.style.setProperty('--a',(i*360/count+Math.random()*18-9)+'deg');effects.appendChild(sp);setTimeout(()=>sp.remove(),380)}}function fireArrowImpactVfx(x,y,domain=false){if(stage===5)return;const b=document.createElement('div');b.className='fireArrowImpact'+(domain?' domain':' empowered');b.style.left=x+'px';b.style.top=y+'px';effects.appendChild(b);setTimeout(()=>b.remove(),domain?500:580);const count=PERF_LITE?5:(domain?11:12);for(let i=0;i<count;i++){const sp=document.createElement('i');sp.className='fireImpactSpark';sp.style.left=x+'px';sp.style.top=y+'px';sp.style.setProperty('--a',(i*360/count+Math.random()*16-8)+'deg');effects.appendChild(sp);setTimeout(()=>sp.remove(),domain?430:500)}if(!domain){hitStop=Math.max(hitStop,.082);tone(96,32,.22,.095,'sawtooth');tone(480,110,.13,.045,'triangle',.012);noise(.12,.075)}}function startFireBurn(){fireBurnT=2.35;fireBurnTick=.4;enemy.classList.add('burning')}function updateFireBurn(dt){if(fireBurnT<=0)return;fireBurnT-=dt;fireBurnTick-=dt;if(fireBurnTick<=0&&!transition&&!over){fireBurnTick=.55;damageEnemy(.5,'light',false,'firearrow-dot')}if(fireBurnT<=0){fireBurnT=0;enemy.classList.remove('burning')}}function domainFireArrow(){snd.fireDomain();const blast=document.createElement('div');blast.className='domainFireBlast';specialFx.appendChild(blast);const token=run;setTimeout(()=>{if(token!==run||over||transition)return;const eb=box(enemy);fireArrowImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5,true);damageEnemy(2,'massive',false,'firearrow');if(eHp>0)startFireBurn()},170);setTimeout(()=>blast.remove(),680)}
 function spawnRushTrail(){const p=box(player),t=document.createElement('div');t.className='rushTrail';t.style.left=p.x+p.w*.15+'px';t.style.top=p.y+p.h*.28+'px';effects.appendChild(t);setTimeout(()=>t.remove(),260)}function spawnRushCut(){const e=box(enemy),c=document.createElement('div');c.className='rushCut';c.style.left=e.x+e.w*.5+'px';c.style.top=e.y+e.h*.48+'px';effects.appendChild(c);setTimeout(()=>c.remove(),360);snd.rushCut()}function resetBigRush(){bigRushState='idle';bigRushX=0;bigRushT=0;bigRushHit=false;bigTrailT=0;player.style.setProperty('--dashX','0px');player.classList.remove('sukuna-rush')}function startBigSlashRush(){if(char!=='sukuna'||bigRushState!=='idle'||transition||over)return;const pb=box(player),eb=box(enemy);bigRushMax=clamp(eb.x-(pb.x+pb.w)-14,105,arenaW*.64);bigRushState='windup';bigRushT=.16;bigRushX=0;bigRushHit=false;snd.big();player.classList.add('sukuna-rush');status.textContent='CLEAVE'}function updateBigRush(dt){if(bigRushState==='idle')return;if(bigRushState==='windup'){bigRushT-=dt;if(bigRushT<=0){bigRushState='rush';bigTrailT=0}}else if(bigRushState==='rush'){bigRushX=Math.min(bigRushMax,bigRushX+1040*dt);player.style.setProperty('--dashX',bigRushX+'px');bigTrailT-=dt;if(bigTrailT<=0){bigTrailT=PERF_LITE?.09:.055;spawnRushTrail()}if(bigRushX>=bigRushMax){bigRushState='cut';bigRushT=.17;if(!bigRushHit){bigRushHit=true;spawnRushCut();damageEnemy(3,'massive',false,'bigslash')}}}else if(bigRushState==='cut'){bigRushT-=dt;if(bigRushT<=0)bigRushState='return'}else if(bigRushState==='return'){bigRushX=Math.max(0,bigRushX-1160*dt);player.style.setProperty('--dashX',bigRushX+'px');if(bigRushX<=0)resetBigRush()}}
 function soloGunslingerReloadMoveScale(now=performance.now()){if(char!=='gunslinger'||!reloading||!reloadStartedAt)return 1;const progress=clamp((now-reloadStartedAt)/780,0,1);return 1-.65*progress}
-function reload(){if(reloading||ammo===6)return;reloading=true;reloadStartedAt=performance.now();primary.disabled=true;cyl.classList.add('reloading');snd.reload();snd.chamberIndex();renderAmmo();const token=run;setTimeout(()=>{if(token!==run)return;ammo=6;turn=0;reloading=false;reloadStartedAt=0;cyl.classList.remove('reloading');cyl.style.setProperty('--turn','0deg');primary.disabled=false;renderAmmo()},780)}function gun(){if(pCd>0||reloading)return;if(ammo<=0){reload();return}ammo--;pCd=.7;turn+=60;cyl.style.setProperty('--turn',turn+'deg');cyl.classList.remove('shotSpin');void cyl.offsetWidth;cyl.classList.add('shotSpin');snd.gun();player.classList.remove('fire');void player.offsetWidth;player.classList.add('fire');offs().forEach(o=>shot('player','bullet',o));renderAmmo();if(!ammo)setTimeout(()=>{if(started)reload()},180)}function showParryFx(perfect=false){const p=box(player),f=document.createElement('div');f.className='lanShield parryFx'+(perfect?' perfect':'');f.style.left=p.x+p.w*.5-39+'px';f.style.top=p.y+p.h*.5-39+'px';effects.appendChild(f);setTimeout(()=>f.remove(),280)}function perfectParry(){parryT=0;parryCd=0;ring=Math.min(100,ring+20);updateRing();showParryFx(true);snd.parry();status.textContent='PERFECT BLOCK · +20 RING'}function startParry(){if(char!=='greenlantern'||parryCd>0||recharging||over||transition)return;parryT=.2;parryCd=5;showParryFx(false);snd.parry();status.textContent='SHIELD WINDOW'}function startRecharge(){if(char!=='greenlantern'||recharging||ring>=100||over||transition)return;cancelConstruct();recharging=true;rechargeT=2;player.classList.add('ring-charging');snd.recharge();status.textContent='RECHARGING RING'}function heavyConstructCost(){return multi>=3?24:multi===2?31:38}function updateGreenLantern(dt){if(parryT>0)parryT=Math.max(0,parryT-dt);if(parryCd>0)parryCd=Math.max(0,parryCd-dt);if(recharging){rechargeT-=dt;if(rechargeT<=0){recharging=false;rechargeT=0;ring=100;player.classList.remove('ring-charging');updateRing();status.textContent='RING FULL'}}if(constructHold){constructHoldT+=dt;if(constructHoldT>=.58)player.classList.add('construct-charging');if(constructHoldT>=4.5&&!constructUltimateFired){if(ring>=LANTERN_ULT_COST)startLanternPlaneCutscene();else if(constructHoldT<4.56)status.textContent='ULTIMATE NEEDS '+LANTERN_ULT_COST+'% RING'}}if(char==='greenlantern'){const heavyCost=heavyConstructCost();primary.disabled=recharging||ring<8;s1.disabled=recharging||parryCd>0;s2.disabled=recharging||ring>=100;primary.textContent=constructHold?(constructHoldT>=.58?'ULT '+Math.max(0,4.5-constructHoldT).toFixed(1):'HOLD '+constructHoldT.toFixed(1)):'TAP / HOLD';s1.textContent=parryCd>0?'SHIELD '+parryCd.toFixed(1):'SHIELD';s2.textContent=recharging?'RECHARGE '+Math.max(0,rechargeT).toFixed(1):'RING RECHARGE'}}function lightConstruct(useBorrow=false){if(!useBorrow&&recharging)return;let value=useBorrow?bRing:ring;const choices=[['fist',8],['boulder',12]].filter(x=>x[1]<=value);if(!choices.length)return;const[k,cost]=choices[Math.floor(Math.random()*choices.length)];if(useBorrow){bRing-=cost;bConstructCd=.7}else{ring-=cost;pCd=.55;updateRing()}snd.construct();shot('player',k)}function heavyConstruct(){const cost=heavyConstructCost();if(recharging||pCd>0)return;if(ring<cost){status.textContent='NEED '+cost+'% RING';return}ring-=cost;pCd=1.05;updateRing();const k=Math.random()<.5?'car':'bomb';snd.construct();shot('player',k);status.textContent=k==='car'?'HEAVY CONSTRUCT · CAR':'HEAVY CONSTRUCT · BOMB'}function startConstructHold(){if(char!=='greenlantern'||constructHold||recharging||pCd>0||ring<8||over||transition||cutsceneActive)return;constructHold=true;constructHoldT=0;constructUltimateFired=false;player.classList.remove('construct-charging','construct-ultimate')}function releaseConstruct(){if(!constructHold)return;const heavy=constructHoldT>=.58;constructHold=false;constructHoldT=0;player.classList.remove('construct-charging');if(constructUltimateFired){constructUltimateFired=false;return}if(heavy)heavyConstruct();else lightConstruct(false)}function cancelConstruct(){constructHold=false;constructHoldT=0;constructUltimateFired=false;player.classList.remove('construct-charging','construct-ultimate')}function construct(useBorrow=false){lightConstruct(useBorrow)}
+function reload(){if(reloading||ammo===6)return;reloading=true;reloadStartedAt=performance.now();primary.disabled=true;cyl.classList.add('reloading');snd.reload();snd.chamberIndex();renderAmmo();const token=run;setTimeout(()=>{if(token!==run)return;ammo=6;turn=0;reloading=false;reloadStartedAt=0;cyl.classList.remove('reloading');cyl.style.setProperty('--turn','0deg');primary.disabled=false;renderAmmo()},780)}function gun(){if(pCd>0||reloading)return;if(ammo<=0){reload();return}ammo--;pCd=.7;turn+=60;cyl.style.setProperty('--turn',turn+'deg');cyl.classList.remove('shotSpin');void cyl.offsetWidth;cyl.classList.add('shotSpin');snd.gun();player.classList.remove('fire');void player.offsetWidth;player.classList.add('fire');offs().forEach(o=>shot('player','bullet',o));renderAmmo();if(!ammo)setTimeout(()=>{if(started)reload()},180)}function showParryFx(perfect=false){const p=box(player),f=document.createElement('div');f.className='lanShield parryFx'+(perfect?' perfect':'');f.style.left=p.x+p.w*.5-39+'px';f.style.top=p.y+p.h*.5-39+'px';effects.appendChild(f);setTimeout(()=>f.remove(),280)}function perfectParry(){parryT=0;parryCd=0;ring=Math.min(100,ring+20);updateRing();showParryFx(true);snd.parry();status.textContent='PERFECT BLOCK · +20 RING'}function startParry(){if(char!=='greenlantern'||parryCd>0||recharging||over||transition)return;parryT=.2;parryCd=5;showParryFx(false);snd.parry();status.textContent='SHIELD WINDOW'}function startRecharge(){if(char!=='greenlantern'||recharging||ring>=100||over||transition)return;cancelConstruct();recharging=true;rechargeT=2;player.classList.add('ring-charging');snd.recharge();status.textContent='RECHARGING RING'}function heavyConstructCost(){return multi>=3?24:multi===2?31:38}function updateGreenLantern(dt){if(parryT>0)parryT=Math.max(0,parryT-dt);if(parryCd>0)parryCd=Math.max(0,parryCd-dt);if(recharging){rechargeT-=dt;if(rechargeT<=0){recharging=false;rechargeT=0;ring=100;player.classList.remove('ring-charging');updateRing();status.textContent='RING FULL'}}if(constructHold){constructHoldT+=dt;if(constructHoldT>=.58)player.classList.add('construct-charging');if(constructHoldT>=4.5&&!constructUltimateFired){if(ring>=LANTERN_ULT_COST)startLanternPlaneCutscene();else if(constructHoldT<4.56)status.textContent='ULTIMATE NEEDS '+LANTERN_ULT_COST+'% RING'}}if(char==='greenlantern'){const heavyCost=heavyConstructCost();primary.disabled=recharging||ring<8;s1.disabled=recharging||parryCd>0;s2.disabled=recharging||ring>=100;primary.textContent=constructHold?(constructHoldT>=.58? FIDGET_GREEN_LANTERN_ABILITY_LABELS.ultimatePrefix+Math.max(0,4.5-constructHoldT).toFixed(1): FIDGET_GREEN_LANTERN_ABILITY_LABELS.holdPrefix+constructHoldT.toFixed(1)): FIDGET_GREEN_LANTERN_ABILITY_LABELS.tapHold;s1.textContent=parryCd>0? FIDGET_GREEN_LANTERN_ABILITY_LABELS.shieldPrefix+parryCd.toFixed(1): FIDGET_GREEN_LANTERN_ABILITY_LABELS.shield;s2.textContent=recharging? FIDGET_GREEN_LANTERN_ABILITY_LABELS.rechargePrefix+Math.max(0,rechargeT).toFixed(1): FIDGET_GREEN_LANTERN_ABILITY_LABELS.ringRecharge}}function lightConstruct(useBorrow=false){if(!useBorrow&&recharging)return;let value=useBorrow?bRing:ring;const choices=[['fist',8],['boulder',12]].filter(x=>x[1]<=value);if(!choices.length)return;const[k,cost]=choices[Math.floor(Math.random()*choices.length)];if(useBorrow){bRing-=cost;bConstructCd=.7}else{ring-=cost;pCd=.55;updateRing()}snd.construct();shot('player',k)}function heavyConstruct(){const cost=heavyConstructCost();if(recharging||pCd>0)return;if(ring<cost){status.textContent='NEED '+cost+'% RING';return}ring-=cost;pCd=1.05;updateRing();const k=Math.random()<.5?'car':'bomb';snd.construct();shot('player',k);status.textContent=k==='car'?'HEAVY CONSTRUCT · CAR':'HEAVY CONSTRUCT · BOMB'}function startConstructHold(){if(char!=='greenlantern'||constructHold||recharging||pCd>0||ring<8||over||transition||cutsceneActive)return;constructHold=true;constructHoldT=0;constructUltimateFired=false;player.classList.remove('construct-charging','construct-ultimate')}function releaseConstruct(){if(!constructHold)return;const heavy=constructHoldT>=.58;constructHold=false;constructHoldT=0;player.classList.remove('construct-charging');if(constructUltimateFired){constructUltimateFired=false;return}if(heavy)heavyConstruct();else lightConstruct(false)}function cancelConstruct(){constructHold=false;constructHoldT=0;constructUltimateFired=false;player.classList.remove('construct-charging','construct-ultimate')}function construct(useBorrow=false){lightConstruct(useBorrow)}
 function addBorrowButton(sk){const b=document.createElement('button');b.type='button';b.textContent=sk.name;if(['zol','shield','golem','field'].includes(sk.id))b.classList.add('friSkill');if(['construct','parry','recharge'].includes(sk.id))b.classList.add('lanSkill');b.addEventListener('pointerdown',e=>{e.preventDefault();useSkill(sk.id)});borrowed.appendChild(b);skillBtns.set(sk.id,b)}function buildBorrowed(){borrowed.innerHTML='';skillBtns.clear();if(char!=='gunslinger'||!skills.length){borrowed.classList.add('hide');return}borrowed.classList.remove('hide');skills.forEach(id=>{const sk=pool.find(x=>x.id===id);if(sk)addBorrowButton(sk)});if(skills.includes('construct')){const d=document.createElement('div');d.className='borrowRing';d.dataset.bring='1';borrowed.appendChild(d)}updateBorrowed()}function updateBorrowed(){if(char!=='gunslinger'||skillBtns.size===0)return;for(const[id,b]of skillBtns){const sk=pool.find(x=>x.id===id),cd=skillCd[id]||0;b.disabled=cd>0;b.textContent=sk.name+(cd>0?' '+cd.toFixed(1):'');abilityVisual(b,{ready:cd<=0,cd,max:sk.cd||1})}const d=borrowed.querySelector('[data-bring]');if(d)d.textContent='BORROWED RING · '+Math.round(bRing)+'%'}function useSkill(id){const sk=pool.find(x=>x.id===id);if(!sk||paused||over||transition||cutsceneActive)return;if(id==='construct'){construct(true);return}if((skillCd[id]||0)>0)return;skillCd[id]=sk.cd;if(id==='gaster')gaster();else if(id==='blue')bluePower();else if(id==='bigslash'){snd.big();shot('player','bigslash')}else if(id==='firearrow'){snd.fire();sukunaFireCastVfx();shot('player','firearrow')}else if(id==='red'){snd.red();shot('player','redshot')}else if(id==='lapse')lapse();else if(id==='purple'){snd.purple();shot('player','purple')}else if(id==='shrine')activateDomain('sukuna');else if(id==='void')activateDomain('gojo');else if(id==='zol')zol();else if(id==='shield')castHex();else if(id==='golem')castGolem();else if(id==='field')castField();updateBorrowed()}function showDraft(){let available=pool.filter(x=>!skills.includes(x.id));if(!skills.includes('construct'))available=available.filter(x=>x.id!=='recharge');available.sort(()=>Math.random()-.5);draftGrid.innerHTML='';available.slice(0,3).forEach(sk=>{const b=document.createElement('button');b.className='choice';b.innerHTML='<b>'+sk.name+'</b><small>'+sk.desc+'</small>';b.addEventListener('click',()=>{skills.push(sk.id);skillCd[sk.id]=0;draft.classList.add('hide');buildBorrowed();nextStage()});draftGrid.appendChild(b)});draft.classList.remove('hide')}
 function resetMaho(){mahoState='idle';mahoTimer=0;mahoX=0;grabbed=false;mahoRushY=eY;mahoCd=stage===3?2.4+Math.random()*2:0;enemy.style.right='3px';enemy.classList.remove('maho-rush-windup');player.classList.remove('maho-grabbed','maho-slammed')}function startRush(){if(stage!==3||mahoState!=='idle')return;mahoState='windup';mahoTimer=.5;mahoRushY=eY;enemy.classList.add('maho-rush-windup');status.textContent='MAHORAGA RUSH — MOVE!'}function catchMaho(){if(hexT>0){resetMaho();return}if(char==='greenlantern'&&parryT>0){perfectParry();resetMaho();return}if(char==='gojo'&&infReady){infReady=false;infCd=4.8;resetMaho();return}mahoState='grab';mahoTimer=.3;grabbed=true;move=0;pY=mahoRushY;player.classList.add('maho-grabbed')}function slamFx(){const p=box(player),cx=p.x+p.w/2,cy=Math.min(arenaH-26,p.y+p.h*.85),ringEl=document.createElement('div');ringEl.className='slamRing';ringEl.style.left=cx+'px';ringEl.style.top=cy+'px';effects.appendChild(ringEl);setTimeout(()=>ringEl.remove(),450);arena.classList.remove('slamShake');void arena.offsetWidth;arena.classList.add('slamShake')}function slam(){mahoState='recover';mahoTimer=.5;grabbed=false;player.classList.remove('maho-grabbed');player.classList.add('maho-slammed');slamFx();snd.slam();damagePlayer(2,true)}function updateMaho(dt,frozen){if(stage!==3||frozen)return;if(mahoState!=='idle')eY=mahoRushY;if(mahoState==='idle'){mahoCd-=dt;if(mahoCd<=0)startRush()}else if(mahoState==='windup'){mahoTimer-=dt;if(mahoTimer<=0){mahoState='rush';mahoTimer=.55;enemy.classList.remove('maho-rush-windup');snd.rush()}}else if(mahoState==='rush'){mahoX+=920*dt;mahoTimer-=dt;enemy.style.right=3+mahoX+'px';if(hit(box(enemy),box(player)))catchMaho();else if(mahoTimer<=0)mahoState='recover'}else if(mahoState==='grab'){mahoTimer-=dt;if(mahoTimer<=0)slam()}else if(mahoState==='recover'){mahoX=Math.max(0,mahoX-980*dt);enemy.style.right=3+mahoX+'px';if(mahoX<=0){enemy.style.right='3px';player.classList.remove('maho-slammed');mahoState='idle';mahoCd=4.5+Math.random()*3.5}}}
 function abilityVisual(btn,opts={}){if(!btn)return;const ready=!!opts.ready,active=!!opts.active,blocked=!!opts.blocked,cd=Math.max(0,opts.cd||0),max=Math.max(.001,opts.max||1);let pct=ready?100:Math.max(0,Math.min(100,(1-cd/max)*100));if(opts.pct!=null)pct=Math.max(0,Math.min(100,opts.pct));const pctText=pct.toFixed(1),state=opts.state||'',sig=[ready?1:0,active?1:0,blocked?1:0,cd>0?1:0,pctText,state].join('|');if(btn.dataset.uiSig===sig)return;btn.dataset.uiSig=sig;btn.style.setProperty('--readyPct',pctText);btn.classList.toggle('ability-ready',ready&&!active&&!blocked);btn.classList.toggle('ability-cooling',!ready&&!active&&!blocked&&cd>0);btn.classList.toggle('ability-active',active);btn.classList.toggle('ability-blocked',blocked);btn.dataset.state=state}
@@ -24260,7 +24525,7 @@ function updateAbilityIndicators(){if(!started)return;
     abilityVisual(domainBtn,{ready:followup||(domainCd<=0&&domainActive<=0&&!domainHold),active,blocked,cd:followup?0:domainCd,max:domainCdMax,pct:domainHold?Math.min(100,domainHoldT/2*100):(domainActive>0?Math.max(0,domainActive/Math.max(.001,domainDurationMax)*100):undefined)});
   }
 }
-function renderControls(){const c=$('.controls');c.className='controls kit-'+char;cylPanel.classList.toggle('hide',char!=='gunslinger');spell.classList.toggle('hide',char!=='frieren');ringMeter.classList.toggle('hide',char!=='greenlantern');ringHud.classList.toggle('hide',char!=='greenlantern');domainBtn.classList.toggle('hide',!['sukuna','gojo'].includes(char));s1.classList.remove('hide');s2.classList.remove('hide');if(char==='gunslinger'){primary.textContent='SHOOT';s1.classList.add('hide');s2.classList.add('hide')}else if(char==='sans'){primary.textContent='BONE';s1.textContent='TAP / HOLD GASTER';s2.textContent='TELEKINESIS'}else if(char==='sukuna'){primary.textContent='DISMANTLE';s1.textContent='CLEAVE';s2.textContent='FIRE ARROW'}else if(char==='gojo'){primary.textContent='RED';s1.textContent='TAP / HOLD BLUE';s2.textContent='HOLD PURPLE'}else if(char==='frieren'){primary.textContent='TAP / HOLD ZOLTRAAK';s1.textContent='HEX SHIELD';updateFrierenSpellUI()}else if(mpCharacterDef(char)?.development?.modelOnly){primary.textContent='COMING SOON';s1.classList.add('hide');s2.classList.add('hide')}else{primary.textContent='TAP / HOLD CONSTRUCT';s1.textContent='SHIELD';s2.textContent='RING RECHARGE'}if(char==='gojo')domainBtn.textContent='TAP 0.2 / HOLD';else if(char==='sukuna')domainBtn.textContent='HOLD DOMAIN';buildBorrowed();renderAmmo();updateRing();updateMulti();infEl.classList.toggle('hide',char!=='gojo');updateAbilityIndicators()}
+function renderControls(){const c=$('.controls');c.className='controls kit-'+char;cylPanel.classList.toggle('hide',char!=='gunslinger');spell.classList.toggle('hide',char!=='frieren');ringMeter.classList.toggle('hide',char!=='greenlantern');ringHud.classList.toggle('hide',char!=='greenlantern');domainBtn.classList.toggle('hide',!['sukuna','gojo'].includes(char));s1.classList.remove('hide');s2.classList.remove('hide');if(char==='gunslinger'){primary.textContent=FIDGET_GUNSLINGER_ABILITY_LABELS.shoot;s1.classList.add('hide');s2.classList.add('hide')}else if(char==='sans'){primary.textContent='BONE';s1.textContent='TAP / HOLD GASTER';s2.textContent='TELEKINESIS'}else if(char==='sukuna'){primary.textContent='DISMANTLE';s1.textContent='CLEAVE';s2.textContent='FIRE ARROW'}else if(char==='gojo'){primary.textContent='RED';s1.textContent='TAP / HOLD BLUE';s2.textContent='HOLD PURPLE'}else if(char==='frieren'){primary.textContent='TAP / HOLD ZOLTRAAK';s1.textContent='HEX SHIELD';updateFrierenSpellUI()}else if(mpCharacterDef(char)?.development?.modelOnly){primary.textContent='COMING SOON';s1.classList.add('hide');s2.classList.add('hide')}else{primary.textContent= FIDGET_GREEN_LANTERN_ABILITY_LABELS.constructTapHold;s1.textContent= FIDGET_GREEN_LANTERN_ABILITY_LABELS.shield;s2.textContent= FIDGET_GREEN_LANTERN_ABILITY_LABELS.ringRecharge}if(char==='gojo')domainBtn.textContent='TAP 0.2 / HOLD';else if(char==='sukuna')domainBtn.textContent='HOLD DOMAIN';buildBorrowed();renderAmmo();updateRing();updateMulti();infEl.classList.toggle('hide',char!=='gojo');updateAbilityIndicators()}
 primary.addEventListener('pointerdown',e=>{e.preventDefault();ac();if(cutsceneActive)return;if(bigRushState!=='idle'&&char==='sukuna')return;if(char==='gunslinger')gun();else if(char==='sans'&&pCd<=0){pCd=.52;snd.bone();offs().forEach(o=>shot('player','bone',o))}else if(char==='sukuna'&&pCd<=0){pCd=.68;snd.slash();offs().forEach(o=>shot('player','slash',o))}else if(char==='gojo'&&pCd<=0){pCd=.7;snd.red();gojoRedCastVfx();offs().forEach(o=>shot('player','redshot',o))}else if(char==='frieren'&&pCd<=0){zolHold=true;zolT=0;startZolCharge()}else if(char==='greenlantern')startConstructHold()});primary.addEventListener('pointerup',()=>{if(char==='frieren'&&zolHold){const wide=zolT>=.7,echoOffsets=wide?[0]:zolOffs();zolHold=false;endZolCharge();pCd=wide?1.05:.62;if(wide)zol(true);else echoOffsets.forEach(o=>zol(false,o))}else if(char==='greenlantern')releaseConstruct()});primary.addEventListener('pointercancel',()=>{if(char==='greenlantern')cancelConstruct()});
 s1.addEventListener('pointerdown',e=>{e.preventDefault();ac();if(cutsceneActive)return;if(char==='sans'&&c1<=0){try{s1.setPointerCapture(e.pointerId)}catch{}startGasterHold(e.pointerId)}else if(char==='sukuna'&&c1<=0&&bigRushState==='idle'){c1=5.6;startBigSlashRush()}else if(char==='gojo'&&c1<=0){try{s1.setPointerCapture(e.pointerId)}catch{}startGojoBlueHold(e.pointerId)}else if(char==='frieren'&&c1<=0){c1=7.4;castHex()}else if(char==='greenlantern')startParry()});s1.addEventListener('pointerup',e=>{if(char==='sans'&&gasterHold&&(gasterPointer===null||gasterPointer===e.pointerId))releaseGasterHold();else if(char==='gojo'&&gojoBlueHold&&(gojoBluePointer===null||gojoBluePointer===e.pointerId))releaseGojoBlueHold()});s1.addEventListener('pointercancel',e=>{if(char==='sans'&&gasterHold&&(gasterPointer===null||gasterPointer===e.pointerId))releaseGasterHold();else if(char==='gojo'&&gojoBlueHold&&(gojoBluePointer===null||gojoBluePointer===e.pointerId))releaseGojoBlueHold()});
 s2.addEventListener('pointerdown',e=>{e.preventDefault();ac();if(cutsceneActive)return;if(bigRushState!=='idle'&&char==='sukuna')return;if(char==='sans'&&c2<=0){c2=7.8;bluePower()}else if(char==='sukuna'&&c2<=0){c2=11.5;if(domainType==='sukuna'&&domainActive>0)domainFireArrow();else{snd.fire();sukunaFireCastVfx();shot('player','firearrow')}}else if(char==='gojo'&&purpleReady()){purpleHold=true;purpleT=0}else if(char==='frieren'){startSpellSelect(e)}else if(char==='greenlantern')startRecharge()});s2.addEventListener('pointermove',e=>{if(char==='frieren')moveSpellSelect(e)});s2.addEventListener('pointerup',e=>{if(char==='frieren'){finishSpellSelect(e,false);return}if(char==='gojo'&&purpleHold){const charged=purpleT>=1.15;purpleHold=false;player.classList.remove('purple-release-ready','purple-charging');if(charged)startPurpleCutscene()}});s2.addEventListener('pointercancel',e=>{if(char==='frieren'){finishSpellSelect(e,true);return}if(char==='gojo'&&purpleHold){purpleHold=false;purpleT=0;player.classList.remove('purple-release-ready','purple-charging')}});domainBtn.addEventListener('pointerdown',()=>{if(cutsceneActive)return;if(char==='gojo'&&domainCd>0&&gojoDomainRushReady&&enemyStunT>0&&domainActive<=0){startGojoDomainRush();return}if(domainCd<=0&&domainActive<=0){domainHold=true;domainHoldT=0}});domainBtn.addEventListener('pointerup',()=>{const held=domainHoldT,wasHolding=domainHold;domainHold=false;domainHoldT=0;if(char==='gojo'&&wasHolding&&held>0&&held<=.35&&domainCd<=0&&domainActive<=0)activateGojoPointTwoDomain()});domainBtn.addEventListener('pointercancel',()=>{domainHold=false;domainHoldT=0});
@@ -24465,8 +24730,8 @@ renderEnemy();renderAmmo();pos(true);requestAnimationFrame(loop);
 (()=>{
 'use strict';
 const FIDGET_UPDATE=Object.freeze({
-  build:'41.47',
-  release:'41.47',
+  build:'41.48',
+  release:'41.48',
   protocol:86,
   manifestUrl:'https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/version.json',
   checkDelayMs:1400,
