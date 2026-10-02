@@ -1,12 +1,12 @@
 {
-  "version": "41.47",
+  "version": "41.48",
   "protocol": 86,
   "required": false,
-  "summary": "Stable source-organization release with standalone packaging; gameplay and multiplayer behavior are unchanged.",
+  "summary": "Audited presentation and seven-character ability-label refactor; gameplay and multiplayer behavior are unchanged.",
   "notes": [
-    "Extracts canonical special-matchup dialogue without changing intro timing, camera timing, audio, or multiplayer behavior",
-    "Extracts harmless character presentation metadata and documents the inert future-character template",
-    "Moves approved historical development ledger comments out of the runtime source",
+    "Completes fixed ability-label extraction for all seven characters",
+    "Extracts canonical intro, camera, HUD and desktop control presentation helpers",
+    "Preserves ability behavior, damage, cooldowns, timing, audio and Host authority",
     "Keeps the protected download self-contained and multiplayer protocol 86 unchanged"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
