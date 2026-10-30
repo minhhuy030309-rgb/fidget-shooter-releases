@@ -1,13 +1,14 @@
 {
-  "version": "41.48",
+  "version": "41.49",
   "protocol": 86,
   "required": false,
-  "summary": "Audited presentation and seven-character ability-label refactor; gameplay and multiplayer behavior are unchanged.",
+  "summary": "Sukuna Black Flash timing and impact-feedback update, with extracted Sans/Sukuna/Gojo character modules.",
   "notes": [
-    "Completes fixed ability-label extraction for all seven characters",
-    "Extracts canonical intro, camera, HUD and desktop control presentation helpers",
-    "Preserves ability behavior, damage, cooldowns, timing, audio and Host authority",
-    "Keeps the protected download self-contained and multiplayer protocol 86 unchanged"
+    "Black Flash uses one timed press at 0.45–0.65s into a landed Cleave grab; 1-in-3 chance retained",
+    "Wrong timing immediately plays dud feedback, turns off the glow and consumes the attempt",
+    "Failed attempts put Dismantle on a 2-second cooldown",
+    "Confirmed hits gain black/crimson lightning, shock rings and heavier impact audio",
+    "Self-contained HTML; Host authority, protocol 86 and player IDs p1/p2 preserved"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
