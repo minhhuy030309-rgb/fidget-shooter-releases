@@ -1,14 +1,14 @@
 {
-  "version": "41.49",
-  "protocol": 86,
+  "version": "41.52",
+  "protocol": 88,
   "required": false,
-  "summary": "Sukuna Black Flash timing and impact-feedback update, with extracted Sans/Sukuna/Gojo character modules.",
+  "summary": "Gunslinger campaign prototype, plus the Green Lantern and Frieren updates from v41.50/v41.51.",
   "notes": [
-    "Black Flash uses one timed press at 0.45–0.65s into a landed Cleave grab; 1-in-3 chance retained",
-    "Wrong timing immediately plays dud feedback, turns off the glow and consumes the attempt",
-    "Failed attempts put Dismantle on a 2-second cooldown",
-    "Confirmed hits gain black/crimson lightning, shock rings and heavier impact audio",
-    "Self-contained HTML; Host authority, protocol 86 and player IDs p1/p2 preserved"
+    "Explore The Crossroads with NPC dialogue, an Outlaw encounter and a practice target",
+    "Local saves, finite ammunition, three presets, inventory, bandages and exploration shooting",
+    "Mini-map, device settings, weapon/encounter presentation and embedded campaign music",
+    "Includes Green Lantern and Frieren reworks and the 450–800 ms Black Flash window",
+    "Both multiplayer files must support protocol 88; original solo routes remain available"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
