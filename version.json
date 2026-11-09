@@ -1,14 +1,14 @@
 {
-  "version": "41.52",
+  "version": "41.53",
   "protocol": 88,
   "required": false,
-  "summary": "Gunslinger campaign prototype, plus the Green Lantern and Frieren updates from v41.50/v41.51.",
+  "summary": "Expanded Crossroads, rideable horses, mounted Tutorial and campaign polish.",
   "notes": [
-    "Explore The Crossroads with NPC dialogue, an Outlaw encounter and a practice target",
-    "Local saves, finite ammunition, three presets, inventory, bandages and exploration shooting",
-    "Mini-map, device settings, weapon/encounter presentation and embedded campaign music",
-    "Includes Green Lantern and Frieren reworks and the 450–800 ms Black Flash window",
-    "Both multiplayer files must support protocol 88; original solo routes remain available"
+    "Crossroads tavern with civilians, campfire rest/manual saves/crafting and rideable horses",
+    "Animated destination lobby and mounted Tutorial using shared Gunslinger combat",
+    "Horse gaits, gradual steering, pace/stamina indicators and recorded hoof audio",
+    "Mobile HUD/menu refinements, application-time healing, aiming controls and elemental effects",
+    "Audited contact, layering, scene cleanup and mounted rendering improvements; protocol 88 remains in use"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
