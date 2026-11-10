@@ -1,14 +1,14 @@
 {
-  "version": "41.53",
+  "version": "41.54",
   "protocol": 88,
   "required": false,
-  "summary": "Expanded Crossroads, rideable horses, mounted Tutorial and campaign polish.",
+  "summary": "Guided horse chase, mobile aiming and dialogue import/export.",
   "notes": [
-    "Crossroads tavern with civilians, campfire rest/manual saves/crafting and rideable horses",
-    "Animated destination lobby and mounted Tutorial using shared Gunslinger combat",
-    "Horse gaits, gradual steering, pace/stamina indicators and recorded hoof audio",
-    "Mobile HUD/menu refinements, application-time healing, aiming controls and elemental effects",
-    "Audited contact, layering, scene cleanup and mounted rendering improvements; protocol 88 remains in use"
+    "Mounted Tutorial teaches aiming, movement and rolling through pursuit and retaliation",
+    "Pocket sand attacks, a mounted victory ending and the failed-memory death screen",
+    "Mobile hold/drag/release aiming, smoother Outlaw tracking and correct bush/rider depth",
+    "Import dialogue and export an edited playable HTML from campaign Settings",
+    "Existing Crossroads and manual saves are preserved; multiplayer remains on protocol 88"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
