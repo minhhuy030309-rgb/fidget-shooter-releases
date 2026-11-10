@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
-<title>Fidget Shooter v41.53</title>
+<title>Fidget Shooter v41.54</title>
 <style>
 :root{--card:#202d43;--border:#526987;--text:#f4f7fb;--muted:#9fb2cc;--gun:#ffd86b;--sans:#39a0ff;--suk:#e15a73;--gojo:#4d8dff;--fri:#63a9ff;--lan:#42db6c;--lan2:#c9ffd8}
 *{box-sizing:border-box}html{overscroll-behavior:none;background:#0b1220}body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:flex;justify-content:center;padding:12px;min-height:100dvh;overscroll-behavior:none}button{font:inherit;color:inherit;touch-action:manipulation;user-select:none}.hide{display:none!important}#game{width:min(100%,640px);overscroll-behavior:none}
@@ -8474,7 +8474,7 @@
 .campaignWorld{position:absolute;left:0;top:0;width:1800px;height:1100px;background:radial-gradient(ellipse at 30% 30%,#8b8052 0,transparent 40%),repeating-linear-gradient(0deg,#ffffff03 0 1px,transparent 1px 48px),#766345;will-change:transform}
 .campaignRoad{position:absolute;left:0;top:420px;width:1800px;height:250px;background:#ba9361;border-block:7px solid #a18055;box-shadow:0 0 30px #3f35252b}
 .campaignBuilding{position:absolute;box-sizing:border-box;border:8px solid #594735;border-bottom:22px solid #4b3d31;border-radius:8px;background:repeating-linear-gradient(90deg,#8a6347 0 20px,#805b41 20px 24px);color:#f6d3a0;display:flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:2px;box-shadow:14px 18px 0 #292a2540}
-.campaignScrub{position:absolute;width:76px;height:58px;margin:-58px 0 0 -38px;z-index:9;pointer-events:none}.campaignScrub:before{content:"";position:absolute;left:8px;right:7px;bottom:0;height:12px;border-radius:50%;background:radial-gradient(ellipse,#28382040,transparent 72%)}.campaignScrubCrown{position:absolute;inset:0;transform-origin:50% 90%;transform:translateX(var(--scrubShake,0px)) rotate(var(--scrubKick,0deg));filter:hue-rotate(var(--scrubHue,0deg))}.campaignScrub svg{display:block;width:100%;height:100%}
+.campaignScrub{position:absolute;width:76px;height:58px;margin:-58px 0 0 -38px;z-index:7;pointer-events:none}.campaignScrub:before{content:"";position:absolute;left:8px;right:7px;bottom:0;height:12px;border-radius:50%;background:radial-gradient(ellipse,#28382040,transparent 72%)}.campaignScrubCrown{position:absolute;inset:0;transform-origin:50% 90%;transform:translateX(var(--scrubShake,0px)) rotate(var(--scrubKick,0deg));filter:hue-rotate(var(--scrubHue,0deg))}.campaignScrub svg{display:block;width:100%;height:100%}
 .campaignActor{position:absolute;width:98px;height:90px;transform:translate(-50%,-50%) scale(.72);transform-origin:center;z-index:7;pointer-events:none}
 .campaignActor.guide{filter:hue-rotate(95deg) saturate(.5)}
 .campaignActor.outlaw{filter:none}
@@ -8912,7 +8912,7 @@
 .horseHoof{fill:#382f29;stroke:none}
 .campaignView .campaignHorsePrompt{position:absolute;transform:translate(-50%,-100%);z-index:9;pointer-events:auto;padding:3px 5px;font-size:7px;white-space:nowrap;border-color:#d0b17a;background:#1b282ded}
 .campaignHorsePrompt[hidden]{display:none}
-.campaignHero.campaignHorseMounted{z-index:8}
+.campaignHero.campaignHorseMounted{z-index:7}
 .campaignHorseMounted .gsUnit{--gs-coat-h:24px}
 .campaignHero.campaignHorseMounted .campaignHeroSprite{transform-origin:25px 65px;transform:translateY(var(--horseRideBob,0px)) rotate(var(--horseRiderPitch,0deg)) scaleX(calc(-1 * var(--horseRiderFacing,var(--campaignFacing,-1))))}
 .campaignHorseMounted :is(.campaignFootShadow,.campaignRunTrail){display:none}
@@ -9021,6 +9021,12 @@
 
 .campaignAimGuide{position:absolute;height:3px;margin-top:-1.5px;background:radial-gradient(circle,#efd59a 0 1px,transparent 1.5px) 0 50%/12px 3px repeat-x;opacity:.65;transform-origin:0 50%;z-index:1;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.campaignAimGuide{background-position:0 50%!important}}
+
+.game.campaignSession :is(.primary,.mpPrimary){touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.campaignTouchAimCue{position:fixed;width:72px;height:72px;margin:-36px 0 0 -36px;border:1px solid #eed8a75c;border-radius:50%;background:#17251e18;pointer-events:none;z-index:150;box-sizing:border-box}
+.campaignTouchAimCue:after{content:"";position:absolute;left:calc(100% - 7px);top:calc(50% - 5px);width:10px;height:10px;border-top:3px solid #ffe0a1;border-right:3px solid #ffe0a1;transform:rotate(45deg);box-sizing:border-box}
+.campaignTouchAiming{outline:2px solid #ffe0a1!important;outline-offset:3px}
+.campaignTouchAimGuide{z-index:6}
 
 /* Static timber room and small CSS civilian silhouettes; no looping animations. */
 .campaignNorthDoor .campaignRoomWalls{border-top:0;border-bottom:8px solid #594735;border-radius:0 0 8px 8px}
@@ -9162,7 +9168,7 @@
 .campaignMountedTutorial .mpBgSystem{visibility:hidden}
 .campaignMountedTutorial .mpArena>.campaignTutorialBackdrop{z-index:0}
 
-.game.campaignMountedTutorial:not(.campaignDesktopView) .mpAvatar.host{left:26%!important}
+.game.campaignMountedTutorial:not(.campaignDesktopView) .mpAvatar.host{left:var(--campaignHostX,26%)!important}
 .game.campaignMountedTutorial:not(.campaignDesktopView) .mpAvatar.guest{left:81%!important}
 
 /* Ground puffs share exploration's six-node pool and stay beneath each horse. */
@@ -9196,6 +9202,93 @@
 
 @media(prefers-reduced-motion:reduce){.campaignChaseDust{display:none}.chaseHills,.chaseTown,.chaseTracks{will-change:auto}}
 
+.campaignDodgePanel{position:fixed;z-index:180;transform:translateX(-50%);box-sizing:border-box;width:min(370px,calc(100vw - 28px));padding:14px 16px;display:grid;grid-template-columns:1fr 112px;gap:6px 10px;border:1px solid #e6c58d;border-radius:11px;background:linear-gradient(145deg,#263238f5,#121b24f5);box-shadow:0 8px 28px #0007;color:#fff0d5;pointer-events:none}
+.campaignDodgeStep{font-size:10px;line-height:1.3;letter-spacing:.12em;color:#eac281}.campaignDodgeCopy h2{font-size:18px;line-height:1.15;margin:0 0 7px}.campaignDodgeCopy p{font-size:12px;line-height:1.4;margin:0 0 7px}.campaignDodgeControl{font-size:13px;color:#ffe0a1}.campaignDodgeNotice{grid-column:1/-1;font-size:11px;line-height:1.3;color:#d9d9c7;margin:2px 0 0}
+.campaignDodgePreview{position:relative;width:112px;height:88px;align-self:center;overflow:hidden;border-radius:7px;background:linear-gradient(#65736b55 65%,#b18b5a55 66%);border:1px solid #d3b47b55}
+.campaignDodgePreview .campaignDodgePreviewRoll{left:38%!important;top:50%!important;width:44px;height:44px;margin:0;transform:translate(-50%,-50%)!important;z-index:1}
+.campaignDodgePreviewRoll .mpModel{position:absolute;inset:0;width:44px;height:44px;transform:none!important;transform-origin:50% 50%;animation:campaignDodgePreviewSpin .8s linear infinite!important}
+.campaignDodgePreviewRoll .mpModel:before{width:38px!important;height:38px!important;left:50%!important;top:50%!important}.campaignDodgePreviewRoll .mpModel:after{width:28px!important;height:5px!important;left:50%!important;top:50%!important}
+.campaignDodgePreviewBullet{top:calc(50% - 4px)!important;left:12%;width:20px!important;height:8px!important;z-index:2;filter:drop-shadow(0 0 3px #ff7a56);animation:campaignDodgePreviewPass 2.2s linear infinite}
+@keyframes campaignDodgePreviewSpin{to{rotate:360deg}}@keyframes campaignDodgePreviewPass{from{left:115%}to{left:-35%}}
+.game.campaignPaused .campaignDodgePreview *{animation-play-state:paused!important}
+.campaignDodgePanel.compact{width:min(520px,calc(100vw - 24px));padding:8px 10px;grid-template-columns:1fr 90px;gap:3px 8px}.campaignDodgePanel.compact h2{font-size:15px;margin:0 0 4px}.campaignDodgePanel.compact .campaignDodgeCopy p{font-size:11px;line-height:1.25;margin-bottom:4px}.campaignDodgePanel.compact .campaignDodgeControl{font-size:12px}.campaignDodgePanel.compact .campaignDodgeNotice{font-size:10px}.campaignDodgePanel.compact .campaignDodgePreview{width:88px;height:64px}
+.game.campaignDodgeFocus .campaignTutorialBackdrop{filter:grayscale(1) blur(2.5px) brightness(.65)}
+.game.campaignDodgeFocus .mpAvatar.guest{filter:grayscale(1) blur(1.5px) brightness(.7)}
+.game.campaignDodgeFocus :is(.campaignNpcHealth,.mpPvpHud,.mpGunChamber){filter:grayscale(1);opacity:.65}
+.game.campaignDodgeLesson :is(.mpPrimary,.mpGunChamber){filter:grayscale(1);opacity:.4;pointer-events:none}
+.game.campaignDodgeLesson:not(.campaignMovementLesson) .mpS1{outline:2px solid #ffe2a1;outline-offset:3px;box-shadow:0 0 12px #f5cf7477}
+.campaignDodgeBullet{filter:drop-shadow(0 0 5px #ff694d);z-index:12}
+@media(prefers-reduced-motion:reduce){.game.campaignDodgeFocus .campaignTutorialBackdrop{filter:grayscale(1) brightness(.65)}.game.campaignDodgeFocus .mpAvatar.guest{filter:grayscale(1) brightness(.7)}}
+@media(prefers-reduced-motion:reduce){.campaignDodgePreviewRoll .mpModel,.campaignDodgePreviewBullet{animation:none!important}}
+
+/* One reused horse rig; only the preview wrapper moves, with no extra clock. */
+.campaignMovePreviewMotion{position:absolute;inset:0;animation:campaignMovePreviewSway 2.6s ease-in-out infinite}
+.campaignDodgePreview .campaignMovePreviewRig{left:50%;top:calc(50% + 27px);transform:scale(.58);transform-origin:0 0}
+.campaignDodgePanel.compact .campaignMovePreviewRig{top:calc(50% + 21px);transform:scale(.44)}
+@keyframes campaignMovePreviewSway{0%,100%{translate:0 -10px}50%{translate:0 10px}}
+.game.campaignMovementLesson .mpS1{filter:grayscale(1);opacity:.4;pointer-events:none}
+.game.campaignMovementLesson .mpPad{outline:2px solid #ffe2a1;outline-offset:3px;box-shadow:0 0 12px #f5cf7477}
+@media(prefers-reduced-motion:reduce){.campaignMovePreviewMotion{animation:none!important}}
+
+/* Reserve the feedback row without showing or announcing reactive hints. */
+.campaignDodgeNotice{visibility:hidden;min-height:1.3em}
+.campaignDodgePanel.desktop{width:min(450px,calc(100vw - 28px));padding:18px 20px;grid-template-columns:1fr 132px;gap:8px 12px}
+.campaignDodgePanel.desktop .campaignDodgeStep{font-size:11px}
+.campaignDodgePanel.desktop h2{font-size:21px}
+.campaignDodgePanel.desktop .campaignDodgeCopy p{font-size:13px}
+.campaignDodgePanel.desktop .campaignDodgeControl{font-size:14px}
+.campaignDodgePanel.desktop .campaignDodgePreview{width:132px;height:100px}
+
+/* Progress occupies the old feedback row below the control instruction. */
+.campaignDodgeFooter{grid-column:1/-1;position:relative;min-height:15px;margin-top:2px;line-height:1.3}
+.campaignDodgeFooter .campaignDodgeNotice{position:absolute;inset:0;margin:0}
+.campaignDodgeControl{display:block;margin-top:6px}
+.campaignDodgePanel.compact .campaignDodgeControl{margin-top:3px}
+
+/* BEGIN INLINED src/campaign/tutorial-sand.css */
+.campaignSandProjectile{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;filter:none!important;z-index:12;pointer-events:none}
+.campaignSandProjectile>svg{display:block;width:100%;height:100%;overflow:visible}
+.campaignSandProjectile.lessonAvoided{opacity:.45;z-index:2}
+.campaignPocketSandScreen{position:absolute;inset:0;z-index:35;pointer-events:none;opacity:1;will-change:opacity;background:radial-gradient(ellipse 64% 85% at 50% 50%,#d5b16f 0 32%,#d5b16f 42%,#d5b16fe6 57%,#d2ab6588 76%,#caa05a22 94%,transparent 100%),radial-gradient(ellipse at 15% 24%,#d6b57133 0 13%,transparent 49%),radial-gradient(ellipse at 92% 88%,#d9b67522 0 20%,transparent 53%)}
+.campaignSandPreview{position:absolute;top:calc(50% - 20px);left:12%;width:24px;height:40px;z-index:2;animation:campaignDodgePreviewPass 2.2s linear infinite}
+.campaignSandPreview>svg{width:100%;height:100%}
+.campaignDodgePanel:not(.sandShot) .campaignSandPreview,.campaignDodgePanel.sandShot .campaignDodgePreviewBullet{display:none}
+.game.campaignPaused .campaignSandPreview{animation-play-state:paused!important}
+.campaignSandThrow .campaignHorseHands{animation:campaignSandToss .28s ease-out;transform-origin:18px 46px}
+@keyframes campaignSandToss{0%,100%{rotate:0deg}45%{rotate:-50deg}}
+.game.campaignPaused .campaignSandThrow .campaignHorseHands{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.campaignSandPreview,.campaignSandThrow .campaignHorseHands{animation:none!important}}
+
+.campaignSandThrow:not(.campaignMountedCombat) .campaignOutlawAim{animation:campaignSandToss .28s ease-out}
+.game.campaignPaused .campaignSandThrow .campaignOutlawAim{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.campaignSandThrow .campaignOutlawAim{animation:none!important}}
+
+/* Two animated SVG groups keep the existing cloud silhouette and grains. */
+.campaignSandProjectile .campaignSandCloud{transform-box:fill-box;transform-origin:center;animation:campaignSandBillow .46s ease-in-out infinite alternate}
+.campaignSandProjectile .campaignSandGrains{transform-box:fill-box;transform-origin:center;animation:campaignSandDrift .6s ease-in-out infinite alternate}
+@keyframes campaignSandBillow{from{transform:translateY(-1px) scale(.96,.98)}to{transform:translateY(1px) scale(1,1.02)}}
+@keyframes campaignSandDrift{from{transform:translate(2px,-2px) rotate(-3deg);opacity:.7}to{transform:translate(-2px,2px) rotate(3deg);opacity:1}}
+.game.campaignPaused .campaignSandProjectile>svg>g{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.campaignSandProjectile>svg>g{animation:none!important}}
+/* END INLINED src/campaign/tutorial-sand.css */
+/* BEGIN INLINED src/campaign/shooting-lesson.css */
+.campaignShootingPreviewModel{position:absolute;left:7px;top:12px;width:98px;height:90px;transform:scale(.58);transform-origin:0 0}
+.campaignShootingPreviewModel .gsUnit{--gs-coat-h:30px}
+.campaignShootingPreviewArm{position:absolute;inset:0;z-index:3;transform-origin:38px 52px;pointer-events:none;rotate:0deg}
+.campaignShootingPanel.aiming .campaignShootingPreviewArm{animation:campaignShootingAim 2.4s ease-in-out infinite}
+.campaignShootingTarget{position:absolute;right:8px;top:32%;width:14px;height:14px;border:2px solid #f2ae87;border-radius:50%;box-shadow:inset 0 0 0 3px #71372b}
+.campaignShootingRay{fill:none;stroke:#f6dba0;stroke-width:4;stroke-dasharray:1 13;stroke-linecap:round;pointer-events:none}
+@keyframes campaignShootingAim{0%,100%{rotate:-8deg}50%{rotate:8deg}}
+.game.campaignShootingLesson .mpS1,.game.campaignShootingLesson .mpPad{filter:grayscale(1);opacity:.35;pointer-events:none}
+.game.campaignShootingLesson .mpPrimary{outline:2px solid #ffe2a1;outline-offset:3px}
+.game.campaignPaused .campaignShootingPreview *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.campaignShootingPreview *{animation:none!important}}
+
+.campaignChaseObjective{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:90;pointer-events:none;max-width:90%;white-space:nowrap;text-align:center;font:800 clamp(19px,3.5vw,34px)/1.2 system-ui;letter-spacing:.05em;color:#ffe1a0;text-shadow:0 2px 4px #000,0 0 14px #000b;animation:campaignChaseObjective 3s ease-in-out both}
+@keyframes campaignChaseObjective{0%,100%{opacity:0}12%,78%{opacity:1}}
+.game.campaignPaused .campaignChaseObjective{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.campaignChaseObjective{animation:none}}
+/* END INLINED src/campaign/shooting-lesson.css */
 /* A quiet chase loops behind the destination picker. */
 body.campaignLobbyOpen{overflow:hidden}
 .campaignLobby{position:fixed;inset:0;z-index:20000;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px;background:#000;color:#f2e8d5;text-align:center}
@@ -9206,16 +9299,23 @@ body.campaignLobbyOpen{overflow:hidden}
 .campaignLobby [data-campaign-destination]{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;min-height:146px;padding:24px 16px;border:1px solid #756343;border-radius:8px;background:#090909;color:#f2e8d5;cursor:pointer}
 .campaignLobby button strong{font:700 23px/1.2 system-ui}.campaignLobby button span{font:400 13px/1.5 system-ui;color:#b8ae9e}
 .campaignLobby button:hover{background:#17130c;border-color:#d6b77f}.campaignLobby button:focus-visible{outline:2px solid #f3d39a;outline-offset:5px}
-.campaignLobbyBack{margin-top:28px;min-width:90px;min-height:44px;padding:10px 20px;border:1px solid #555;border-radius:6px;background:#000;color:#ccc;font:600 14px system-ui;cursor:pointer}
+.campaignLobbyBack,.campaignLobbyFullscreen{margin-top:28px;min-width:90px;min-height:44px;padding:10px 20px;border:1px solid #555;border-radius:6px;background:#000;color:#ccc;font:600 14px/20px system-ui;vertical-align:middle;cursor:pointer}
+.campaignLobbyFullscreen{margin-right:10px}
 .campaignRegionBackdrop.campaignTutorialBackdrop{background:#000}
 @media(max-width:500px) and (orientation:portrait){.campaignLobby{padding:24px}.campaignLobby nav{grid-template-columns:1fr}.campaignLobby [data-campaign-destination]{min-height:120px}}
-@media(max-height:450px) and (orientation:landscape){.campaignLobby{padding:16px 24px}.campaignLobby h1{margin:6px 0 18px;font-size:24px}.campaignLobby [data-campaign-destination]{min-height:108px;padding:16px}.campaignLobbyBack{margin-top:16px}}
+@media(max-height:450px) and (orientation:landscape){.campaignLobby{padding:16px 24px}.campaignLobby h1{margin:6px 0 18px;font-size:24px}.campaignLobby [data-campaign-destination]{min-height:108px;padding:16px}.campaignLobbyBack,.campaignLobbyFullscreen{margin-top:16px}}
 
 .campaignLobbyScene{pointer-events:none;z-index:0}
 .campaignLobbyScene:after{content:'';position:absolute;inset:0;z-index:5;background:linear-gradient(#080d1855,#070a1233 45%,#05080d22);pointer-events:none}
 .campaignLobbyScene .campaignTutorialRider{left:24%;top:89%}
 .campaignLobbyScene .campaignTutorialRider[data-rider=outlaw]{left:76%;top:85%}
-@media(max-height:450px){.campaignLobbyContent{margin:0 auto;padding:12px 18px}.campaignLobbyContent>small{font-size:10px}.campaignLobby h1{margin:5px 0 12px;font-size:23px}.campaignLobby [data-campaign-destination]{min-height:80px;padding:10px;gap:7px}.campaignLobbyBack{min-height:36px;margin-top:12px;padding:7px 16px}.campaignLobbyScene .campaignTutorialRider{top:96%}.campaignLobbyScene .campaignTutorialRider[data-rider=outlaw]{top:92%}}
+@media(max-height:450px){.campaignLobbyContent{margin:0 auto;padding:12px 18px}.campaignLobbyContent>small{font-size:10px}.campaignLobby h1{margin:5px 0 12px;font-size:23px}.campaignLobby [data-campaign-destination]{min-height:80px;padding:10px;gap:7px}.campaignLobbyBack,.campaignLobbyFullscreen{min-height:36px;margin-top:12px;padding:7px 16px}.campaignLobbyScene .campaignTutorialRider{top:96%}.campaignLobbyScene .campaignTutorialRider[data-rider=outlaw]{top:92%}}
+
+/* The failed memory cuts straight to black, with no automatic retry. */
+body.campaignTutorialDeathOpen{overflow:hidden}
+.campaignTutorialDeath{position:fixed;inset:0;z-index:21000;display:grid;place-items:center;width:100%;height:100%;margin:0;padding:32px;border:0;border-radius:0;background:#000;color:#eee7dc;text-align:center;cursor:default;box-shadow:none;font:400 clamp(19px,2.8vw,29px)/1.65 Georgia,serif;touch-action:manipulation}
+.campaignTutorialDeath>span{display:block;width:min(100%,740px)}
+.campaignTutorialDeath:focus{outline:none}
 
 
 .campaignRegionArena .mpBgSystem>.mpBgLayer{visibility:hidden}
@@ -9552,6 +9652,9 @@ body.campaignLobbyOpen{overflow:hidden}
 .campaignMusicCredit{font-size:11px;line-height:1.5;margin:10px 0 0;color:#cbbfa8}.campaignMusicCredit a{color:#eac88e;text-decoration:underline}
 
 .campaignSettingsTabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid #ceb07e55;padding-bottom:10px}.campaignSettingsTabs button{flex:1}.campaignSettingsTabs [aria-selected=true]{background:#54432d;border-color:#efcd88;color:#fff0bd}.campaignSettingsCard [data-settings-panel=credits] h3{font-size:15px;margin:0 0 12px}.campaignSettingsCard [data-settings-panel=credits]{min-height:180px}.campaignSettingsCard [data-settings-panel=credits] .campaignMusicCredit{font-size:13px}
+
+.campaignDialogueTools label{display:block;margin:0 0 8px;font-size:14px}.campaignDialogueTools select{margin-bottom:12px}.campaignDialogueTools button{display:block;width:100%;margin:10px 0}.campaignDialogueTools button:disabled{opacity:.45;cursor:default}.campaignDialogueTools input[hidden]{display:none!important}.campaignDialogueTools p{font-size:13px;line-height:1.5;color:#dfd0b9;overflow-wrap:anywhere}.campaignDialogueTools .dialogueImportStatus{padding:10px;border:1px solid #ceb07e55;border-radius:7px;background:#0d1725;white-space:pre-wrap}.campaignDialogueTools .dialogueImportStatus[data-error=true]{color:#ffba9f}.campaignDialogueTools .dialogueImportSave{font-weight:700;color:#f3ce8d}.campaignDialogueTools h3{font-size:16px;margin:0 0 14px}
+.campaignDialogueArtwork{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform-origin:50% 100%;pointer-events:none}.campaignDialogueArtwork.hide{display:none!important}
 .campaignDamageTotal{position:absolute;right:16px;top:91px;z-index:95;pointer-events:none;isolation:isolate;display:flex;align-items:flex-end;flex-direction:column;gap:14px;opacity:0;translate:24px 0;transition:opacity .24s ease,translate .24s ease;font-variant-numeric:tabular-nums}
 .campaignDamageTotal.show{opacity:1;translate:0 0}
 .campaignDamageTotal small{font:800 12px/1.2 ui-sans-serif,system-ui;letter-spacing:.1em;color:#fff;background:#08101b70;padding:5px 9px;border-radius:2px;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:0 1px 2px #000}
@@ -10255,7 +10358,7 @@ body.campaignLobbyOpen{overflow:hidden}
 <body>
 <div id="game">
 <section class="modeGate">
-  <div class="versionTag">v41.53 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.54 · PROTECTED STABLE</div>
   <div class="title">CHOOSE GAME MODE</div>
   <div class="modeSub">Single Player is preserved exactly. Multiplayer begins as a separate, isolated prototype.</div>
   <div class="modeChoices">
@@ -10274,7 +10377,7 @@ body.campaignLobbyOpen{overflow:hidden}
   </div>
 </section>
 <section class="multiPrototype hide">
-  <div class="versionTag">v41.53 · PROTECTED STABLE</div>
+  <div class="versionTag">v41.54 · PROTECTED STABLE</div>
   <div class="title">MULTIPLAYER PROTOTYPE</div>
   <div class="modeSub">Create a room as Host, connect as Guest, or train locally against Outlaw, Sukuna Boss, or the passive dummy.</div>
   <div class="protoCard"><b>HOST-AUTHORITATIVE FOUNDATION</b><p>The Host owns movement, HP, damage, collisions, status effects, cooldown validation, projectile outcomes and round results. Guest controls remain inputs only. No enemy AI or boss progression runs in PvP. <b>Hitbox Sync:</b> cast lanes and hurtboxes stay locked to authoritative positions while characters move and animate.</p></div>
@@ -10406,6 +10509,9 @@ body.campaignLobbyOpen{overflow:hidden}
 </section>
 </div>
 <script src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+<!-- FIDGET_DIALOGUE_CONTENT_START -->
+<script type="application/json" id="campaignDialogueContent">{"format":"fidget-dialogue-overrides","version":1,"overrides":[]}</script>
+<!-- FIDGET_DIALOGUE_CONTENT_END -->
 <script>
 // v41.22k — Tough Glove bonus punches require manual vertical aim; close-range front anchor remains, auto lane tracking removed.
 
@@ -10456,6 +10562,7 @@ function syncFidgetFullscreenUi(){
     mpLandscapeFullscreen.textContent=active?'× EXIT FULLSCREEN':'⛶ FULLSCREEN';
     mpLandscapeFullscreen.setAttribute('aria-label',active?'Exit fullscreen landscape mode':'Enter fullscreen landscape mode');
   }
+  const lobby=document.querySelector('.campaignLobbyFullscreen');if(lobby){lobby.textContent=active?'× EXIT FULLSCREEN':'⛶ FULLSCREEN';lobby.setAttribute('aria-label',active?'Exit fullscreen':'Enter fullscreen');lobby.setAttribute('aria-pressed',String(active))}
   requestFidgetViewportLayout();
 }
 async function toggleFidgetFullscreen(){
@@ -10476,6 +10583,11 @@ async function toggleFidgetFullscreen(){
 mpLandscapeFullscreen?.addEventListener('pointerup',e=>{e.preventDefault();e.stopPropagation();toggleFidgetFullscreen()});
 document.addEventListener('fullscreenchange',syncFidgetFullscreenUi);
 document.addEventListener('webkitfullscreenchange',syncFidgetFullscreenUi);
+// Reserve the desktop browser shortcut before lobby and binding capture handlers.
+window.addEventListener('keydown',e=>{
+  if(e.code!=='F11'||e.altKey||e.ctrlKey||e.metaKey||!matchMedia('(pointer:fine) and (hover:hover)').matches)return;
+  e.preventDefault();e.stopImmediatePropagation();if(!e.repeat)toggleFidgetFullscreen();
+},true);
 
 const ua=navigator.userAgent||'',mem=navigator.deviceMemory||8,cores=navigator.hardwareConcurrency||8;
 const PERF_DEVICE_LITE=/SM-A515/i.test(ua)||(/Android/i.test(ua)&&mem<=4)||cores<=4;
@@ -16104,7 +16216,7 @@ const CAMPAIGN_ACTORS=Object.freeze({
   roadOutlaw:Object.freeze({id:'roadOutlaw',kind:'enemy',name:'Road Outlaw',model:'gunslinger',palette:'outlaw',combat:Object.freeze({name:'ROAD OUTLAW',hp:300,hpRange:Object.freeze([100,500]),c:'#ec9278',fire:1.25,speed:2.5,stage:0,ai:'outlaw'})}),
   trainingDummy:Object.freeze({id:'trainingDummy',kind:'enemy',name:'Training Dummy',model:'trainingDummy',palette:'practiceDummy',combat:Object.freeze({name:'TRAINING DUMMY',hp:1000,c:'#dbb374',fire:999999,speed:0,stage:0,ai:'training',training:true})}),
   tavernKeeper:Object.freeze({id:'tavernKeeper',kind:'npc',name:'Bartender',model:'civilian',palette:'civilianKeeper',dialogue:Object.freeze([{speaker:'npc',text:'Welcome to the Dusty Spur. Holster that iron and make yourself at home.'},{speaker:'gs',text:'A quiet table sounds mighty fine.'},{speaker:'npc',text:'The road brings all sorts through here. There is always a story at the next table.'}])}),
-  tavernBarmaid:Object.freeze({id:'tavernBarmaid',kind:'npc',name:'Barmaid',model:'civilian',palette:'civilianBarmaid',dialogue:Object.freeze([{speaker:'npc',text:'Another round for the tables. Mind the aisle, partner.'},{speaker:'gs',text:'Much obliged. I will stay out of your way.'}])}),
+  tavernBarmaid:Object.freeze({id:'tavernBarmaid',kind:'npc',name:'Barmaid',model:'civilian',palette:'civilianBarmaid',dialogue:Object.freeze([{"speaker":"npc","text":"Another round for the tables. Mind the aisle, partner."},{"speaker":"gs","text":"Much obliged."}])}),
   tavernCustomer:Object.freeze({id:'tavernCustomer',kind:'npc',name:'Customer',model:'civilian',palette:'civilianCustomer',dialogue:Object.freeze([{speaker:'npc',text:'Good company and a seat out of the sun. That is enough for today.'}])}),
   townWalker:Object.freeze({id:'townWalker',kind:'npc',name:'Townsperson',model:'civilian',palette:'civilianWalker',dialogue:Object.freeze([{speaker:'npc',text:'The Dusty Spur is just down the road. A good place to rest your feet.'}])}),
   enforcerBoss:Object.freeze({id:'enforcerBoss',kind:'boss',name:'Enforcer',model:'gunslinger',palette:'boss',combat:Object.freeze({name:'ENFORCER',hp:1200,c:'#bda0f3',fire:.82,speed:3.4,stage:2,ai:'gunner'})})
@@ -16141,6 +16253,159 @@ const CAMPAIGN_COMBAT_BEHAVIORS=Object.freeze({
 function campaignEnemyAttack(){
   if(!campaign.active||campaign.phase!=='combat')return false;
   const profile=campaignCombatProfile(),attack=CAMPAIGN_COMBAT_BEHAVIORS[profile?.ai];if(typeof attack!=='function')return false;attack();return true
+}
+
+/* Portable portrait pack reader shared by the local authoring tools. */
+(() => {
+ 'use strict';
+ const MAX_IMAGE=8*1024*1024,MAX_PACK=24*1024*1024;
+ function loadImage(src){return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{if(image.naturalWidth*image.naturalHeight>24000000){reject(Error('Use a drawing smaller than 24 megapixels.'));return}resolve({width:image.naturalWidth,height:image.naturalHeight})};image.onerror=()=>reject(Error('This image could not be read. Try a PNG, JPG or WebP export.'));image.src=src})}
+ async function validate(data){
+  if(!data||data.format!=='fidget-portrait-pack'||data.version!==1)throw Error('Choose a version 1 Fidget portrait pack.');
+  const c=data.character;if(!c||typeof c.id!=='string'||!/^[a-z][a-z0-9_-]{0,47}$/.test(c.id)||typeof c.name!=='string'||!c.name.trim()||c.name.length>80)throw Error('Use a character ID such as gs or trail-guide, and a display name.');
+  if(!Array.isArray(data.expressions)||!data.expressions.length||data.expressions.length>32)throw Error('The pack needs between 1 and 32 expressions.');
+  const ids=new Set(),expressions=[];
+  for(const e of data.expressions){
+   if(!e||typeof e.id!=='string'||!/^[a-z][a-z0-9_-]{0,47}$/.test(e.id)||ids.has(e.id)||typeof e.name!=='string'||!e.name.trim()||e.name.length>48)throw Error('Each expression needs a unique ID and a name of up to 48 characters.');
+   ids.add(e.id);
+   if(!['x','y','scale'].every(k=>typeof e[k]==='number'&&Number.isFinite(e[k]))||Math.abs(e.x)>200||Math.abs(e.y)>200||e.scale<10||e.scale>400||typeof e.flip!=='boolean')throw Error('An expression has invalid framing values.');
+   let size={width:0,height:0};
+   if(e.src!==null){
+    if(typeof e.src!=='string'||!/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(e.src)||e.src.length>MAX_IMAGE*4/3+100)throw Error('Portrait images must be embedded PNG, JPG or WebP files up to 8 MB.');
+    size=await loadImage(e.src);
+   }
+   expressions.push({id:e.id,name:e.name,src:e.src,...size,x:e.x,y:e.y,scale:e.scale,flip:e.flip});
+  }
+  return {format:'fidget-portrait-pack',version:1,character:{id:c.id,name:c.name},expressions};
+ }
+ window.FidgetPortraitPack=Object.freeze({validate,loadImage,MAX_PACK});
+})();
+
+/* Shared portable conversation validation; data only, no gameplay state. */
+(() => {
+ 'use strict';
+ const MAX_BYTES=52*1024*1024;
+ async function validate(data){
+  if(!data||data.format!=='fidget-dialogue-project'||data.version!==1)throw Error('Choose a version 1 Fidget dialogue project.');
+  if(typeof data.id!=='string'||!/^[a-z][a-z0-9_-]{0,47}$/.test(data.id)||typeof data.title!=='string'||!data.title.trim()||data.title.length>100)throw Error('Use an ID such as campfire-arrival and a conversation title.');
+  const cast={};for(const role of ['gs','npc']){const member=data.cast?.[role];if(!member||typeof member.name!=='string'||!member.name.trim()||member.name.length>80)throw Error('Both speakers need names of up to 80 characters.');cast[role]={name:member.name,portrait:member.portrait===null?null:await FidgetPortraitPack.validate(member.portrait)}}
+  if(!Array.isArray(data.lines)||data.lines.length<1||data.lines.length>300)throw Error('A conversation needs between 1 and 300 lines.');
+  const ids=new Set(),lines=[];for(const l of data.lines){
+   if(!l||typeof l.id!=='string'||!/^[a-zA-Z0-9_-]{1,64}$/.test(l.id)||ids.has(l.id)||!['gs','npc','narrator'].includes(l.speaker)||typeof l.text!=='string'||l.text.length>2000)throw Error('Each line needs a unique ID, valid speaker and text of up to 2000 characters.');
+   ids.add(l.id);if(l.expression!==null&&(typeof l.expression!=='string'||!cast[l.speaker]?.portrait?.expressions.some(e=>e.id===l.expression)))throw Error('A line refers to an expression missing from its speaker’s portrait pack.');
+   lines.push({id:l.id,speaker:l.speaker,text:l.text,expression:l.expression});
+  }
+  return {format:'fidget-dialogue-project',version:1,id:data.id,title:data.title,cast,lines};
+ }
+ function validateLines(data){
+  if(!Array.isArray(data)||data.length<1||data.length>300)throw Error('Choose a dialogue export with between 1 and 300 lines.');
+  return data.map(l=>{
+   if(!l||!['gs','npc','narrator'].includes(l.speaker)||typeof l.text!=='string'||l.text.length>2000)throw Error('Each line needs a valid speaker and text of up to 2000 characters.');
+   return {speaker:l.speaker,text:l.text};
+  });
+ }
+ async function validateContent(data){return Array.isArray(data)?validateLines(data):validate(data)}
+ window.FidgetDialogueProject=Object.freeze({validate,validateLines,validateContent,MAX_BYTES});
+})();
+
+/* Session-owned authored conversations, independent of progress/device saves.
+ * Export replaces one inert JSON block in a supplied original HTML file; never
+ * serialize the running DOM, which contains transient gameplay and remote state. */
+const campaignDialogueImports={overrides:new Map(),ready:false,dirty:false,revision:0,root:null,source:null,busy:false};
+function campaignDialogueImportTargets(){return CAMPAIGN_AREA.actors.filter(a=>campaignActorDefinition(a.definition)?.kind==='npc')}
+function campaignDialogueImported(actor){
+  const content=campaignDialogueImports.overrides.get(actor.id);if(!content)return null;
+  return Array.isArray(content)?{lines:content}:{lines:content.lines,customCast:content.cast,name:content.cast.npc.name}
+}
+function campaignDialogueImportStatus(message,error=false){const node=campaignDialogueImports.root?.querySelector('.dialogueImportStatus');if(node){node.textContent=message;node.dataset.error=String(error)}}
+function campaignDialogueImportsRender(){
+  const state=campaignDialogueImports,root=state.root;if(!root)return;
+  const target=root.querySelector('#campaignDialogueTarget').value,content=state.overrides.get(target),lines=content?(Array.isArray(content)?content:content.lines):null;
+  root.querySelector('.dialogueImportSummary').textContent=lines?`${lines.length} imported lines${Array.isArray(content)?'':' · project names, portraits and expressions'}. First line: ${lines[0].text.slice(0,160)}`:'Using this NPC’s original dialogue.';
+  root.querySelector('.dialogueImportSave').textContent=state.dirty?'Session changes · export HTML to keep them.':`${state.overrides.size} conversations included${state.overrides.size?' in this build':''}.`;
+  for(const button of root.querySelectorAll('button'))button.disabled=state.busy||!state.ready;
+  root.querySelector('.dialogueImportRestore').disabled=state.busy||!state.ready||!content;
+  root.querySelector('#campaignDialogueTarget').disabled=state.busy||!state.ready;
+}
+function campaignDialogueImportRefreshConversation(){
+  if(campaign.dialogue){campaign.dialogue=null;campaignClearInput();campaignRender()}
+  campaignDialogueImportsRender();
+}
+function campaignDialogueImportsSerialized(overrides=campaignDialogueImports.overrides){
+  const data={format:'fidget-dialogue-overrides',version:1,overrides:[...overrides].map(([target,content])=>({target,content}))},json=JSON.stringify(data);
+  if(new Blob([json]).size>FidgetDialogueProject.MAX_BYTES)throw Error('Combined dialogue content exceeds 52 MB. Use smaller portrait images.');
+  return json.replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');
+}
+async function campaignDialogueImportsLoad(){
+  const state=campaignDialogueImports;
+  try{
+    const raw=document.getElementById('campaignDialogueContent')?.textContent||'',data=JSON.parse(raw),targets=new Set(campaignDialogueImportTargets().map(a=>a.id));
+    if(data?.format!=='fidget-dialogue-overrides'||data.version!==1||!Array.isArray(data.overrides)||data.overrides.length>targets.size)throw Error('Invalid embedded dialogue content.');
+    if(new Blob([raw]).size>FidgetDialogueProject.MAX_BYTES)throw Error('Embedded dialogue content exceeds 52 MB.');
+    const checked=new Map();for(const row of data.overrides){if(!row||!targets.has(row.target)||checked.has(row.target))throw Error('An embedded conversation has an invalid NPC target.');checked.set(row.target,await FidgetDialogueProject.validateContent(row.content))}
+    state.overrides=checked;campaignDialogueImportStatus(checked.size?'Included dialogue loaded. You can edit another conversation or restore an original.':'Choose an NPC, then import your dialogue JSON.');
+  }catch(error){campaignDialogueImportStatus('Could not load included dialogue. Original conversations remain available. '+error.message,true)}
+  finally{state.ready=true;campaignDialogueImportsRender()}
+}
+async function campaignDialogueImportFile(file,target){
+  const state=campaignDialogueImports;if(!state.ready||state.busy||!file)return;
+  state.busy=true;const revision=state.revision;campaignDialogueImportsRender();
+  try{
+    if(file.size>FidgetDialogueProject.MAX_BYTES)throw Error('Dialogue files must be smaller than 52 MB.');
+    const content=await FidgetDialogueProject.validateContent(JSON.parse(await file.text()));
+    if(revision!==state.revision||target!==state.root.querySelector('#campaignDialogueTarget').value)throw Error('The target changed. Please import the file again.');
+    if(!campaignDialogueImportTargets().some(a=>a.id===target))throw Error('Choose an existing NPC.');
+    const next=new Map(state.overrides);next.set(target,content);campaignDialogueImportsSerialized(next);
+    state.overrides=next;state.dirty=true;state.revision++;campaignDialogueImportRefreshConversation();
+    const actor=campaignDialogueImportTargets().find(a=>a.id===target),name=actor.name||campaignActorDefinition(actor.definition).name;
+    campaignDialogueImportStatus(`Applied to ${name}. Close Settings, resume, and talk to this NPC to see it. Export HTML to keep or share your changes.`);
+  }catch(error){campaignDialogueImportStatus(error instanceof SyntaxError?'This file is not valid JSON. Your existing dialogue is unchanged.':error.message,true)}
+  finally{state.busy=false;campaignDialogueImportsRender()}
+}
+function campaignDialogueExportHtml(source){
+  const build=window.FidgetUpdater?.config.build,match=source.match(/build:'([^']+)',\s*release:'([^']+)',\s*protocol:(\d+)/);
+  if(!match||match[1]!==build||Number(match[3])!==NET_PROTOCOL)throw Error('Choose the same game build you opened: v'+build+'.');
+  // Split marker literals so this module cannot match its own source text.
+  const start='<!-- FIDGET_'+'DIALOGUE_CONTENT_START -->',end='<!-- FIDGET_'+'DIALOGUE_CONTENT_END -->',pattern=new RegExp(start+'[\\s\\S]*?'+end,'g');
+  if([...source.matchAll(pattern)].length!==1||!source.includes('function campaignDialogueImportBoot('))throw Error('Choose the importer-enabled game HTML you opened.');
+  const block=start+'\n<script type="application/json" id="campaignDialogueContent">'+campaignDialogueImportsSerialized()+'<'+'/script>\n'+end;
+  return source.replace(pattern,()=>block);
+}
+async function campaignDialogueExportFile(file){
+  const state=campaignDialogueImports;if(state.busy||!state.ready)return;state.busy=true;campaignDialogueImportsRender();
+  try{
+    if(file){if(file.size>80*1024*1024)throw Error('The game HTML must be smaller than 80 MB.');const source=await file.text();campaignDialogueExportHtml(source);state.source=source}
+    if(!state.source)throw Error('Choose the game HTML file you opened, then export again.');
+    const html=campaignDialogueExportHtml(state.source),url=URL.createObjectURL(new Blob([html],{type:'text/html'})),a=document.createElement('a');
+    a.href=url;a.download='fidget-shooter-v'+window.FidgetUpdater.config.build+'-dialogue.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);state.dirty=false;
+    campaignDialogueImportStatus('Updated game HTML exported. Open that new file to play or share it with your edits included. Campaign progress is not included.');
+  }catch(error){campaignDialogueImportStatus(error.message,true)}
+  finally{state.busy=false;campaignDialogueImportsRender()}
+}
+function campaignDialogueImportBoot(panel){
+  const state=campaignDialogueImports;state.root=panel;panel.classList.add('campaignDialogueTools');
+  panel.innerHTML='<h3>Import your dialogue</h3><label for="campaignDialogueTarget">Conversation to replace</label><select id="campaignDialogueTarget"></select><button type="button" class="dialogueImportChoose">Import dialogue JSON…</button><input type="file" id="campaignDialogueJsonFile" accept=".json,application/json" hidden><p class="dialogueImportSummary"></p><p class="dialogueImportSave"></p><button type="button" class="dialogueImportRestore">Restore original dialogue</button><button type="button" class="dialogueImportExport">Export playable HTML…</button><input type="file" id="campaignDialogueHtmlFile" accept=".html,text/html" hidden><p>Import a .lines.json text export or a .dialogue.json project from Dialogue Studio. Projects include their speaker names, drawings and expressions. Imports apply to the selected NPC.</p><p>Changes last for this session. Export a new HTML to keep them. On the first export, select the game HTML you opened. Then open the downloaded copy to play with your changes included.</p><p class="dialogueImportStatus" role="status" aria-live="polite"></p>';
+  const select=panel.querySelector('#campaignDialogueTarget');for(const a of campaignDialogueImportTargets()){const option=document.createElement('option');option.value=a.id;option.textContent=a.name||campaignActorDefinition(a.definition).name;select.append(option)}
+  select.addEventListener('change',campaignDialogueImportsRender);
+  const json=panel.querySelector('#campaignDialogueJsonFile'),html=panel.querySelector('#campaignDialogueHtmlFile');
+  panel.querySelector('.dialogueImportChoose').addEventListener('click',()=>json.click());
+  json.addEventListener('change',async()=>{await campaignDialogueImportFile(json.files[0],select.value);json.value=''});
+  panel.querySelector('.dialogueImportRestore').addEventListener('click',()=>{if(state.busy)return;state.overrides.delete(select.value);state.dirty=true;state.revision++;campaignDialogueImportRefreshConversation();campaignDialogueImportStatus('Original dialogue restored for this NPC. Export HTML to keep this change.');});
+  panel.querySelector('.dialogueImportExport').addEventListener('click',()=>{if(state.source){campaignDialogueExportFile();return}campaignDialogueImportStatus('Choose the game HTML file you opened. A new copy will be downloaded with your dialogue included.');html.click()});
+  html.addEventListener('change',async()=>{if(html.files[0])await campaignDialogueExportFile(html.files[0]);html.value=''});
+  window.addEventListener('beforeunload',e=>{if(state.dirty){e.preventDefault();e.returnValue=''}});
+  campaignDialogueImportsRender();campaignDialogueImportsLoad();
+}
+function campaignDialogueArtworkSync(root,dialogue,def){
+  for(const role of ['gs','npc']){
+    const p=root.querySelector(role==='gs'?'.left':'.right'),palette=p.querySelector('.campaignDialoguePalette'),figure=p.querySelector('.campaignDialogueFigure'),image=p.querySelector('.campaignDialogueArtwork'),pack=dialogue.customCast?.[role]?.portrait;
+    p.setAttribute('aria-label',dialogue.customCast?.[role]?.name||(role==='gs'?'Gunslinger':dialogue.name||def?.name||''));
+    let expression=pack?.expressions[0];if(pack)for(let i=0;i<=dialogue.index;i++){const line=dialogue.lines[i];if(line?.speaker===role&&line.expression)expression=pack.expressions.find(e=>e.id===line.expression)||expression}
+    const custom=!!expression?.src;figure.classList.toggle('hide',custom);image.classList.toggle('hide',!custom);
+    if(role==='npc')palette.className='campaignDialoguePalette'+(!custom&&def?' '+def.palette:'');
+    if(custom){if(image.getAttribute('src')!==expression.src)image.src=expression.src;image.style.transform=`translate(${expression.x}%,${expression.y}%) scale(${expression.scale/100}) scaleX(${expression.flip?-1:1})`}
+    else{image.removeAttribute('src');image.removeAttribute('style')}
+  }
 }
 
 function campaignSettingsTab(tab){
@@ -16184,16 +16449,17 @@ function campaignSettingsSync(){
 }
 function campaignSettingsBoot(){
   campaignSettingsLoad();campaignBindingsLoad();const root=document.createElement('div');root.id='campaignSettingsPanel';root.className='campaignSettingsOverlay hide';root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-labelledby','campaignSettingsTitle');
-  root.innerHTML='<div class="campaignSettingsCard"><div class="campaignSettingsHead"><h2 id="campaignSettingsTitle">Settings</h2><button type="button" class="campaignSettingsClose" aria-label="Close settings">×</button></div><div class="campaignSpeedLabel"><label id="campaignSpeedLabel" for="campaignDialogueSpeed">Dialogue text speed</label><output for="campaignDialogueSpeed" aria-live="polite"></output></div><input id="campaignDialogueSpeed" type="range" min="0" max="3" step="1" value="1" aria-labelledby="campaignSpeedLabel"><div class="campaignSpeedEnds" aria-hidden="true"><span>Slow</span><span>Instant</span></div><fieldset class="campaignVolumeSettings"><legend>Sound</legend><div class="campaignVolumeRow"><label for="campaignVolume-master">Master volume</label><output for="campaignVolume-master" data-audio-output="master">100%</output></div><input id="campaignVolume-master" type="range" min="0" max="100" step="1" value="100" data-audio-volume="master"><div class="campaignVolumeRow"><label for="campaignVolume-sfx">Sound FX</label><output for="campaignVolume-sfx" data-audio-output="sfx">100%</output></div><input id="campaignVolume-sfx" type="range" min="0" max="100" step="1" value="100" data-audio-volume="sfx"><div class="campaignVolumeRow"><label for="campaignVolume-music">Music</label><output for="campaignVolume-music" data-audio-output="music">100%</output></div><input id="campaignVolume-music" type="range" min="0" max="100" step="1" value="100" data-audio-volume="music"><p class="campaignMusicCredit">“Pippin the Hunchback” — Kevin MacLeod (<a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400005" target="_blank" rel="noopener noreferrer">incompetech.com</a>). <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Audio compressed; short fades added.</p></fieldset><label class="campaignSoundLabel" for="campaignExplorationSound">Exploration gun sound</label><select id="campaignExplorationSound"><option value="classic">Original</option><option value="recording">Recorded revolver</option></select><label class="campaignSoundLabel" for="campaignAimMode">Aim mode</label><select id="campaignAimMode"><option value="hold">Hold to aim</option><option value="toggle">Press to toggle</option></select><p class="campaignAimHelp">Use your Aim binding to aim freely while exploring, or up to 20° above/below horizontal in combat.</p><button type="button" class="campaignSettingsControls">Controls</button><button type="button" class="campaignSettingsBack">Back</button></div>';
+  root.innerHTML='<div class="campaignSettingsCard"><div class="campaignSettingsHead"><h2 id="campaignSettingsTitle">Settings</h2><button type="button" class="campaignSettingsClose" aria-label="Close settings">×</button></div><div class="campaignSpeedLabel"><label id="campaignSpeedLabel" for="campaignDialogueSpeed">Dialogue text speed</label><output for="campaignDialogueSpeed" aria-live="polite"></output></div><input id="campaignDialogueSpeed" type="range" min="0" max="3" step="1" value="1" aria-labelledby="campaignSpeedLabel"><div class="campaignSpeedEnds" aria-hidden="true"><span>Slow</span><span>Instant</span></div><fieldset class="campaignVolumeSettings"><legend>Sound</legend><div class="campaignVolumeRow"><label for="campaignVolume-master">Master volume</label><output for="campaignVolume-master" data-audio-output="master">100%</output></div><input id="campaignVolume-master" type="range" min="0" max="100" step="1" value="100" data-audio-volume="master"><div class="campaignVolumeRow"><label for="campaignVolume-sfx">Sound FX</label><output for="campaignVolume-sfx" data-audio-output="sfx">100%</output></div><input id="campaignVolume-sfx" type="range" min="0" max="100" step="1" value="100" data-audio-volume="sfx"><div class="campaignVolumeRow"><label for="campaignVolume-music">Music</label><output for="campaignVolume-music" data-audio-output="music">100%</output></div><input id="campaignVolume-music" type="range" min="0" max="100" step="1" value="100" data-audio-volume="music"><p class="campaignMusicCredit">“Pippin the Hunchback” — Kevin MacLeod (<a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400005" target="_blank" rel="noopener noreferrer">incompetech.com</a>). <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Audio compressed; short fades added.</p></fieldset><label class="campaignSoundLabel" for="campaignExplorationSound">Exploration gun sound</label><select id="campaignExplorationSound"><option value="classic">Original</option><option value="recording">Recorded revolver</option></select><label class="campaignSoundLabel" for="campaignAimMode">Aim mode</label><select id="campaignAimMode"><option value="hold">Hold to aim</option><option value="toggle">Press to toggle</option></select><p class="campaignAimHelp">Use your Aim binding to aim freely while exploring, or up to 20° above/below horizontal in combat. Touch: hold Shoot, drag to aim, then release to fire. Touch always uses hold-and-release.</p><button type="button" class="campaignSettingsControls">Controls</button><button type="button" class="campaignSettingsBack">Back</button></div>';
   game.appendChild(root);campaignSettings.root=root;
-  const card=root.querySelector('.campaignSettingsCard'),head=root.querySelector('.campaignSettingsHead'),back=root.querySelector('.campaignSettingsBack'),general=document.createElement('section'),credits=document.createElement('section'),nav=document.createElement('nav');
+  const card=root.querySelector('.campaignSettingsCard'),head=root.querySelector('.campaignSettingsHead'),back=root.querySelector('.campaignSettingsBack'),general=document.createElement('section'),credits=document.createElement('section'),dialogue=document.createElement('section'),nav=document.createElement('nav');
   general.id='campaignSettingsGeneral';general.dataset.settingsPanel='general';general.setAttribute('role','tabpanel');general.setAttribute('aria-labelledby','campaignSettingsTab-general');
   credits.id='campaignSettingsCredits';credits.dataset.settingsPanel='credits';credits.className='hide';credits.setAttribute('role','tabpanel');credits.setAttribute('aria-labelledby','campaignSettingsTab-credits');
+  dialogue.id='campaignSettingsDialogue';dialogue.dataset.settingsPanel='dialogue';dialogue.className='hide';dialogue.setAttribute('role','tabpanel');dialogue.setAttribute('aria-labelledby','campaignSettingsTab-dialogue');campaignDialogueImportBoot(dialogue);
   const credit=root.querySelector('.campaignMusicCredit');credits.appendChild(credit);const title=document.createElement('h3');title.textContent='Music';credits.prepend(title);
   while(head.nextElementSibling&&head.nextElementSibling!==back)general.appendChild(head.nextElementSibling);
   nav.className='campaignSettingsTabs';nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Settings pages');
-  for(const [key,label,panel]of [['general','General',general],['credits','Credits',credits]]){const button=document.createElement('button');button.type='button';button.id='campaignSettingsTab-'+key;button.dataset.settingsTab=key;button.textContent=label;button.setAttribute('role','tab');button.setAttribute('aria-controls',panel.id);button.addEventListener('click',()=>campaignSettingsTab(key));nav.appendChild(button)}
-  head.after(nav,general,credits);campaignSettingsTab('general');campaignSettingsRender();
+  for(const [key,label,panel]of [['general','General',general],['dialogue','Dialogue',dialogue],['credits','Credits',credits]]){const button=document.createElement('button');button.type='button';button.id='campaignSettingsTab-'+key;button.dataset.settingsTab=key;button.textContent=label;button.setAttribute('role','tab');button.setAttribute('aria-controls',panel.id);button.addEventListener('click',()=>campaignSettingsTab(key));nav.appendChild(button)}
+  head.after(nav,general,dialogue,credits);campaignSettingsTab('general');campaignSettingsRender();
   root.querySelector('input').addEventListener('input',e=>{campaignSettings.speed=clamp(Number(e.target.value),0,3);campaignDialogueView.typeT=0;campaignSettingsRender();campaignSettingsSave()});
   for(const slider of root.querySelectorAll('[data-audio-volume]'))slider.addEventListener('input',e=>{fidgetAudioSetVolume(e.target.dataset.audioVolume,Number(e.target.value)/100);campaignSettingsRender()});
   root.querySelector('#campaignExplorationSound').addEventListener('change',e=>{campaignSettings.explorationSound=e.target.value==='recording'?'recording':'classic';campaignSettingsSave()});
@@ -16204,7 +16470,7 @@ function campaignSettingsBoot(){
 // Register before gameplay keyboard handlers; native slider keys still work.
 window.addEventListener('keydown',e=>{
   if(campaignSettings.controls){e.stopImmediatePropagation();if(mpRebindCaptureAction){mpHandleRebindKey(e);return}if(e.code==='Escape'){e.preventDefault();mpCloseKeybindMenu();return}if(e.code==='Tab')campaignSettingsTrapTab(e,document.querySelector('.mpKeybindOverlay'));return}
-  if(!campaignSettings.open)return;if(e.target.closest?.('[data-settings-tab]')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.code)){e.preventDefault();const tab=e.code==='Home'?'general':e.code==='End'?'credits':campaignSettings.tab==='general'?'credits':'general';campaignSettingsTab(tab);campaignSettings.root.querySelector('[data-settings-tab='+tab+']').focus()}e.stopImmediatePropagation();
+  if(!campaignSettings.open)return;if(e.target.closest?.('[data-settings-tab]')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.code)){e.preventDefault();const tabs=[...campaignSettings.root.querySelectorAll('[data-settings-tab]')],index=tabs.findIndex(b=>b.dataset.settingsTab===campaignSettings.tab),next=e.code==='Home'?0:e.code==='End'?tabs.length-1:(index+(e.code==='ArrowLeft'?-1:1)+tabs.length)%tabs.length,button=tabs[next];campaignSettingsTab(button.dataset.settingsTab);button.focus()}e.stopImmediatePropagation();
   if(e.code==='Escape'){e.preventDefault();campaignSettingsClose();return}
   if(e.code==='Tab'){const controls=[...campaignSettings.root.querySelectorAll('button,input,select,a[href]')].filter(el=>el.getClientRects().length),first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
 },true);
@@ -16551,7 +16817,7 @@ function campaignDialogueTick(dt){
   if(view.shown>=view.chars.length){view.typing=false;campaignDialogueAdvanceState()}
 }
 function campaignDialogueMarkup(){
-  return '<div class="campaignDialogue hide" role="dialog" tabindex="0" aria-keyshortcuts="Enter Space E" aria-labelledby="campaignSpeaker" aria-describedby="campaignDialogueLine"><div class="campaignDialogueScene"><div class="campaignDialoguePortrait left" data-speaker="gs" role="img" aria-label="Gunslinger"><div class="campaignDialoguePalette"><div class="campaignDialogueFigure"><div class="campaignHeroSprite"></div></div></div></div><div class="campaignDialogueCopy"><strong id="campaignSpeaker"></strong><p id="campaignDialogueLine" role="status" aria-live="polite" aria-atomic="true"><span class="campaignDialogueTyped" aria-hidden="true"></span></p></div><div class="campaignDialoguePortrait right" data-speaker="npc" role="img"><div class="campaignDialoguePalette"><div class="campaignDialogueFigure"><div class="campaignHeroSprite"></div></div></div></div></div><div class="campaignDialogueChoices hide" role="group" aria-label="Choose a reply"></div></div>'
+  return '<div class="campaignDialogue hide" role="dialog" tabindex="0" aria-keyshortcuts="Enter Space E" aria-labelledby="campaignSpeaker" aria-describedby="campaignDialogueLine"><div class="campaignDialogueScene"><div class="campaignDialoguePortrait left" data-speaker="gs" role="img" aria-label="Gunslinger"><div class="campaignDialoguePalette"><img class="campaignDialogueArtwork hide" alt=""><div class="campaignDialogueFigure"><div class="campaignHeroSprite"></div></div></div></div><div class="campaignDialogueCopy"><strong id="campaignSpeaker"></strong><p id="campaignDialogueLine" role="status" aria-live="polite" aria-atomic="true"><span class="campaignDialogueTyped" aria-hidden="true"></span></p></div><div class="campaignDialoguePortrait right" data-speaker="npc" role="img"><div class="campaignDialoguePalette"><img class="campaignDialogueArtwork hide" alt=""><div class="campaignDialogueFigure"><div class="campaignHeroSprite"></div></div></div></div></div><div class="campaignDialogueChoices hide" role="group" aria-label="Choose a reply"></div></div>'
 }
 // Optional replies belong to actor data; other conversations keep tap-to-advance.
 function campaignDialogueChoiceEnabled(option){return !option.encounter||!campaign.defeated.has(option.encounter)}
@@ -16613,7 +16879,8 @@ function campaignDialogueSync(){
   }
   if(view.index===dialogue.index){campaignDialogueChoicesSync();return}view.index=dialogue.index;
   const entry=dialogue.lines[dialogue.index],line=typeof entry==='string'?{text:entry,speaker:def?'npc':'narrator'}:entry||{},speaker=['gs','npc'].includes(line.speaker)?line.speaker:'narrator';
-  root.querySelector('strong').textContent=speaker==='gs'?'Gunslinger':speaker==='npc'?(dialogue.name||def?.name):dialogue.name||'';
+  campaignDialogueArtworkSync(root,dialogue,def);root.classList.toggle('narration',!def||speaker==='narrator');
+  root.querySelector('strong').textContent=speaker==='gs'?(dialogue.customCast?.gs?.name||'Gunslinger'):speaker==='npc'?(dialogue.name||def?.name):def?'Narration':dialogue.name||'';
   const text=String(line.text||'');root.querySelector('p').setAttribute('aria-label',text);view.textNode=root.querySelector('.campaignDialogueTyped');view.textNode.textContent='';view.chars=Array.from(text);view.shown=0;view.typeT=0;view.typing=view.chars.length>0;view.speaker=speaker;root.dataset.speaker=speaker;campaignDialogueTextSfx(speaker,0,true);
   for(const portrait of root.querySelectorAll('.campaignDialoguePortrait'))portrait.classList.toggle('speaking',portrait.dataset.speaker===speaker);
   campaignDialogueAdvanceState();if(!paused&&campaignDialogueTypeDelay()===0)campaignDialogueReveal();if(fresh)root.focus({preventScroll:true})
@@ -16696,7 +16963,7 @@ function campaignActorTriggers(placed){
   return Math.hypot(placed.x-campaign.x,placed.y-campaign.y)<70&&(placed.definition!=='roadOutlaw'||!campaignOutlawWorld.hostile)&&!CAMPAIGN_COLLIDERS.some(r=>campaignOutlawRayHit(campaign.x,campaign.y,placed.x-campaign.x,placed.y-campaign.y,r)!==null)
 }
 const CAMPAIGN_OUTLAW_QUIPS=Object.freeze({entry:["You picked the wrong road.","That iron ain't for show, is it?","Let's see that quick draw."],attack:["Keep runnin'!","Got nowhere better to be.","I'll catch up.","Hold still, partner!"],hit:["Just a scratch!","Lucky shot.","Now you've got my attention.","That all you got?"]});
-const campaignOutlawAI={token:-1,phase:'chase',t:0,cycle:0,walk:0,quipT:0,quipCooldown:0,quip:null,lastLine:''};
+const campaignOutlawAI={token:-1,phase:'chase',t:0,cycle:0,walk:0,followV:0,quipT:0,quipCooldown:0,quip:null,lastLine:''};
 function campaignOutlawClear(){
   const s=campaignOutlawAI;campaignSpeechClear('guest');s.quip?.remove();s.quip=null;s.token=-1;enemy.classList.remove('campaignOutlawAiming');enemy.style.removeProperty('--outlawBob');enemy.style.removeProperty('--outlawLean')
 }
@@ -16711,18 +16978,78 @@ function campaignOutlawQuipPosition(){}
 function campaignOutlawCombatTick(dt){
   if(!campaign.active||!soloGunslinger.active||campaignCombatProfile()?.ai!=='outlaw')return false;
   const s=campaignOutlawAI;
-  if(s.token!==run){campaignOutlawClear();Object.assign(s,{token:run,phase:'chase',t:.55,cycle:0,walk:0,quipT:0,quipCooldown:0});campaignOutlawQuip('entry')}
+  if(s.token!==run){campaignOutlawClear();Object.assign(s,{token:run,phase:'chase',t:.55,cycle:0,walk:0,move:0,followV:0,quipT:0,quipCooldown:0});if(!campaignDodgeActive())campaignOutlawQuip('entry')}
   s.quipCooldown=Math.max(0,s.quipCooldown-dt);s.quipT=Math.max(0,s.quipT-dt);if(!s.quipT&&s.quip){s.quip.remove();s.quip=null}
-  const previous=eY,step=dt*2.2*soloGunslingerNpcMoveScale();eY=clamp(eY+clamp(pY-eY,-step,step),0,1);
+  const target=campaignShootingTargetY(),previous=eY,signedScale=soloGunslingerNpcMoveScale(),scale=Math.abs(signedScale),goal=signedScale<0?clamp(2*eY-target,0,1):target,step=Math.max(0,dt)*2.2*scale;
+  if(campaignMounted.active)eY=clamp(eY+clamp(goal-eY,-step,step),0,1);
+  else if(scale<=0)s.followV=0;
+  else{
+    // Critically damped motion reacts continuously, without sampled target jumps.
+    const omega=9,offset=eY-goal,decay=Math.exp(-omega*Math.max(0,dt)),change=(s.followV+omega*offset)*Math.max(0,dt),next=goal+(offset+change)*decay;
+    const distance=next-eY,advance=clamp(distance,-step,step);s.followV=(s.followV-omega*change)*decay;if(dt>0&&advance!==distance)s.followV=advance/dt;eY=clamp(eY+advance,0,1);
+    if(Math.abs(eY-goal)<.001&&Math.abs(s.followV)<.01){eY=goal;s.followV=0}
+  }
   s.move=Math.sign(eY-previous);
-  s.t-=dt;if(s.t<=0&&campaignOutlawCryoCanShoot()){enemyGunFx();snd.enemy();shot('enemy','bullet',0);s.cycle++;s.t=.82+(s.cycle%3)*.08;if(s.cycle%4===0)campaignOutlawQuip('attack')}
+  if(campaignDodgeActive()||campaignDodge.root&&campaignDodge.phase==='done'||!campaignChaseCanShoot())return true;
+  s.t-=dt;if(s.t<=0&&campaignOutlawCryoCanShoot()){const sand=s.cycle%4===3;if(sand)campaignSandThrow();else{enemyGunFx();snd.enemy();shot('enemy','bullet',0)}s.cycle++;s.t=sand?1.2:.82+(s.cycle%3)*.08;if(s.cycle%4===0)campaignOutlawQuip('attack')}
   return true
+}
+
+/* Two bounded chase stages. Position and gait share the real combat projection. */
+const campaignChase={stage:'off',time:0,hostX:.26,pace:1,drag:0,draw:0,gain:0,weapon:null};
+function campaignChaseStart(){
+  campaignChaseStop();Object.assign(campaignChase,{stage:'pursuit',time:0,hostX:.26,pace:1,drag:0,draw:0,gain:0});
+  game.classList.add('campaignChasePursuit');
+}
+function campaignChaseStop(){
+  campaignGunDrawClear(campaignChase.weapon);campaignChase.weapon=null;campaignChase.stage='off';campaignChase.hostX=.26;campaignChase.pace=1;campaignChase.drag=0;campaignChase.gain=0;
+  game.classList.remove('campaignChasePursuit','campaignChaseRetaliation');
+  mpGuestModel?.querySelector('.campaignOutlawSprite')?.style.removeProperty('--outlawFacing');
+}
+function campaignChaseRetaliate(){
+  const s=campaignChase;if(!campaignMounted.active||s.stage!=='pursuit'||campaignShootingActive())return;
+  s.stage='retaliation';s.time=0;s.draw=0;s.weapon={progress:0,sounds:[],started:false,clickPlayed:false,model:null};
+  campaignShootingStop(true);game.classList.remove('campaignChasePursuit');game.classList.add('campaignChaseRetaliation');campaignDodgeStart();
+}
+function campaignChaseCanShoot(){return !campaignMounted.active||campaignChase.stage==='retaliation'&&campaignChase.draw>=1}
+function campaignChaseLanded(opt){
+  const s=campaignChase;if(!campaignMounted.active||s.stage!=='pursuit'||campaignMounted.ending||soloGunslinger.roundDone)return;
+  if(['bullet','explosiveRound','xShotHead','xShotBody','xShotTorso'].includes(opt.sourceKind))s.gain=Math.min(.20,s.gain+.045);
+  if(pvpHp('guest')>0&&pvpHp('guest')<=soloGunslingerNpcMaxHp()*.5)campaignChaseRetaliate();
+}
+function campaignChaseHit(){
+  const s=campaignChase;if(!campaignMounted.active||s.stage!=='retaliation'||campaignMounted.ending||soloGunslinger.roundDone)return;
+  s.drag=Math.min(1,s.drag+.55);
+}
+function campaignChasePose(){
+  if(!campaignMounted.active)return;const s=campaignChase,model=campaignMounted.rigs.guest?.rider;if(!model)return;
+  const key=s.stage+'|'+(s.stage==='retaliation'?Math.min(1,s.time/.5).toFixed(4)+'|'+s.draw.toFixed(4):'');
+  const rig=campaignMounted.rigs.guest;if(rig.poseKey===key)return;rig.poseKey=key;
+  if(s.stage==='pursuit'){
+    model.style.setProperty('--outlawFacing','1');campaignGunDrawPose(model,0);
+  }else if(s.stage==='retaliation'){
+    const turn=clamp(s.time/.5,0,1),smooth=turn*turn*(3-2*turn);model.style.setProperty('--outlawFacing',String(1-2*smooth));
+    if(s.draw<1){campaignGunDrawPose(model,s.draw);if(s.weapon){s.weapon.model=model;s.weapon.progress=s.draw;if(s.draw>0)campaignGunDrawAudio(s.weapon)}}
+    else if(model.classList.contains('campaignGunHolstered')||model.classList.contains('campaignGunDrawing')){campaignGunDrawClear({model,sounds:[]});}
+  }
+}
+function campaignChaseTick(realDt){
+  const s=campaignChase;if(!campaignMounted.active||s.stage==='off'||campaignMounted.ending)return;
+  if(paused||document.hidden||cutsceneActive||campaignFlow.kind||campaignCountdown.t>0||soloGunslinger.roundDone)return;
+  const dt=Math.max(0,realDt)*campaignDodgeTimeScale();s.time+=dt;
+  if(s.stage==='pursuit'&&pvpHp('guest')>0&&pvpHp('guest')<=soloGunslingerNpcMaxHp()*.5)campaignChaseRetaliate();
+  if(s.stage==='retaliation')s.draw=clamp((s.time-.15)/.7,0,1);
+  s.drag=Math.max(0,s.drag-dt/2.6);s.pace+=(1-.48*s.drag-s.pace)*(1-Math.exp(-dt*5));
+  s.gain=Math.max(0,s.gain-dt*.018);
+  const surge=s.gain+(s.stage==='retaliation'?.055*(.5-.5*Math.cos(s.time*Math.PI/3)):0);
+  const goal=clamp(.26+surge-s.drag*.13,.20,.46);s.hostX+=(goal-s.hostX)*(1-Math.exp(-dt*3));s.hostX=clamp(s.hostX,.20,.46);
+  const title=soloGunslinger.header?.querySelector('strong'),text='TUTORIAL · '+s.stage.toUpperCase();if(title&&title.textContent!==text)title.textContent=text;
 }
 
 /* Mounted presentation around the existing authoritative Gunslinger duel. */
 const campaignMounted={active:false,t:0,scroll:0,layers:[],rigs:{},ending:null,yMin:0,yMax:1};
 function campaignMountedPrepare(){
-  const s=campaignMounted;s.active=true;s.t=0;s.scroll=campaignLobbyChase.scroll;s.layers=[];s.rigs={};s.ending=null;s.yMin=0;s.yMax=1;game.classList.add('campaignMountedTutorial');
+  const s=campaignMounted;s.active=true;s.t=0;s.scroll=campaignLobbyChase.scroll;s.layers=[];s.rigs={};s.ending=null;s.yMin=0;s.yMax=1;campaignChaseStart();game.classList.add('campaignMountedTutorial');
   campaign.phase='explore';campaign.enemyHealth['outlaw-1']=500;
   if(!campaignBeginEncounter('outlaw-1')){campaignLobbyShow();return}
   campaignFlowCancel();campaignMountedAttach();campaignWideLayout();soloGunslingerPosition()
@@ -16735,21 +17062,23 @@ function campaignMountedAttach(){
   const s=campaignMounted;if(!s.active||!soloGunslinger.active)return;
   for(const role of ['host','guest']){
     const avatar=mpAvatarFor(role),model=avatar.querySelector('.mpModel'),rider=role==='guest'?model?.querySelector('.campaignOutlawSprite'):model;if(!rider)continue;
-    avatar.classList.add('campaignMountedCombat');
-    let rig=s.rigs[role];if(!rig||!rig.horse.isConnected){
+    let rig=s.rigs[role];if(rig?.horse.isConnected&&rig.hero===model&&rig.rider===rider&&rig.riderLeg?.isConnected)continue;
+    avatar.classList.add('campaignMountedCombat');if(!rig||!rig.horse.isConnected){
       const horse=campaignHorse.node.cloneNode(true);horse.querySelector('.campaignHorseStaminaRing')?.remove();horse.className='campaignCampHorse campaignCombatHorse mounted';horse.setAttribute('aria-hidden','true');horse.removeAttribute('role');horse.style.cssText='--horseFacing:1;--horseVisualFacing:1';avatar.prepend(horse);
       rig={kind:role==='host'?'gs':'outlaw',combat:true,horse,hero:model,body:horse.querySelector('.horseBody'),legs:[...horse.querySelectorAll('.horseLeg')],dust:[],phase:role==='host'?0:2.1,contacts:null,time:0};s.rigs[role]=rig;campaignTutorialDustMount(rig,avatar)
     }
-    rig.hero=model;campaignHorseRiderArt(rider)
+    rig.hero=model;rig.rider=rider;rig.poseKey='';campaignHorseRiderArt(rider);rig.riderLeg=rider.querySelector('.campaignHorseRiderLeg')
   }
+  campaignChasePose()
 }
 function campaignMountedTick(dt){
   const s=campaignMounted;if(!s.active||!soloGunslinger.active)return;campaignMountedAttach();
   if(paused||document.hidden||cutsceneActive||campaignFlow.kind||soloGunslinger.roundDone){campaignHorseVoiceStop();return;}
-  s.t+=Math.max(0,dt);const reduced=!!campaignBreeze.motion?.matches;campaignMountedScroll(760*Math.max(0,dt)*(reduced?.22:1));
-  for(const rig of Object.values(s.rigs)){rig.time=s.t;campaignTutorialPose(rig,dt,1,reduced,450*Math.max(0,dt))}
+  s.t+=Math.max(0,dt);const reduced=!!campaignBreeze.motion?.matches;campaignMountedScroll(760*campaignChase.pace*Math.max(0,dt)*(reduced?.22:1));
+  for(const rig of Object.values(s.rigs)){rig.time=s.t;rig.speed=rig.kind==='gs'?450*campaignChase.pace:450;campaignTutorialPose(rig,dt,1,reduced,rig.speed*Math.max(0,dt))}
 }
 function campaignMountedStop(){
+  campaignShootingStop();campaignDodgeStop();campaignChaseStop();
   const s=campaignMounted;if(s.active)campaignHorseVoiceStop();s.active=false;s.layers=[];s.ending=null;
   for(const rig of Object.values(s.rigs)){rig.horse.remove();rig.dustNode?.remove();rig.hero?.style.removeProperty('translate');rig.hero?.style.removeProperty('rotate');for(const key of ['--mountedShiftX','--mountedShiftY','--horseRiderPitch','--mountedFallX','--mountedFallY'])rig.hero?.style.removeProperty(key)}
   s.rigs={};game.classList.remove('campaignMountedTutorial');
@@ -16758,7 +17087,7 @@ function campaignMountedStop(){
 
 // Legacy NPC shots use local pixels; shared GS shots use arena widths/second.
 function campaignNpcBulletSpeed(p){
-  return campaign.active&&soloGunslinger.active&&campaign.encounter==='outlaw-1'&&p.owner==='enemy'&&p.kind==='bullet'?mpGunslingerShotProfile().speed*mpArena.clientWidth/(campaignDesktopView()?campaignCameraZoom():1):310
+  return (p.lessonSand?.65:1)*(campaign.active&&soloGunslinger.active&&campaign.encounter==='outlaw-1'&&p.owner==='enemy'&&p.kind==='bullet'?mpGunslingerShotProfile().speed*mpArena.clientWidth/(campaignDesktopView()?campaignCameraZoom():1):310)
 }
 
 // Restrict fighter movement without squeezing projectile/status coordinates.
@@ -16779,8 +17108,9 @@ function campaignMountedScroll(distance){
   if(s.layers.length){s.layers[0].style.transform='translate3d('+(-(s.scroll*.2%1440))+'px,0,0)';s.layers[1].style.transform='translate3d('+(-(s.scroll%1440))+'px,0,0)';s.layers[2].style.transform='translate3d('+(-(s.scroll*1.4%120))+'px,0,0)'}
 }
 function campaignMountedVictoryStart(){
+  campaignShootingStop();campaignDodgeStop();
   const s=campaignMounted,z=campaignDesktopView()?campaignCameraZoom():1;
-  s.ending={time:0,travel:0,escape:(mpArena.clientWidth*.35/z+180)/.72};
+  s.ending={time:0,travel:0,startPace:campaignChase.pace,escape:(mpArena.clientWidth*.35/z+180)/.72};
   campaignFlow.walkEnd=2.8;campaignOutlawCryoClear();campaignDeathCauseReset();
   const status=mpEnsurePlayerStatuses(mpPlayer('guest'));status.freeze=status.cryoStack=status.cryoStackT=status.cryoSlow=0;
   mpGuestAvatar.classList.remove('mpPvpFrozen','mpCryoStack1','mpCryoStack2');
@@ -16797,7 +17127,7 @@ function campaignMountedVictoryTick(dt){
   const s=campaignMounted,end=s.ending;if(!end)return false;
   if(paused||document.hidden){campaignHorseVoiceStop();return true}
   dt=Math.max(0,dt);campaignFlow.t+=dt;end.time=campaignFlow.t;campaignClearInput();campaignVictoryActionsTick(dt,false);campaignVictoryProjectilesTick(dt);campaignDeathTick(end.time);
-  const t=end.time,u=clamp(t/.9,0,1),speed=450*(1-u)*(1-u),travel=760*.9/3*(1-Math.pow(1-u,3)),reduced=!!campaignBreeze.motion?.matches;
+  const t=end.time,u=clamp(t/.9,0,1),speed=450*end.startPace*(1-u)*(1-u),travel=760*end.startPace*.9/3*(1-Math.pow(1-u,3)),reduced=!!campaignBreeze.motion?.matches;
   campaignMountedScroll((travel-end.travel)*(reduced?.22:1));const distance=(travel-end.travel)*450/760;end.travel=travel;s.t+=dt;
   const host=s.rigs.host,guest=s.rigs.guest;host.time=guest.time=s.t;host.speed=speed;
   host.horsePitch=reduced?0:-7*Math.sin(u*Math.PI);campaignTutorialPose(host,dt,clamp(speed/55,0,1),reduced,distance);
@@ -16834,7 +17164,7 @@ function campaignTutorialRig(kind,scene){
 function campaignTutorialStart(){
   const c=ac();if(c){campaignHorseVoiceBuffer(c);campaignHorseHoofBuffers(c)}
   campaignMountedPrepare();if(!campaignMounted.active||!soloGunslinger.active)return;
-  campaignEntryStart();campaignWideLayout();mpPlay.tabIndex=-1;mpPlay.focus({preventScroll:true})
+  campaignEntryStart();campaignWideLayout();campaignShootingStart();mpPlay.tabIndex=-1;mpPlay.focus({preventScroll:true})
 }
 function campaignTutorialPose(rig,dt,drive,reduced,distance){
   const time=rig.time??0;rig.phase+=distance/245*Math.PI*2;const frame=campaignHorseGaitFrame(rig.speed??450,rig.phase),amount=reduced?0:drive;
@@ -16854,21 +17184,238 @@ function campaignTutorialDustMount(rig,parent){
   for(let i=0;i<6;i++){const el=document.createElement('i');dust.appendChild(el);rig.dust.push({el,age:1})}parent.prepend(dust)
 }
 
+/* Mounted Tutorial lesson: one real incoming round, bounded UI, no save writes.
+ * World/legacy projectiles use slow time; shared GS input/roll keeps real time. */
+const campaignDodge={active:false,lesson:'off',phase:'off',time:0,wait:0,success:0,attempts:0,bullet:null,passing:null,sandT:0,sandFx:null,throwT:0,lastRoll:null,root:null,preview:null,notice:'',signature:''};
+function campaignDodgeActive(){return campaignDodge.active&&campaign.active&&campaign.destination==='tutorial'&&campaignMounted.active&&soloGunslinger.active}
+function campaignDodgeLocks(id,control){if(campaignShootingActive()&&getPlayerId(id)==='p1'&&control==='special1')return true;return campaignDodgeActive()&&getPlayerId(id)==='p1'&&(['primary','reload','roundSelect'].includes(control)||campaignDodge.lesson==='movement'&&control==='special1')}
+function campaignDodgeTimeScale(){return campaignMounted.active&&campaign.active&&(campaignDodgeActive()&&campaignDodge.phase==='flight'||campaignDodge.passing&&!campaignDodge.passing.dead)?.14:1}
+function campaignDodgeStop(preservePassed=false){
+  campaignSandClear();const s=campaignDodge;s.bullet?.el.remove();if(s.bullet)s.bullet.dead=true;
+  for(const p of projs)if(p.campaignDodgeLesson||!preservePassed&&(p.lessonPassed||p.sandCombat)){p.dead=true;p.el.remove()}
+  s.root?.remove();s.root=s.preview=s.bullet=s.passing=s.lastRoll=null;s.active=false;s.lesson='off';s.phase='off';s.signature='';
+  game.classList.remove('campaignDodgeLesson','campaignDodgeFocus','campaignMovementLesson');
+  for(const b of [mpPrimary,mpGunChamber,mpS1])b?.removeAttribute('aria-disabled');
+}
+function campaignDodgeStart(lesson='movement'){
+  campaignDodgeStop();const s=campaignDodge;s.active=true;
+  const root=document.createElement('section');root.className='campaignDodgePanel hide';root.setAttribute('role','region');root.setAttribute('aria-labelledby','campaignDodgeTitle');
+  root.innerHTML='<div class="campaignDodgeCopy"><h2 id="campaignDodgeTitle"></h2><p class="campaignDodgeText"></p><strong class="campaignDodgeControl"></strong></div><div class="campaignDodgePreview" role="img"></div><div class="campaignDodgeFooter"><small class="campaignDodgeStep" role="status" aria-live="polite"></small><p class="campaignDodgeNotice" aria-hidden="true"></p></div>';
+  game.appendChild(root);s.root=root;
+  game.classList.add('campaignDodgeLesson');campaignAimClear();closeMpGunChamberHold();
+  for(const b of [mpPrimary,mpGunChamber])b?.setAttribute('aria-disabled','true');
+  campaignDodgeSetLesson(lesson);
+}
+function campaignDodgeSetLesson(lesson){
+  const s=campaignDodge,movement=lesson==='movement';Object.assign(s,{lesson,phase:'ready',time:0,wait:1.2,success:0,attempts:0,lastRoll:null,notice:'',signature:''});
+  game.classList.toggle('campaignMovementLesson',movement);if(movement)mpS1.setAttribute('aria-disabled','true');else mpS1.removeAttribute('aria-disabled');
+  const preview=s.root.querySelector('.campaignDodgePreview');preview.replaceChildren();
+  preview.setAttribute('aria-label',movement?'Gunslinger and his horse move up and down to avoid a bullet':'Gunslinger rolls as bullets and pocket sand fly past');
+  if(movement){
+    const motion=document.createElement('div');motion.className='campaignMovePreviewMotion';motion.setAttribute('aria-hidden','true');preview.appendChild(motion);
+    const rig=campaignTutorialRig('gs',motion);rig.muted=true;rig.wrap.classList.add('campaignMovePreviewRig');rig.dustNode.remove();campaignTutorialPose(rig,0,1,matchMedia('(prefers-reduced-motion: reduce)').matches,0);s.preview=rig.wrap;
+  }else{
+    preview.innerHTML='<div class="mpAvatar mpGunslingerRoll campaignDodgePreviewRoll" aria-hidden="true"><div class="mpModel campaignDodgePreviewBall"></div></div>';s.preview=preview.firstElementChild;
+  }
+  const bullet=document.createElement('i');bullet.className='proj bullet enemyBullet campaignDodgePreviewBullet';bullet.setAttribute('aria-hidden','true');preview.appendChild(bullet);campaignBulletAirMount(bullet);
+  if(!movement){const sand=document.createElement('i');sand.className='campaignSandPreview';sand.innerHTML=CAMPAIGN_SAND_SVG;sand.setAttribute('aria-hidden','true');preview.appendChild(sand)}
+  campaignDodgePanel();
+}
+function campaignDodgePanel(){
+  const s=campaignDodge,root=s.root;if(!root)return;
+  const mobile=!MP_DESKTOP_FINE(),movement=s.lesson==='movement',key=movement?(mobile?'Joystick ↑ / ↓':mpKeyLabel(mpDesktopBinds.moveUp)+' / '+mpKeyLabel(mpDesktopBinds.moveDown)):(mobile?'ROLL':mpKeyLabel(mpDesktopBinds.gunslingerRoll)),signature=[s.lesson,s.phase,s.success,s.notice,key,innerWidth,innerHeight].join('|');
+  if(signature===s.signature)return;s.signature=signature;
+  root.classList.toggle('hide',s.phase==='ready');root.classList.toggle('sandShot',s.lesson==='dodge');
+  root.querySelector('.campaignDodgeStep').textContent=s.phase==='done'?'LESSON COMPLETE':`${movement?'MOVEMENT':'DODGE'} · ${s.success} / 3`;
+  root.querySelector('h2').textContent=movement?(s.phase==='done'?'Movement learned':s.success?'Reposition again':'Move out of fire'):(s.phase==='done'?'Dodge learned':s.success?'Dodge again':'Dodge incoming fire');
+  const portrait=innerHeight>innerWidth,compact=innerHeight<=450||innerWidth<360||portrait&&innerHeight<720,topPanel=!portrait||innerHeight<720;
+  root.querySelector('.campaignDodgeText').textContent=movement?(s.phase==='done'?'Good positioning. Next: roll through incoming fire.':(compact?'Move up or down to clear the bullet’s path.':'Move up or down out of the shot’s path. Choose a safe position.')):(s.phase==='done'?'Keep riding. Your weapon controls are ready.':(compact?'Roll through pocket sand. It covers every lane.':'Roll just before contact. Pocket sand covers the whole lane.'));
+  root.querySelector('.campaignDodgeControl').textContent=movement?(mobile?key:`Move with ${key}`):(mobile?'Tap ROLL':`Press ${key} to roll`);
+  root.querySelector('.campaignDodgeNotice').textContent=s.notice||(s.phase==='flight'?(movement?'Leave the bullet’s path.':(s.bullet?.lessonSand?'Watch the sand, then roll.':'Watch the bullet, then roll.')):'The Outlaw is lining up a shot…');
+  const frame=mpArena.getBoundingClientRect();
+  root.classList.toggle('compact',compact);root.classList.toggle('desktop',!mobile&&!compact);
+  Object.assign(root.style,{left:(portrait?innerWidth/2:frame.left+frame.width/2)+'px',top:topPanel?(compact&&portrait?6:Math.max(6,frame.top+(compact?6:mobile?42:82)))+'px':'auto',bottom:topPanel?'auto':'12px'});
+}
+function campaignDodgeFire(){
+  const s=campaignDodge;if(!campaignDodgeActive()||!campaignChaseCanShoot()||pvpFreeze('guest')>0||mpMovementLocked('guest')||!campaignOutlawCryoCanShoot())return;
+  eY=mpRoleY('host');mpSetRoleY('guest',eY);mpSetRoleRenderY('guest',eY);soloGunslingerPosition();
+  const sand=s.lesson==='dodge';if(!sand){enemyGunFx();snd.enemy()}shot('enemy','bullet',0);const p=projs.at(-1),body=campaignCombatBodyBox('host');if(sand)campaignSandMount(p,body);
+  p.campaignDodgeLesson=true;p.lessonStartY=mpRoleY('host');p.lessonBodyHeight=body.h;p.lessonGoal=body.x+body.w;p.lessonGoalOffset=p.lessonGoal-getPlayerArenaXNorm('host')*mpArena.clientWidth;p.lessonBodyWidth=body.w;p.el.classList.add('campaignDodgeBullet');
+  p.el.style.left=p.x+'px';p.el.style.top=p.y+'px';s.bullet=p;s.lastRoll=null;s.phase='flight';s.attempts++;s.notice='';s.signature='';
+  game.classList.add('campaignDodgeFocus');campaignDodgePanel();
+}
+function campaignDodgeRecordRoll(role){
+  if(!campaignDodgeActive()||getPlayerId(role)!=='p1')return;
+  frameArenaRect=null; // A touch may scroll the page between rendered frames.
+  const s=campaignDodge;s.lastRoll={time:s.time,body:campaignCombatBodyBox('host')};
+}
+function campaignDodgeResolveBullet(p,fromX,w,h,body=null){
+  if(p.sandCombat&&!p.soloDodgePassed){campaignSandResolveCombat(p,fromX,body||campaignCombatBodyBox('host'));return true}
+  if(!p.campaignDodgeLesson)return false;
+  const s=campaignDodge;if(!campaignDodgeActive()||s.bullet!==p){p.dead=true;p.el.remove();return true}
+  if(p.lessonSand){w=p.sandW;h=p.sandH}
+  p.lessonGoal=getPlayerArenaXNorm('host')*mpArena.clientWidth+p.lessonGoalOffset;
+  if(p.x<=p.lessonGoal||p.x< -130){
+    const roll=s.lastRoll,b=roll?.body,vertical=!!b&&(p.lessonSand||p.y+h>=b.y&&p.y<=b.y+b.h),
+      dodged=s.lesson==='dodge'&&vertical&&s.time-roll.time<=.18&&(mpStateFor('host')?.rollInvuln||0)>0;
+    const current=body||campaignCombatBodyBox('host'),contact=p.lessonSand?campaignSandContact(p,current):hit({x:Math.min(fromX,p.x),y:p.y,w:w+Math.abs(p.x-fromX),h},current);
+    // Galloping can shift the torso beyond the cached contact plane.
+    if(!dodged&&!contact&&p.x+w>=current.x)return true;
+    const missed=!contact&&p.x+w<current.x,passed=dodged||missed||contact&&(mpStateFor('host')?.rollInvuln||0)>0,
+      moved=missed&&s.lesson==='movement'&&Math.abs(mpRoleY('host')-p.lessonStartY)*MP_PVP_Y_RANGE>=Math.min(10,p.lessonBodyHeight*.25),success=dodged||moved;
+    s.bullet=null;s.lastRoll=null;
+    if(passed){
+      // Every miss continues to the screen edge, including failed roll attempts.
+      p.campaignDodgeLesson=false;p.lessonPassed=true;p.soloDodgePassed=true;s.passing=p;if(p.lessonSand)p.el.classList.add('lessonAvoided');
+    }else{
+      if(contact){if(p.lessonSand){campaignChaseHit();campaignSandCatch()}else damagePlayer(1,false,p.y+h/2)}p.dead=true;p.el.remove();game.classList.remove('campaignDodgeFocus');
+    }
+    if(success){s.success++;s.notice=s.lesson==='movement'?(s.success===3?'Three shots avoided by moving. Next: dodging!':'Good positioning. Avoid the next shot.'):(s.success===3?'Three shots avoided. Keep riding!':'Good dodge. Get ready for the next shot.')}
+    else s.notice=p.lessonSand&&contact?'Sand in your eyes. Vision clears shortly. Roll through the next throw.':s.lesson==='movement'?(contact?'You were hit. Move up or down out of the shot’s path.':'Move up or down to avoid the next shot.'):'Roll just before the shot reaches you.';
+    s.phase=s.success===3?'done':'recover';s.wait=s.phase==='done'?2.2:3.1;s.signature='';
+    if(s.phase==='done'&&s.lesson==='dodge'){s.active=false;game.classList.remove('campaignDodgeLesson');for(const button of [mpPrimary,mpGunChamber])button?.removeAttribute('aria-disabled')}
+    campaignDodgePanel();
+  }
+  return true
+}
+function campaignDodgeTick(dt){
+  campaignSandTick(dt);const s=campaignDodge;if(!s.root)return;
+  if(!campaign.active||!campaignMounted.active||!soloGunslinger.active){campaignDodgeStop();return}
+  if(paused||document.hidden||cutsceneActive||campaignFlow.kind||campaignCountdown.t>0)return;
+  if(s.passing&&(s.passing.dead||s.passing.x+(s.passing.sandW||32)<s.passing.lessonGoal-s.passing.lessonBodyWidth-20)){s.passing=null;game.classList.remove('campaignDodgeFocus')}
+  if(s.phase==='ready'&&!campaignChaseCanShoot())return;
+  s.time+=Math.max(0,dt);
+  if(s.phase==='ready'||s.phase==='recover'||s.phase==='done'){
+    s.wait-=Math.max(0,dt);
+    if(s.wait<=0){if(s.phase==='done'){if(s.passing)return;if(s.lesson==='movement')campaignDodgeSetLesson('dodge');else campaignDodgeStop(true);return}campaignDodgeFire()}
+  }
+  campaignDodgePanel();
+}
+
+/* BEGIN INLINED src/campaign/tutorial-sand.js */
+/* Regular sand follows the muzzle lane; mounted teaching waves span the road. */
+const CAMPAIGN_SAND_SVG='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160" preserveAspectRatio="none"><g class="campaignSandCloud"><path d="M93 7Q48-5 25 15L9 43 18 64 3 91 16 117 9 144Q43 169 86 150L72 125 94 98 77 70 96 39Z" fill="#d4ad66" opacity=".22"/><path d="M77 16 42 30 20 57 37 82 15 111 42 145 82 139 61 112 85 85 62 53Z" fill="#e4bd73" opacity=".28"/></g><g class="campaignSandGrains">'+Array.from({length:30},(_,i)=>'<circle cx="'+(9+i*31%80)+'" cy="'+(5+i*43%150)+'" r="'+(1.4+i%3*.55)+'" fill="'+(i%2?'#f0d092':'#ba8747')+'" opacity=".8"/>').join('')+'</g></svg>';
+function campaignSandMount(p,body){
+  campaignDodge.throwT=.28;mpGuestAvatar.classList.add('campaignSandThrow');p.lessonSand=true;
+  const hostY=mpRoleY('host'),margin=body.h*.4+6,minY=campaignMounted.active?campaignMounted.yMin:0,maxY=campaignMounted.active?campaignMounted.yMax:1;
+  p.sandLane=!campaignMounted.active;
+  if(p.sandLane){const center=p.y+7;p.sandH=clamp(campaignCombatBodyBox('guest').h*.8,42,66);p.y=center-p.sandH/2}
+  else{p.y=body.y+(minY-hostY)*MP_PVP_Y_RANGE-margin;p.sandH=(maxY-minY)*MP_PVP_Y_RANGE+body.h+margin*2}
+  p.sandW=clamp(p.sandH*.35,45,90);
+  p.x+=32-p.sandW;p.el.className='proj campaignSandProjectile campaignDodgeBullet';p.el.innerHTML=CAMPAIGN_SAND_SVG;p.el.style.width=p.sandW+'px';p.el.style.height=p.sandH+'px';
+  noise(.16,.025,0,AUDIO_MINOR);tone(220,90,.09,.012,'triangle',0,AUDIO_MINOR);
+}
+function campaignSandContact(p,b){return p.x<=b.x+b.w&&p.x+p.sandW>=b.x&&(!p.sandLane||p.y+p.sandH>=b.y&&p.y<=b.y+b.h)}
+function campaignSandCatch(){
+  const s=campaignDodge;s.sandT=2.4;if(campaignMounted.active)campaignChase.drag=Math.max(campaignChase.drag,.9);s.sandFx?.remove();
+  const el=document.createElement('i');el.className='campaignPocketSandScreen';el.setAttribute('aria-hidden','true');mpArena.appendChild(el);s.sandFx=el;noise(.2,.028,0,AUDIO_MINOR);
+}
+function campaignSandClear(){campaignDodge.throwT=0;mpGuestAvatar.classList.remove('campaignSandThrow');campaignDodge.sandT=0;campaignDodge.sandFx?.remove();campaignDodge.sandFx=null}
+function campaignSandTick(dt){
+  const s=campaignDodge;if(!campaign.active||campaign.phase!=='combat'||!soloGunslinger.active){if(s.sandT||s.throwT||s.sandFx)campaignSandClear();return}
+  if(paused||document.hidden||cutsceneActive||campaignFlow.kind||campaignCountdown.t>0||soloGunslinger.roundDone)return;
+  if(s.throwT>0){s.throwT=Math.max(0,s.throwT-Math.max(0,dt));if(!s.throwT)mpGuestAvatar.classList.remove('campaignSandThrow')}
+  if(s.sandT>0){s.sandT=Math.max(0,s.sandT-Math.max(0,dt));if(!s.sandT)campaignSandClear();else if(s.sandFx)s.sandFx.style.opacity=String(Math.min(1,s.sandT/1.4))}
+}
+
+// Live Outlaw attacks use the same projectile, contact and timed vision effect.
+function campaignSandThrow(){
+  shot('enemy','bullet',0);const p=projs.at(-1);campaignSandMount(p,campaignCombatBodyBox('host'));p.sandCombat=true;p.el.style.left=p.x+'px';p.el.style.top=p.y+'px';return p;
+}
+function campaignSandResolveCombat(p,fromX,body){
+  if(p.x<=body.x+body.w&&fromX+p.sandW>=body.x&&(!p.sandLane||p.y+p.sandH>=body.y&&p.y<=body.y+body.h)){
+    if((mpStateFor('host')?.rollInvuln||0)>0){p.soloDodgePassed=true;p.el.classList.add('lessonAvoided')}
+    else{campaignChaseHit();campaignSandCatch();p.dead=true;p.el.remove()}
+  }
+  if(!p.dead&&p.x< -130){p.dead=true;p.el.remove()}
+}
+/* END INLINED src/campaign/tutorial-sand.js */
+/* BEGIN INLINED src/campaign/shooting-lesson.js */
+/* Pursuit gun lessons use the existing weapon and aim inputs, with a fixed lane. */
+const campaignShooting={active:false,lesson:'off',phase:'off',success:0,wait:0,root:null,signature:'',y:.5,laneY:.5,laneFrom:.5,laneGoal:.5,laneT:0,laneActive:false,objective:null,objectiveT:0};
+function campaignShootingActive(){return campaignShooting.active&&campaign.active&&campaignMounted.active&&soloGunslinger.active}
+function campaignShootingMoveLocked(role){return campaignShootingActive()&&getPlayerId(role)==='p1'}
+function campaignShootingStop(preserveTail=false){
+  const s=campaignShooting;if(!preserveTail){s.objective?.remove();s.objective=null;s.objectiveT=0;s.laneActive=false}s.root?.remove();s.root=null;s.active=false;s.lesson=s.phase='off';s.signature='';game.classList.remove('campaignShootingLesson');mpS1?.removeAttribute('aria-disabled');
+}
+function campaignShootingStart(){
+  campaignShootingStop();const s=campaignShooting;Object.assign(s,{active:true,lesson:'aiming',phase:'ready',success:0,wait:.4,y:(campaignMounted.yMin+campaignMounted.yMax)/2});
+  mpStopAllMovement();resetMpStick();mpSetRoleY('host',s.y);mpSetRoleRenderY('host',s.y);pY=s.y;campaignShootingLane(s.y-(campaignMounted.yMax-campaignMounted.yMin)*.35);
+  const root=document.createElement('section');root.className='campaignDodgePanel campaignShootingPanel hide';root.setAttribute('role','region');root.setAttribute('aria-labelledby','campaignShootingTitle');
+  root.innerHTML='<div class="campaignDodgeCopy"><h2 id="campaignShootingTitle"></h2><p></p><strong class="campaignDodgeControl"></strong></div><div class="campaignDodgePreview campaignShootingPreview" role="img" aria-label="Gunslinger aims and fires at a target"><div class="campaignShootingPreviewModel campaignWeaponPose">'+model('gunslinger')+'</div><i class="campaignShootingTarget"></i></div><div class="campaignDodgeFooter"><small class="campaignDodgeStep" role="status" aria-live="polite"></small><p class="campaignDodgeNotice" aria-hidden="true"></p></div>';
+  const unit=root.querySelector('.gsUnit'),parts=[...unit.children].filter(el=>el.matches('.gsArm,.gsGun,.muzzle')),arm=document.createElement('div');arm.className='campaignShootingPreviewArm';unit.insertBefore(arm,parts[0]);for(const part of parts)arm.appendChild(part);
+  const ray=document.createElementNS('http://www.w3.org/2000/svg','line');ray.setAttribute('class','campaignShootingRay');for(const [key,value]of Object.entries({x1:4,y1:27,x2:-260,y2:27}))ray.setAttribute(key,String(value));unit.querySelector('.gsRevolver').prepend(ray);
+  game.appendChild(root);s.root=root;game.classList.add('campaignShootingLesson');mpS1.setAttribute('aria-disabled','true');campaignShootingPanel();
+}
+function campaignShootingTargetY(){
+  const s=campaignShooting;return s.laneActive||campaignShootingActive()?s.laneY:pY;
+}
+function campaignShootingPanel(){
+  const s=campaignShooting,root=s.root;if(!root)return;
+  const mobile=!MP_DESKTOP_FINE(),aimKey=campaignKeybinds.aim==='MouseRight'?'RMB':mpKeyLabel(campaignKeybinds.aim),hint=mobile?'Hold SHOOT · drag · release':(campaignSettings.aimMode==='toggle'?'Press ':'Hold ')+aimKey+' · LMB to fire',sig=[s.phase,s.success,hint,innerWidth,innerHeight].join('|');if(sig===s.signature)return;s.signature=sig;
+  root.classList.toggle('hide',s.phase==='ready'||s.phase==='done');root.classList.add('aiming');
+  root.querySelector('small').textContent='AIM · '+s.success+' / 2';root.querySelector('h2').textContent='Adjust your aim';
+  root.querySelector('strong').textContent=hint;root.querySelector('.campaignDodgeNotice').textContent='Aim at his new position.';
+  const portrait=innerHeight>innerWidth,compact=innerHeight<=450||innerWidth<360||portrait&&innerHeight<720,top=!portrait||innerHeight<720,frame=mpArena.getBoundingClientRect();root.classList.toggle('compact',compact);root.classList.toggle('desktop',!mobile&&!compact);
+  root.querySelector('.campaignDodgeCopy p').textContent=compact?'Land two angled hits.':'Land two angled shots as the Outlaw changes lanes.';
+  Object.assign(root.style,{left:(portrait?innerWidth/2:frame.left+frame.width/2)+'px',top:top?(compact&&portrait?6:Math.max(6,frame.top+(compact?6:mobile?42:82)))+'px':'auto',bottom:top?'auto':'12px'});
+}
+// Runs after defenses validate a real hit, before final HP/death resolution.
+function campaignShootingTargetHp(target,next,opt){
+  const s=campaignShooting;if(!campaign.active||!campaignMounted.active||!soloGunslinger.active||getPlayerId(target)!=='p2')return next;
+  // Heavy rounds and lingering damage cannot skip the mandatory chase lessons.
+  if(campaignDodgeActive())return Math.max(1,next);
+  if(!campaignShootingActive())return campaignChase.stage==='pursuit'?Math.max(next,soloGunslingerNpcMaxHp()*.5):next;
+  if(s.phase==='exercise'&&['bullet','explosiveRound'].includes(opt.sourceKind)&&opt.projectileRef?.kind==='bullet'){
+    if(Number.isFinite(opt.projectileRef.campaignAimAngle)&&Math.abs(opt.projectileRef.campaignAimAngle)>=2*Math.PI/180){
+      s.success++;if(s.success>=2){s.active=false;s.phase='done';s.wait=3;game.classList.remove('campaignShootingLesson');mpS1.removeAttribute('aria-disabled');campaignShootingLane(mpRoleY('host'));campaignShootingObjective()}else campaignShootingLane(s.y+(campaignMounted.yMax-campaignMounted.yMin)*.35);
+    }
+    s.signature='';campaignShootingPanel();
+  }
+  return Math.max(next,soloGunslingerNpcMaxHp()*.5);
+}
+function campaignShootingTick(dt){
+  const s=campaignShooting;if(!s.root&&!s.objective&&!s.laneActive)return;if(!campaign.active||!campaignMounted.active||!soloGunslinger.active){campaignShootingStop();return}
+  if(paused||document.hidden||cutsceneActive||campaignFlow.kind||campaignCountdown.t>0)return;
+  if(s.laneActive){s.laneT+=Math.max(0,dt);const t=clamp(s.laneT/1.2,0,1),ease=t*t*(3-2*t);s.laneY=s.laneFrom+(s.laneGoal-s.laneFrom)*ease;if(t>=1)s.laneActive=false}
+  if(s.objective){s.objectiveT=Math.max(0,s.objectiveT-dt);if(!s.objectiveT){s.objective.remove();s.objective=null}}
+  if(!s.root)return;
+  if(s.phase==='ready'||s.phase==='done'){s.wait-=Math.max(0,dt);if(s.wait<=0){if(s.phase==='done'){campaignShootingStop();return}s.phase='exercise';s.signature=''}}campaignShootingPanel();
+}
+
+function campaignShootingLane(goal){
+  const s=campaignShooting;s.laneFrom=mpRoleY('guest');s.laneY=s.laneFrom;s.laneGoal=campaignMountedClampY(goal);s.laneT=0;s.laneActive=true;
+}
+function campaignShootingObjective(){
+  const s=campaignShooting;s.objective?.remove();const el=document.createElement('div');el.className='campaignChaseObjective';el.setAttribute('role','status');el.textContent='Stop the Outlaw!';mpArena.appendChild(el);s.objective=el;s.objectiveT=3;
+}
+/* END INLINED src/campaign/shooting-lesson.js */
 /* A destination picker outside the live campaign, with no world or save writes. */
 const campaignLobby={open:false,root:null};
+// A failed chase remains a quiet memory card until the player leaves it.
+const campaignTutorialDeath={root:null};
+function campaignTutorialDeathClear(){campaignTutorialDeath.root?.remove();campaignTutorialDeath.root=null;document.body.classList.remove('campaignTutorialDeathOpen')}
+function campaignTutorialDeathShow(){
+  resetGame();
+  const root=document.createElement('button');root.type='button';root.className='campaignTutorialDeath';root.title='Return to lobby';
+  const text='Sorry... its been a long time I remembered it differently';
+  root.setAttribute('aria-label',text+'. Return to lobby.');const line=document.createElement('span');line.textContent=text;root.appendChild(line);
+  root.addEventListener('click',campaignLobbyShow);campaignTutorialDeath.root=root;document.body.appendChild(root);document.body.classList.add('campaignTutorialDeathOpen');root.focus({preventScroll:true})
+}
 function campaignLobbyHide(){
-  campaignLobbyChaseStop();campaignLobby.open=false;campaignLobby.root?.classList.add('hide');document.body.classList.remove('campaignLobbyOpen')
+  campaignTutorialDeathClear();campaignLobbyChaseStop();campaignLobby.open=false;campaignLobby.root?.classList.add('hide');document.body.classList.remove('campaignLobbyOpen')
 }
 function campaignLobbyShow(){
-  campaignLobbyHide();resetGame();campaignLobby.open=true;campaignLobby.root.classList.remove('hide');document.body.classList.add('campaignLobbyOpen');campaignLobbyChaseStart();campaignLobby.root.querySelector('[data-campaign-destination]').focus({preventScroll:true})
+  campaignLobbyHide();resetGame();campaignLobby.open=true;campaignLobby.root.classList.remove('hide');document.body.classList.add('campaignLobbyOpen');campaignLobbyChaseStart();syncFidgetFullscreenUi();campaignLobby.root.querySelector('[data-campaign-destination]').focus({preventScroll:true})
 }
 function campaignLobbyClose(){campaignLobbyHide();document.getElementById('campaignStart')?.focus({preventScroll:true})}
 function campaignLobbyBoot(){
   const root=document.createElement('section');root.className='campaignLobby hide';root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-labelledby','campaignLobbyTitle');
-  root.innerHTML='<div class="campaignLobbyContent"><small>GUNSLINGER</small><h1 id="campaignLobbyTitle">Choose where to go</h1><nav aria-label="Destinations"><button type="button" data-campaign-destination="crossroads"><strong>Crossroads</strong><span>Explore · Continue your journey</span></button><button type="button" data-campaign-destination="tutorial"><strong>Tutorial</strong><span>A horseback chase through town</span></button></nav><button type="button" class="campaignLobbyBack">Back</button></div>';
+  root.innerHTML='<div class="campaignLobbyContent"><small>GUNSLINGER</small><h1 id="campaignLobbyTitle">Choose where to go</h1><nav aria-label="Destinations"><button type="button" data-campaign-destination="crossroads"><strong>Crossroads</strong><span>Explore · Continue your journey</span></button><button type="button" data-campaign-destination="tutorial"><strong>Tutorial</strong><span>A horseback chase through town</span></button></nav><button type="button" class="campaignLobbyFullscreen" aria-label="Enter fullscreen" aria-pressed="false" title="Toggle fullscreen (F11 on desktop)">⛶ FULLSCREEN</button><button type="button" class="campaignLobbyBack">Back</button></div>';
   document.body.appendChild(root);campaignLobby.root=root;
-  root.addEventListener('click',e=>{const destination=e.target.closest('[data-campaign-destination]');if(destination)campaignStart(destination.dataset.campaignDestination);else if(e.target.closest('.campaignLobbyBack'))campaignLobbyClose()});
+  root.addEventListener('click',e=>{const destination=e.target.closest('[data-campaign-destination]');if(destination)campaignStart(destination.dataset.campaignDestination);else if(e.target.closest('.campaignLobbyFullscreen'))toggleFidgetFullscreen();else if(e.target.closest('.campaignLobbyBack'))campaignLobbyClose()});
   window.addEventListener('keydown',e=>{
+    if(campaignTutorialDeath.root){e.preventDefault();e.stopImmediatePropagation();if(!e.repeat&&['Escape','Enter','Space'].includes(e.code))campaignLobbyShow();return}
     if(!campaignLobby.open)return;
     if(e.code==='Escape'){e.preventDefault();e.stopImmediatePropagation();campaignLobbyClose();return}
     const buttons=[...root.querySelectorAll('button')],index=buttons.indexOf(document.activeElement);
@@ -16902,9 +17449,9 @@ function campaignLobbyTick(dt){
 
 /* Campaign mouse aim rotates a shoulder wrapper, leaving draw/reload/recoil intact. */
 const CAMPAIGN_AIM_LIMIT=20*Math.PI/180;
-const campaignAim={active:false,input:null,x:0,y:0,angle:0,wrap:null,unit:null,turn:0,guide:null,reloadFacing:null};
-function campaignAimAllowed(){
-  if(!campaign.active||!MP_DESKTOP_FINE()||paused||document.hidden||cutsceneActive||campaign.dialogue||campaignInventory.open||campaignSettings.open||campaignCamp.open||campaignFlow.kind||multiplayerPrototype.gunChamberHoldOpen)return false;
+const campaignAim={active:false,input:null,x:0,y:0,angle:0,wrap:null,unit:null,turn:0,guide:null,reloadFacing:null,touch:null};
+function campaignAimAllowed(touch=false){
+  if(!campaign.active||campaignDodgeActive()||(!MP_DESKTOP_FINE()&&!touch&&!campaignAim.touch)||paused||document.hidden||cutsceneActive||campaign.dialogue||campaignInventory.open||campaignSettings.open||campaignCamp.open||campaignFlow.kind||multiplayerPrototype.gunChamberHoldOpen)return false;
   return campaignExploring()?campaignExploreGunReady()&&!campaignExploreGun.pending:soloGunslinger.active&&!soloGunslinger.roundDone&&campaignCountdown.t<=0&&!multiplayerPrototype.pvpRoundOver
 }
 function campaignAimArenaTarget(target){return !!target?.closest?.('#campaignView,.mpArena')&&!target.closest('button,input,select,a,[role=dialog],.mpGunChamber,.campaignDialogue')}
@@ -16913,6 +17460,7 @@ function campaignAimUnwrap(){
   const s=campaignAim,w=s.wrap;if(w?.parentNode){while(w.firstChild)w.parentNode.insertBefore(w.firstChild,w);w.remove()}s.wrap=s.unit=null;s.turn=0;s.reloadFacing=null
 }
 function campaignAimClear(){
+  campaignTouchAimDetach();
   const s=campaignAim;if(s.active&&campaignExploring())campaign.mapHeading=campaign.facing<0?Math.PI:0;
   s.active=false;s.input=null;s.angle=0;campaignAimUnwrap();game.classList.remove('campaignMouseAiming')
 }
@@ -16938,7 +17486,7 @@ function campaignAimSync(){
   }
   s.reloadFacing=null;
   if(explore){
-    const body=unit.querySelector('.coat').getBoundingClientRect();campaign.facing=s.x<body.left+body.width/2?-1:1;campaign.pawn.style.setProperty('--campaignFacing',String(campaign.facing))
+    const body=unit.querySelector('.coat').getBoundingClientRect();campaign.facing=s.touch?(Math.abs(Math.cos(s.touch.angle))<1e-6?campaign.facing:Math.sign(Math.cos(s.touch.angle))):(s.x<body.left+body.width/2?-1:1);campaign.pawn.style.setProperty('--campaignFacing',String(campaign.facing))
   }
   if(s.unit!==unit||!s.wrap?.isConnected){
     campaignAimUnwrap();const wrap=document.createElement('div');wrap.className='campaignMouseAimArm';
@@ -16949,7 +17497,7 @@ function campaignAimSync(){
     bore=new DOMPoint(4,27).matrixTransform(matrix),back=new DOMPoint(70,27).matrixTransform(matrix),base=Math.atan2(bore.y-back.y,bore.x-back.x),
     offset=-(bore.x-px)*Math.sin(base)+(bore.y-py)*Math.cos(base),dx=s.x-px,dy=s.y-py,
     goal=Math.atan2(dy,explore?dx:Math.max(1,dx))-Math.asin(clamp(offset/Math.max(1,Math.hypot(dx,dy)),-1,1)),
-    angle=explore?goal:clamp(Math.atan2(Math.sin(goal),Math.cos(goal)),-CAMPAIGN_AIM_LIMIT,CAMPAIGN_AIM_LIMIT);
+    angle=s.touch?s.touch.angle:explore?goal:clamp(Math.atan2(Math.sin(goal),Math.cos(goal)),-CAMPAIGN_AIM_LIMIT,CAMPAIGN_AIM_LIMIT);
   s.turn+=Math.atan2(Math.sin(angle-base),Math.cos(angle-base))*mirror;s.wrap.style.rotate=s.turn+'rad';s.angle=angle;
   if(explore)campaign.mapHeading=angle;
   else if(st?.xShotAimActive){
@@ -16976,6 +17524,7 @@ window.addEventListener('pointerdown',e=>{
   if(e.pointerType==='mouse'&&e.button===0&&campaignAim.active&&campaignAimPointerGate(e))e.stopImmediatePropagation()
 },true);
 window.addEventListener('mousedown',e=>{
+  if(campaignAim.touch)return;
   if(e.button===2){
     if(!campaignAimPointerGate(e))return;e.preventDefault();e.stopImmediatePropagation();const s=campaignAim;s.x=e.clientX;s.y=e.clientY;
     campaignAimPress('MouseRight');return
@@ -16983,9 +17532,9 @@ window.addEventListener('mousedown',e=>{
   if(e.button!==0||!campaignAimPointerGate(e)||!campaignExploring()&&!campaignAim.active)return;
   e.preventDefault();e.stopImmediatePropagation();campaignAimSync();ac();if(campaignExploring())campaignExploreGunInput('primary','tap');else{mpInputButton('primary','down');mpInputButton('primary','up')}
 },true);
-window.addEventListener('mousemove',e=>{campaignAim.x=e.clientX;campaignAim.y=e.clientY;if(campaignAim.active)campaignAimSync()},{passive:true});
+window.addEventListener('mousemove',e=>{if(campaignAim.touch)return;campaignAim.x=e.clientX;campaignAim.y=e.clientY;if(campaignAim.active)campaignAimSync()},{passive:true});
 window.addEventListener('mouseup',e=>{if(e.button===2)campaignAimRelease('MouseRight')});
-window.addEventListener('blur',campaignAimClear);window.addEventListener('pointercancel',campaignAimClear);
+window.addEventListener('blur',campaignAimClear);window.addEventListener('pointercancel',e=>{if(!campaignAim.touch||campaignAim.touch.pointer===e.pointerId)campaignAimClear()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)campaignAimClear()});
 document.addEventListener('mouseleave',campaignAimClear);
 
@@ -16994,7 +17543,7 @@ window.addEventListener('keydown',e=>{if(campaignAim.active&&e.code==='Escape'&&
 // One clipped dotted ray shares the bullet's muzzle origin, angle and camera space.
 function campaignAimGuideClear(){campaignAim.guide?.remove();campaignAim.guide=null}
 function campaignAimGuideSync(){
-  const s=campaignAim;if(!s.active||campaignExploring()||!soloGunslinger.active||!s.wrap){campaignAimGuideClear();return}
+  const s=campaignAim;if(s.active&&campaignExploring()&&s.touch){campaignTouchAimExploreGuide();return}if(!s.active||campaignExploring()||!soloGunslinger.active||!s.wrap){campaignAimGuideClear();return}
   const muzzle=s.unit.querySelector('.muzzle');if(!muzzle)return;
   const m=box(muzzle),bounds=box(mpArena),x=m.x+m.w/2,y=m.y+m.h/2,dx=Math.cos(s.angle),dy=Math.sin(s.angle);
   let length=(bounds.x+bounds.w-x)/Math.max(.001,dx);
@@ -17004,6 +17553,70 @@ function campaignAimGuideSync(){
   if(s.guide.parentNode!==parent)parent.appendChild(s.guide);
   Object.assign(s.guide.style,{left:x+'px',top:y+'px',width:length+'px',rotate:s.angle+'rad',backgroundPosition:((performance.now()*.024)%12)+'px 50%'})
 }
+
+/* A captured touch owns aim until release; no primary input is sent on press.
+ * The movement stick keeps its own pointer and remains usable simultaneously. */
+function campaignTouchAimReady(){
+  if(!campaignAimAllowed(true))return false;
+  const state=campaignExploring()?campaignExploreGun.state:mpStateFor('host');
+  return !!state&&mpCharacterDef('gunslinger').availability.primary({role:'host',state,down:true})
+}
+function campaignTouchAimDetach(){
+  const touch=campaignAim.touch;if(!touch)return;campaignAim.touch=null;
+  touch.cue?.remove();touch.button.classList.remove('campaignTouchAiming');
+  try{if(touch.button.hasPointerCapture(touch.pointer))touch.button.releasePointerCapture(touch.pointer)}catch(_){}
+}
+function campaignTouchAimMove(e){
+  const touch=campaignAim.touch;if(!touch||touch.pointer!==e.pointerId)return;
+  if(touch.captured&&!touch.button.hasPointerCapture(touch.pointer)){campaignAimClear();return}
+  const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
+  if(touch.explore){if(Math.hypot(dx,dy)>=8)touch.angle=Math.atan2(dy,dx)}
+  else touch.angle=clamp(dy/40,-1,1)*CAMPAIGN_AIM_LIMIT;
+  touch.cue.style.rotate=touch.angle+'rad';campaignAimSync()
+}
+function campaignTouchAimExploreGuide(){
+  const s=campaignAim;if(!s.touch||!campaignExploring()||!s.wrap){campaignAimGuideClear();return}
+  const origin=campaignExploreGunMuzzle();
+  if(!s.guide){s.guide=document.createElement('div');s.guide.className='campaignAimGuide campaignTouchAimGuide';s.guide.setAttribute('aria-hidden','true')}
+  if(s.guide.parentNode!==campaign.world)campaign.world.appendChild(s.guide);
+  Object.assign(s.guide.style,{left:origin.x+'px',top:origin.y+'px',width:CAMPAIGN_EXPLORE_GUN.range+'px',rotate:s.angle+'rad',backgroundPosition:((performance.now()*.024)%12)+'px 50%'})
+}
+window.addEventListener('pointerdown',e=>{
+  if(!campaign.active||!['touch','pen'].includes(e.pointerType)||e.button!==0)return;
+  const button=e.target.closest?.('button'),explore=campaignExploring();
+  if(!button||button!==(explore&&campaignWeapon.target&&primary.dataset.campaignAction==='shoot'?primary:!explore&&soloGunslinger.active?mpPrimary:null))return;
+  e.preventDefault();e.stopImmediatePropagation();
+  if(campaignAim.touch||button.disabled||!campaignTouchAimReady())return;
+  ac();const angle=explore&&campaign.facing<0?Math.PI:0,cue=document.createElement('div');cue.className='campaignTouchAimCue';cue.setAttribute('aria-hidden','true');
+  Object.assign(cue.style,{left:e.clientX+'px',top:e.clientY+'px',rotate:angle+'rad'});game.appendChild(cue);
+  campaignAim.touch={pointer:e.pointerId,button,explore,x:e.clientX,y:e.clientY,angle,cue};campaignAim.active=true;campaignAim.input='TouchShoot';button.classList.add('campaignTouchAiming');
+  try{button.setPointerCapture(e.pointerId);campaignAim.touch.captured=true}catch(_){}
+  campaignAimSync()
+},{capture:true,passive:false});
+window.addEventListener('pointermove',e=>{
+  if(campaignAim.touch?.pointer!==e.pointerId)return;
+  e.preventDefault();e.stopImmediatePropagation();campaignTouchAimMove(e)
+},{capture:true,passive:false});
+window.addEventListener('pointerup',e=>{
+  const touch=campaignAim.touch;if(!touch||touch.pointer!==e.pointerId)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  try{
+    campaignTouchAimMove(e);
+    if(campaignAim.touch===touch&&touch.explore===campaignExploring()&&campaignTouchAimReady()){
+      if(touch.explore)campaignExploreGunInput('primary','tap');else{mpInputButton('primary','down');mpInputButton('primary','up')}
+    }
+  }finally{campaignAimClear()}
+},{capture:true,passive:false});
+for(const type of ['pointercancel','lostpointercapture'])window.addEventListener(type,e=>{
+  if(campaignAim.touch?.pointer!==e.pointerId)return;
+  e.stopImmediatePropagation();campaignAimClear()
+},true);
+
+window.addEventListener('resize',()=>{if(campaignAim.touch)campaignAimClear()});
+
+window.addEventListener('contextmenu',e=>{
+  const button=e.target.closest?.('button');if(campaign.active&&(button===primary||button===mpPrimary))e.preventDefault()
+},true);
 
 /* Eight lightweight townsfolk; only three short routes, sampled at 10Hz nearby. */
 const campaignTown={walkers:new Map(),rows:[],actors:null,clock:0,revision:0,outlawIndex:CAMPAIGN_AREA.actors.findIndex(a=>a.definition==='roadOutlaw'),guideIndex:CAMPAIGN_AREA.actors.findIndex(a=>a.definition==='trailGuide')};
@@ -17128,7 +17741,7 @@ function campaignScrubMount(){
   for(const [i,[x,y]] of sites.entries()){
     if(!campaignScrubCanPlace(x,y))continue;const el=document.createElement('i');el.className='campaignScrub';el.setAttribute('aria-hidden','true');el.style.left=x+'px';el.style.top=y+'px';el.style.setProperty('--scrubSway',String(.7+(i%5)*.13));el.style.setProperty('--scrubHue',(i%3*6-6)+'deg');
     el.innerHTML='<span class="campaignScrubCrown"><svg viewBox="0 0 76 58" aria-hidden="true"><path d="M11 47Q4 35 13 28Q9 17 24 17Q29 4 42 13Q57 7 63 23Q75 28 67 42Q66 53 43 54Q20 56 11 47Z" fill="#40543b"/><path d="M13 36Q10 25 24 26Q20 13 34 15Q42 6 49 21Q63 15 64 31Q71 37 61 43Q46 50 29 45Q14 46 13 36Z" fill="#627b4b"/><path d="M22 28Q26 18 33 21M38 21Q43 17 47 25M51 30Q58 24 61 33" fill="none" stroke="#9aa76a" stroke-width="3" stroke-linecap="round"/><path d="M19 40L29 34M36 43L39 32M48 44L57 37" stroke="#344e35" stroke-width="2" stroke-linecap="round"/><ellipse cx="19" cy="32" rx="5" ry="3" fill="#7f9256" transform="rotate(-35 19 32)"/><ellipse cx="47" cy="35" rx="6" ry="3" fill="#8c9d60" transform="rotate(25 47 35)"/><path d="M31 52L34 43M44 52L43 46" stroke="#5c5934" stroke-width="2"/></svg></span>';
-    campaign.world.appendChild(el);campaignScrubs.plants.push({el,x,y,t:1,dir:1,touch:false,cooldown:0})
+    campaign.world.appendChild(el);campaignScrubs.plants.push({el,x,y,t:1,dir:1,touch:false,cooldown:0});campaign.depthActors.push({y:y-32.4,el})
   }
 }
 function campaignScrubTick(dt,oldX,oldY){
@@ -17251,12 +17864,13 @@ function campaignBuildWorld(){
   campaignScrubMount();
   for(const placed of [...campaignWorldActors()].sort((a,b)=>a.y-b.y)){if(campaign.defeated.has(placed.id))continue;const def=campaignActorDefinition(placed.definition),el=document.createElement('div');el.className='campaignActor '+def.palette;el.dataset.actor=placed.id;el.hidden=!!placed.building;el.style.left=placed.x+'px';el.style.top=placed.y+'px';if(def.combat)campaignActorMaxHp(placed);el.innerHTML=def.model==='civilian'?campaignCivilianModel(placed.style,placed.seated,placed.seatFacing):placed.definition==='roadOutlaw'?campaignOutlawModel():def.model==='trainingDummy'?mpTrainingDummyModel():placed.definition==='trailGuide'?'<div class="campaignGuideSprite">'+model(def.model)+'</div>':model(def.model);campaign.world.appendChild(el);campaign.nodes.set(placed.id,el);if(placed.definition==='roadOutlaw')campaignOutlawWeaponTick(el,0);campaign.depthActors.push({y:placed.y,el})}
   const pawn=document.createElement('div');pawn.className='campaignActor campaignHero';pawn.innerHTML='<i class="campaignFootShadow"></i><span class="campaignRunTrail" aria-hidden="true"><i></i><i></i></span><div class="campaignHeroSprite">'+model('gunslinger')+'</div>';campaign.world.appendChild(pawn);campaign.pawn=pawn;campaign.mapHeading=campaign.facing<0?Math.PI:0;campaign.walkTime=campaign.dustT=campaign.dustIndex=0;campaign.dustPool=[];for(let i=0;i<6;i++){const el=document.createElement('i');el.className='campaignStepDust';el.style.opacity='0';campaign.world.appendChild(el);campaign.dustPool.push({el,age:1,dx:0,dy:0})}campaignWalkTick(0,0,0);campaignDrawTick(0);campaignCorpsesMount();campaignBreezeMount();campaignCampMount();campaignTownMount()
+  campaign.depthActors.sort((a,b)=>a.y-b.y);for(const row of campaign.depthActors)campaign.world.appendChild(row.el)
 }
-// Same actor layer, painted from back to front by world Y. Move the hero node
-// only when crossing an actor's depth; characters paint above walls/roofs,
+// Actors, horse and bushes share ground depth. Move the hero node
+// only when crossing a depth; characters paint above walls/roofs,
 // with the interior shade and UI remaining above them.
 function campaignDepthSync(){
-  const next=campaign.depthActors?.find(a=>a.y>campaign.y)?.el||null;
+  const depth=campaignHorse.mounted?campaignHorse.depth.y:campaign.y,next=campaign.depthActors?.find(a=>a.y>depth)?.el||null;
   if(campaign.pawn.nextElementSibling!==next)campaign.world.insertBefore(campaign.pawn,next)
 }
 // Avoid replacing text nodes/attributes on every frame: these invalidate style/layout.
@@ -17277,6 +17891,7 @@ function campaignRender(){
   if(campaignOutlawWorld.hostile){const a=campaignOutlawWorld.actor;campaignOutlawAimWorld(campaign.nodes.get(a.id),a)}
   campaignTownVisibility(cx,cy,w/z,h/z);campaignAimSync();campaignDepthSync();campaignMinimapSync();const full=game.querySelector('.campaignFullscreen');if(full){const active=!!fidgetFullscreenElement();campaignText(full,active?'× EXIT FULLSCREEN':'⛶ FULLSCREEN');campaignAttr(full,'aria-label',active?'Exit fullscreen':'Enter fullscreen');full.classList.toggle('active',active)}
   let ammoText='LOADOUT',disabled=false;const primaryText=campaign.dialogue?'CONTINUE':campaignHorse.mounted?'DISMOUNT':campaignHorseNear()?'MOUNT':campaignCampNear()&&(campaignCamp.lit||!campaignWeapon.target)?(campaignCamp.lit?'REST':'CAMPFIRE'):campaignWeapon.target?'SHOOT':practice?'PRACTICE':campaignTavernSeat.seated?'STAND':campaignTavernSeatNear()?'SIT':near?'TALK':'INTERACT';
+  campaignAttr(primary,'data-campaign-action',primaryText==='SHOOT'?'shoot':'interact');
   if(campaignWeapon.target){const st=campaignExploreGun.state;disabled=!campaignExploreGunCanInput()||!!(st&&(st.p>0||st.reloadT>0||st.reloadDelay>0)&&!st.xShotAimActive);ammoText=st?.xShotAimActive?'X-SHOT · AIM':st?.reloadT>0||st?.reloadDelay>0?'RELOADING…':Math.max(0,st?.ammo??6)+' / 6'}
   campaignText(ammoEl,ammoText);campaignText(primary,primaryText);campaignDisabled(primary,disabled);
   const text=campaign.root.querySelector('.campaignObjective')||game.querySelector('.campaignWideHeader .campaignObjective');campaignText(text,paused?'PAUSED':campaign.defeated.has('outlaw-1')?'EXPLORE · Tavern southwest · Campfire north':'EXPLORE · Tavern southwest · Campfire north · Outlaw east');
@@ -17291,7 +17906,7 @@ function campaignInteract(){
   const practice=campaignNearPracticeDummy();if(practice){campaignQueueEncounter(practice.id,{interact:true});return}
   if(campaignTavernSeatInteract())return;
   const near=campaignNearNpc();
-  if(near){const def=campaignActorDefinition(near.definition);if(def.testAmmo){for(const type of MP_GUN_SPECIAL_TYPES){campaign.inventory[type]=(campaign.inventory[type]||0)+99;campaign.roundTypes.add(type)}campaignItemGrant('bandage',2);campaignSave()}campaign.dialogue={name:near.name||def.name,definition:near.definition,lines:near.dialogue||def.dialogue,civilianStyle:near.style,index:0};campaignClearInput();resetJoystick();campaignRender()}
+  if(near){if(!campaignDialogueImports.ready)return;const def=campaignActorDefinition(near.definition);if(def.testAmmo){for(const type of MP_GUN_SPECIAL_TYPES){campaign.inventory[type]=(campaign.inventory[type]||0)+99;campaign.roundTypes.add(type)}campaignItemGrant('bandage',2);campaignSave()}campaign.dialogue={name:near.name||def.name,definition:near.definition,lines:near.dialogue||def.dialogue,civilianStyle:near.style,index:0,...campaignDialogueImported(near)};campaignClearInput();resetJoystick();campaignRender()}
 }
 function campaignTick(dt){
   if(!campaignExploring())return;
@@ -17337,6 +17952,7 @@ function campaignEndEncounter(won,returnPoint=null){
   campaign.dialogue=won?null:{name:won?'Road cleared':'Back at the crossroads',lines:[won?'The outlaw is defeated. You can explore freely; your progress is saved on this device.':'Try the encounter again when you are ready. Your exploration progress is kept.'],index:0};campaignBuildWorld();campaignSave();campaignRender();campaignMusicStart();return true
 }
 function campaignStop(){
+  campaignTutorialDeathClear();
   campaignMountedStop();
   campaignHorseDismount();campaignHorseDustClear();campaignHorseVoiceStop();
   campaignTavernReset();
@@ -17632,15 +18248,16 @@ const CAMPAIGN_BASE_VISIBLE_Y_RANGE=237.52;
 // Keep that screen-space pace independently of lane height and camera zoom.
 function campaignMoveScale(role=null){return (campaignDesktopView()&&soloGunslinger.active?CAMPAIGN_BASE_VISIBLE_Y_RANGE/Math.max(1,MP_PVP_Y_RANGE*campaignCameraZoom())*(role!==null&&getPlayerId(role)==='p1'?1.15:1):1)*(role!==null?campaignApplyMoveScale(role):1)}
 function campaignExplorationMoveScale(){return (campaignDesktopView()?1.288/campaignCameraZoom():1)*campaignApplyMoveScale()}
-function campaignCombatX(x){if(campaignMounted.active)x=x<.5?.26:.81;return campaignDesktopView()&&soloGunslinger.active ? .5+(x-.5)/campaignCameraZoom():x}
+function campaignCombatX(x){if(campaignMounted.active)x=x<.5?campaignChase.hostX:.81;return campaignDesktopView()&&soloGunslinger.active ? .5+(x-.5)/campaignCameraZoom():x}
 
 function campaignWorldCamera(x,y,w,h,z=campaignCameraZoom()){return {x:clamp(x-w/(2*z),0,Math.max(0,CAMPAIGN_AREA.width-w/z)),y:clamp(y-h/(2*z),0,Math.max(0,CAMPAIGN_AREA.height-h/z))}}
 function campaignCombatViewport(){
   // These shared projection values also position projectiles, status VFX and NPCs.
   const height=mpArena.clientHeight;
   MP_PVP_Y_TOP=campaignMounted.active&&!campaignDesktopView()?65:45;MP_PVP_Y_RANGE=campaignMounted.active?Math.max(60,height-110):205;
-  if(!campaignDesktopView()||!soloGunslinger.active){mpHostAvatar.style.left=campaignMounted.active?'26%':'';mpGuestAvatar.style.left=campaignMounted.active?'81%':'';campaignMountedBounds(height,1);campaignMountedConstrain();return;}
-  game.style.setProperty('--campaignHostX',(getPlayerArenaXNorm('host')*100)+'%');game.style.setProperty('--campaignGuestX',(getPlayerArenaXNorm('guest')*100)+'%');
+  if(campaignMounted.active&&!campaignDesktopView()){mpHostAvatar.style.setProperty('--campaignHostX',(campaignChase.hostX*100)+'%');mpGuestAvatar.style.setProperty('--campaignGuestX','81%')}
+  if(!campaignDesktopView()||!soloGunslinger.active){mpHostAvatar.style.left=campaignMounted.active?(campaignChase.hostX*100)+'%':'';mpGuestAvatar.style.left=campaignMounted.active?'81%':'';campaignMountedBounds(height,1);campaignMountedConstrain();return;}
+  mpHostAvatar.style.setProperty('--campaignHostX',(getPlayerArenaXNorm('host')*100)+'%');mpGuestAvatar.style.setProperty('--campaignGuestX',(getPlayerArenaXNorm('guest')*100)+'%');
   const z=campaignCameraZoom(),h=height,bar=mpArena.querySelector('.mpPvpHud'),hudBottom=bar?bar.offsetTop+bar.offsetHeight:64;
   const upper=hudBottom+29.52*z,lower=h-8-(campaignMounted.active?75:24.48)*z;
   MP_PVP_Y_TOP=(upper-(1-z)*h*.5)/z;MP_PVP_Y_RANGE=Math.max(1,(lower-upper)/z);
@@ -17682,7 +18299,9 @@ function campaignBulletVisual(el){
   const id=Number(el.dataset.mpvisual);if(!(id>0))return false;
   const p=el._campaignBullet||multiplayerPrototype.pvpProjectiles.find(p=>p.campaignBodyContact&&p.visualId===id);if(!p)return false;
   el._campaignBullet=p;if(p.dead){el.remove();return true}
-  el.style.left=(p.x*mpArena.clientWidth-14)+'px';el.style.top=(mpYToArenaPx(p.y)-5)+'px';if(Number.isFinite(p.campaignAimAngle))el.style.rotate=p.campaignAimAngle+'rad';return true
+  // Aimed rounds can leave the character lane; keep their visual on the ray.
+  const aimed=Number.isFinite(p.campaignAimAngle),y=aimed?MP_PVP_Y_TOP+p.y*MP_PVP_Y_RANGE:mpYToArenaPx(p.y);
+  el.style.left=(p.x*mpArena.clientWidth-14)+'px';el.style.top=(y-5)+'px';if(aimed)el.style.rotate=p.campaignAimAngle+'rad';return true
 }
 
 function campaignEffectLayer(){return campaignDesktopView()&&soloGunslinger.active?mpCameraStage:mpArena}
@@ -18949,7 +19568,11 @@ function campaignHorseInteract(){
 }
 function campaignHorseSync(){
   campaignHorseMeterSync();const s=campaignHorse;if(!s.node?.isConnected)return;
-  if(s.depth&&s.depth.y!==s.y-32.4){s.depth.y=s.y-32.4;campaign.depthActors.sort((a,b)=>a.y-b.y);campaign.world.insertBefore(s.node,campaign.depthActors[campaign.depthActors.indexOf(s.depth)+1]?.el||null)}
+  if(s.depth&&s.depth.y!==s.y-32.4){
+    s.depth.y=s.y-32.4;campaign.depthActors.sort((a,b)=>a.y-b.y);
+    const next=campaign.depthActors[campaign.depthActors.indexOf(s.depth)+1]?.el||null,after=s.mounted&&s.node.nextElementSibling===campaign.pawn?campaign.pawn.nextElementSibling:s.node.nextElementSibling;
+    if(after!==next)campaign.world.insertBefore(s.node,next)
+  }
   if(s.node.classList.contains('mounted')!==s.mounted)s.node.classList.toggle('mounted',s.mounted);
   const saddle=campaignHorseSaddle();for(const [el,x,y]of [[s.node,s.x,s.y],[s.prompt,saddle.x,saddle.y-7]]){if(el.style.left!==x+'px')el.style.left=x+'px';if(el.style.top!==y+'px')el.style.top=y+'px'}
   if(s.node.style.getPropertyValue('--horseFacing')!==String(s.facing))s.node.style.setProperty('--horseFacing',String(s.facing));
@@ -19372,12 +19995,13 @@ function soloGunslingerNpcDamage(attacker,target,damage,opt){
   if(stage===4&&spiegelHexT>0){spiegelHexBlockFx();return 0}
   return adaptDamage(opt.special||opt.sourceKind||'bullet',damage)
 }
-function soloGunslingerAfterDamage(target){
+function soloGunslingerAfterDamage(target,opt={}){
   if(!soloGunslinger.active)return;
   pHp=pvpHp('host');eHp=pvpHp('guest');hpEl.textContent=pHp;updateHp();
-  if(campaign.active&&getPlayerId(target)==='p1'){if(pHp<campaign.health)campaignHealingStop();campaignCaptureHealth();campaignSave()}
+  if(campaign.active&&getPlayerId(target)==='p1'){if(pHp<campaign.health){campaignHealingStop();if(['soloNpc','bullet','xShotHead','xShotTorso'].includes(opt.sourceKind))campaignChaseHit()}campaignCaptureHealth();campaignSave()}
   if(campaign.active&&getPlayerId(target)==='p1'&&pHp>0)playerHitVoice();
   if(getPlayerId(target)==='p2'){
+    campaignChaseLanded(opt);
     if(campaign.active&&campaign.encounter==='outlaw-1'){if(pvpHp(target)<=0)campaignOutlawClear();else campaignOutlawQuip('hit')}
     if(stage===5)sansBossDodge();
     if(stage===4&&spiegelPhase===1&&eHp>0&&eHp<=stages[4].hp*.5){const token=run;setTimeout(()=>{if(soloGunslinger.active&&token===run&&stage===4&&eHp>0&&spiegelPhase===1)startSpiegelPhase2()},70)}
@@ -19388,7 +20012,9 @@ function soloGunslingerFinish(winner){
   if(soloGunslinger.roundDone)return true;
   soloGunslinger.roundDone=true;paused=true;const won=getPlayerId(winner)==='p1',token=run;
   multiplayerPrototype.pvpRoundOver=true;multiplayerPrototype.pvpResolveT=0;multiplayerPrototype.pvpResetT=999999;multiplayerPrototype.connectionPaused=true;mpStopAllMovement();
+  if(campaign.active)campaignDodgeStop();
   if(campaign.active&&won){campaignVictoryStart();return true}
+  if(campaign.active&&!won&&campaign.destination==='tutorial'){campaignTutorialDeathShow();return true}
   setTimeout(()=>{if(!soloGunslinger.active||run!==token)return;
     if(campaign.active){soloGunslingerEnd();campaignEndEncounter(won);return}
     if(!won){over=true;transition=false;showOverlay('DEFEATED','The duel is over.',true);return}
@@ -24529,7 +25155,7 @@ function mpQueueGuestMove(v,{force=false}={}){
 function setMpMove(v){
   const localId=getLocalPlayerId(),role=getPlayerRole(localId);
   v=clamp(Number(v)||0,-1,1);
-  if(mpTutorialMovementLocked()){mpSetLocalMoveState(0);return}
+  if(mpTutorialMovementLocked()||campaignShootingMoveLocked(localId)){mpSetLocalMoveState(0);if(localId)mpSetRoleMove(localId,0);return}
 
   // v41.14r: while Sans owns a captured telekinesis target, vertical input is a
   // telekinesis command, not character locomotion. Send a discrete telepoint so
@@ -30311,7 +30937,7 @@ function pvpApplyDamage(attacker,target,damage,opt={}){
   if(campaign.active&&soloGunslinger.active)damage=Math.max(1,Math.round(damage));
   const hpPrecision=opt.sourceKind==='zol'||opt.sourceKind==='judradim'||opt.sourceKind==='blackHole'||opt.sourceKind==='friskGloveMash'||Math.abs(pvpHp(target)*10-Math.round(pvpHp(target)*10))>1e-8?100:10;
   const campaignHpBefore=pvpHp(target);
-  pvpSetHp(target,campaignTrainingTarget(target)?soloGunslingerNpcMaxHp():Math.round((pvpHp(target)-damage)*hpPrecision)/hpPrecision);
+  pvpSetHp(target,campaignTrainingTarget(target)?soloGunslingerNpcMaxHp():campaignShootingTargetHp(target,Math.round((pvpHp(target)-damage)*hpPrecision)/hpPrecision,opt));
   campaignDamageRecord(attackerId,targetId,campaignTrainingTarget(target)?damage:Math.max(0,campaignHpBefore-pvpHp(target)),opt);
   // v41.41bk — returning charged Red resolves explosion damage first. Only surviving targets are then launched into the setup lane.
   if(deferRedSetup&&pvpHp(target)>0){
@@ -30332,7 +30958,7 @@ function pvpApplyDamage(attacker,target,damage,opt={}){
     shrineVariant:Number(opt.shrineVariant)||0,
     worldCutDefense,suppressImpact:!!opt.suppressImpact,campaignOpeningPresented:!!opt.campaignOpeningPresented,campaignImpactRegion:campaignShotImpactRegion(target,opt)
   });
-  soloGunslingerAfterDamage(target);renderMpPvpUI();
+  soloGunslingerAfterDamage(target,opt);renderMpPvpUI();
   if(pvpHp(target)<=0&&multiplayerPrototype.pvpResolveT<=0)multiplayerPrototype.pvpResolveT=.105;
   return true
 }
@@ -30913,7 +31539,7 @@ for(const p of multiplayerPrototype.pvpProjectiles){
       pvpCombatEvent('explosiveBurst',{role:ownerRole,target:targetRole,y:p.y,radius:blastTol});
       if(Math.abs(p.y-targetY)<=blastTol){
         pvpApplyDamage(ownerRole,targetRole,1.5,{
-          heavy:true,knock:.10,nonProjectile:true,special:'explosive',sourceKind:'explosiveRound',coverAbsorbed:p.lanternCoverAbsorbed||0,epoch:p.epoch
+          ...(campaignShootingActive()?{projectileRef:p}:{}),heavy:true,knock:.10,nonProjectile:true,special:'explosive',sourceKind:'explosiveRound',coverAbsorbed:p.lanternCoverAbsorbed||0,epoch:p.epoch
         });
       }
     }else{
@@ -31394,7 +32020,7 @@ function mpGunslingerInputRoll({role,state:st,down}){
   const move=mpRoleMove(role);
   let dir=Math.abs(move)>.08?Math.sign(move):(st.rollDir||1),fromY=mpRoleY(role),toY=clamp(fromY+dir*.14*campaignMoveScale(),0,1);
   if(Math.abs(toY-fromY)<.06*campaignMoveScale()){dir=-dir;toY=clamp(fromY+dir*.14*campaignMoveScale(),0,1)}
-  st.rollDir=dir;st.rollInvuln=.18;st.s1=2.8;mpSetRoleY(role,toY);
+  st.rollDir=dir;st.rollInvuln=.18;st.s1=2.8;campaignDodgeRecordRoll(role);mpSetRoleY(role,toY);
   mpSetRoleRenderY(role,toY);
   mpEmitEvent(role,'roll',{dir,fromY,toY,duration:.28});mpTutorialRecordRoll();mpSendStateNow()
 }
@@ -31490,6 +32116,7 @@ function mpGojoInputStrike(role,st){
 
 
 function handleMpAbilityInput(idOrRole,control,phase='tap',value=null,prevalidated=false){
+  if(campaignDodgeLocks(idOrRole,control))return;
   if(!prevalidated&&!mpValidateAuthoritativePlayerInput(idOrRole,control,phase,value).ok)return;
   if(!isNetHost()||!multiplayerPrototype.connected||multiplayerPrototype.connectionPaused||multiplayerPrototype.matchPhase!=='match')return;
   if(multiplayerPrototype.matchMode==='coop'){
@@ -31921,6 +32548,7 @@ function closeMpGunChamberHold(){
   mpGunChamber?.classList.remove('holdPrimed');
 }
 function openMpGunChamberHold(x,y){
+  if(campaignDodgeActive())return;
   if(campaignExploring()&&!campaignExploreGunCanInput())return;
   if(mpRoleChar(mpLocalRole())!=='gunslinger'||!mpGunChamber)return;
   const st=mpStateFor(mpLocalRole());
@@ -32361,6 +32989,7 @@ function mpMovementLocked(idOrRole,{localPrediction=false}={}){
 }
 function mpIntegrateAuthoritativePlayerMovement(idOrRole,dt,now=performance.now()){
   const id=getPlayerId(idOrRole);if(!id)return 0;
+  if(campaignShootingMoveLocked(id))return mpRoleY(id);
   const st=mpStateFor(id);
   if(multiplayerPrototype.matchMode==='pvp'&&st?.char==='gunslinger'&&st.xShotAimActive){
     const canAim=!multiplayerPrototype.connectionPaused&&!multiplayerPrototype.pvpRoundOver&&pvpStun(id)<=0&&pvpKnock(id)<=0;
@@ -33040,7 +33669,7 @@ function updateSpiegelBlackHole(dt){if(spiegelHoleCd>0)spiegelHoleCd=Math.max(0,
 function castSpiegelHex(){if(stage!==4||over||transition||spiegelHexT>0||spiegelHexCd>0)return;spiegelHexT=1.75;spiegelHexCd=5.8;spiegelHexFx?.remove();const h=document.createElement('div');h.className='spiegelHex';const cells=[[50,10,.72,.78],[35,17,.9,.78],[65,17,.9,.78],[22,29,.88,.72],[50,29,1,.86],[78,29,.88,.72],[12,45,.78,.62],[36,45,1,.86],[64,45,1,.86],[88,45,.78,.62],[10,62,.7,.55],[28,62,.95,.76],[50,62,1,.9],[72,62,.95,.76],[90,62,.7,.55],[16,78,.76,.62],[38,78,.98,.78],[62,78,.98,.78],[84,78,.76,.62],[28,91,.72,.58],[50,91,.88,.7],[72,91,.72,.58]];for(const[x,y,s,o]of cells){const c=document.createElement('i');c.className='spiegelHexCell';c.style.left=x+'%';c.style.top=y+'%';c.style.setProperty('--s',s);c.style.setProperty('--o',o);h.appendChild(c)}effects.appendChild(h);spiegelHexFx=h;placeSpiegelHex();snd.spiegelHex();status.textContent='HEX BARRIER'}function placeSpiegelHex(){if(!spiegelHexFx)return;const e=box(enemy);spiegelHexFx.style.left=(e.x+e.w*.5-77)+'px';spiegelHexFx.style.top=(e.y+e.h*.5-77)+'px'}function updateSpiegelHex(dt){if(spiegelHexCd>0)spiegelHexCd=Math.max(0,spiegelHexCd-dt);if(spiegelHexT>0){spiegelHexT=Math.max(0,spiegelHexT-dt);placeSpiegelHex();if(spiegelHexT<=0&&spiegelHexFx){const h=spiegelHexFx;spiegelHexFx=null;h.classList.add('fade');setTimeout(()=>h.remove(),290)}}else if(spiegelHexFx){spiegelHexFx.remove();spiegelHexFx=null}}function spiegelHexBlockFx(){if(!spiegelHexFx)return;spiegelHexFx.classList.remove('block');void spiegelHexFx.offsetWidth;spiegelHexFx.classList.add('block');snd.spiegelHexBlock();status.textContent='SHIELDED'}function spiegelForceAttack(){if(stage!==4||spiegelPhase!==2||over||transition)return;const pb=box(player),eb=box(enemy),lockedY=pb.y+pb.h*.5,token=run,palm=document.createElement('div');palm.className='spiegelForcePalm';palm.style.left=(eb.x+eb.w*.18)+'px';palm.style.top=(eb.y+eb.h*.5)+'px';effects.appendChild(palm);setTimeout(()=>palm.remove(),300);const xs=[arenaW*.28,arenaW*.5,arenaW*.7];xs.forEach((x,i)=>{const q=document.createElement('div');q.className='spiegelForceRipple r'+(i+1);q.style.left=x+'px';q.style.top=lockedY+'px';effects.appendChild(q);setTimeout(()=>q.remove(),410)});snd.spiegelForceWind();setTimeout(()=>{if(token!==run||stage!==4||spiegelPhase!==2||over||transition)return;const p=box(player);snd.spiegelForceHit();if(Math.abs(p.y+p.h*.5-lockedY)<38){damagePlayer(1)}else{status.textContent='FORCE MISSED'}},240)}
 function enemyGaster(){if(stage!==5||over||transition)return;const eb=box(enemy),y=eb.y+eb.h/2,h=makeGasterHead('enemyGaster',eb.x-24,y-30);h.classList.add('telegraph');status.textContent='GASTER BLASTER';tone(260,620,.26,.045,'sine');const token=run;setTimeout(()=>{if(token!==run||stage!==5||over||transition||!h.isConnected)return;h.classList.remove('telegraph');h.classList.add('fire');snd.gaster();const b=document.createElement('div');b.className='gasterBeam enemyGasterBeam';b.style.left='8px';b.style.top=y-16+'px';b.style.width=Math.max(80,eb.x-8)+'px';specialFx.appendChild(b);const pb=box(player);if(Math.abs(pb.y+pb.h/2-y)<46){if(golemFx&&golemT>0&&golemHits>0){const gb=box(golemFx);consumeGolemHit(gb.x+gb.w*.5,gb.y+gb.h*.5);if(char==='frieren')damagePlayer(1)}else damagePlayer(1)}setTimeout(()=>b.remove(),400)},320);setTimeout(()=>h.remove(),760)}function enemyAttack(){if(campaignEnemyAttack())return;if(stage<3){enemyGunFx();snd.enemy();shot('enemy','bullet',(Math.random()-.5)*10)}else if(stage===3){if(mahoState==='idle')shot('enemy','mahoSlash',(Math.random()-.5)*28)}else if(stage===4){if(spiegelHexT<=0&&spiegelHexCd<=0&&Math.random()<.14)castSpiegelHex();else if(spiegelPhase===2){if(spiegelHoleT<=0&&spiegelHoleCd<=0&&Math.random()<.18)startSpiegelBlackHole();else spiegelForceAttack()}else{const r=Math.random();if(r<.44)spiegelZoltraak();else if(r<.72)spiegelJudradim();else spiegelVollzanbel()}}else if(Math.random()<.3)enemyGaster();else{snd.bone();shot('enemy','bone',(Math.random()-.5)*22)}}function resetGame(){soloGunslingerEnd();campaignStop();run++;mpFrierenSoloZolRecoveryMax=2;mpFrierenClearSoloField();lastHitVoice=0;lastHitLine='';lastBossHitVoice=0;lastBossHitLine='';started=false;paused=false;over=false;transition=false;stage=0;spiegelPhase=1;spiegelHoleT=0;spiegelHoleX=0;spiegelHoleY=0;spiegelHoleCd=0;spiegelHoleFx?.remove();spiegelHoleFx=null;spiegelHexT=0;spiegelHexCd=0;spiegelHexFx?.remove();spiegelHexFx=null;eHp=4;pHp=6;multi=1;pY=eY=target=.5;shootT=1;pickT=2.7;bg=0;pCd=c1=c2=0;ammo=6;turn=0;reloading=false;reloadStartedAt=0;skills=[];skillCd={};skillBtns.clear();adapt={};wheelTurn=0;enemyStunT=0;enemy.classList.remove('plane-stunned');hexT=golemT=fieldT=0;golemHits=0;golemEchoReady=false;golemEchoPending=false;golemCd=0;golemCdMax=9;friSpellCdMax=9;friSpellIndex=0;spellHoldPointer=null;closeSpellWheel();hexFx?.remove();hexFx=null;purpleHold=zolHold=false;gojoBlueCdMax=4.5;cancelGojoBlueHold();endZolCharge();infReady=true;infCd=0;domainHold=false;domainHoldT=domainCd=domainActive=0;domainCdMax=14;domainDurationMax=3;domainQuick=false;gojoDomainRushReady=false;resetGojoDomainRush();domainType='';domainFx?.remove();domainFx=null;clearAbilityCutscene();resetMaho();resetBigRush();fireBurnT=fireBurnTick=0;vollBurnT=vollBurnTick=0;enemy.classList.remove('burning','voll-burning');endBluePower();cancelGasterHold();cancelGojoBlueHold();ring=bRing=100;parryT=parryCd=0;recharging=false;rechargeT=0;constructUltimateFired=false;cancelConstruct();player.classList.remove('ring-charging','purple-release-ready','purple-charging','sans-dodge-up','sans-dodge-down','player-hit','player-hit-heavy');bRecharge=false;bRechargeT=0;bConstructCd=0;resetJoystick();soloReleaseDesktopControls(true);projs.forEach(p=>p.el.remove());pickups.forEach(p=>p.el.remove());projs=[];pickups=[];hexFx?.remove();golemFx?.remove();fieldFx?.remove();hexFx=golemFx=fieldFx=null;shots.innerHTML='';pickupsEl.innerHTML='';arena.querySelectorAll('.golemEchoBloom').forEach(el=>el.remove());effects.innerHTML='';specialFx.innerHTML='';borrowed.innerHTML='';borrowed.classList.add('hide');draft.classList.add('hide');overlay.classList.add('hide');game.classList.add('hide');sel.classList.remove('hide');chosen=null;start.disabled=true;$$('.fighter').forEach(x=>x.classList.remove('sel'));preview.innerHTML='';pName.textContent='Pick a fighter';pKit.textContent='Tap a fighter card.';hpEl.textContent='6';pause.textContent='PAUSE';renderAmmo();updateRing();last=performance.now()}
 again.addEventListener('click',resetGame);pause.addEventListener('click',()=>{if(!started||over||cutsceneActive)return;paused=!paused;pause.textContent=paused?'RESUME':'PAUSE';if(paused)soloReleaseDesktopControls(true);resetJoystick();last=performance.now()});start.addEventListener('click',()=>{if(!chosen)return;ac();run++;char=chosen;started=true;uiTick=0;sel.classList.add('hide');game.classList.remove('hide');syncArenaMetrics();player.innerHTML=model(char);player.style.setProperty('--dashX','0px');stage=0;eHp=stages[0].hp;pHp=6;hpEl.textContent='6';adapt={};wheelTurn=0;enemyStunT=0;gojoDomainRushReady=false;renderEnemy();enemy.classList.remove('plane-stunned');clearAbilityCutscene();resetMaho();resetBigRush();resetGojoDomainRush();cancelGasterHold();cancelGojoBlueHold();parryT=parryCd=0;recharging=false;rechargeT=0;constructUltimateFired=false;cancelConstruct();player.classList.remove('ring-charging');if(char==='frieren'){friSpellIndex=0;closeSpellWheel()}renderControls();if(char==='gunslinger'&&!campaign.active)soloGunslingerBegin();pos(true);last=performance.now()});
-function loop(now){const dt=Math.min(.04,(now-last)/1000);last=now;frameArenaRect=null;if(campaignLobbyTick(dt)){requestAnimationFrame(loop);return}campaignDamageTick(dt);campaignCorpsesTick(dt);if(campaignFlowTick(dt)){soloGunslingerBeforeFrame(dt);requestAnimationFrame(loop);return}campaignCountdownTick(dt);soloGunslingerBeforeFrame(dt);if(campaignCountdown.t>0){requestAnimationFrame(loop);return}if(soloGunslinger.active&&(multiplayerPrototype.pvpSequenceT>0||multiplayerPrototype.domainCinematicT>0)){requestAnimationFrame(loop);return}mpFrierenSoloVollLifecycle();mpFrierenSoloFieldLifecycle();if(campaignExploring()){campaignTick(dt);requestAnimationFrame(loop);return}if(started&&!paused){if(cutsceneActive){requestAnimationFrame(loop);return}if(hitStop>0){hitStop=Math.max(0,hitStop-dt);requestAnimationFrame(loop);return}const frierenBoostT=mpFrierenSoloFieldTime(dt),frierenTier=mpFrierenSoloFieldTier(),cooldownDt=dt+frierenBoostT*mpFrierenFieldCooldownBoost(frierenTier);pCd=Math.max(0,pCd-cooldownDt);c1=Math.max(0,c1-cooldownDt);c2=Math.max(0,c2-cooldownDt);domainCd=Math.max(0,domainCd-cooldownDt);bConstructCd=Math.max(0,bConstructCd-dt);for(const k in skillCd)skillCd[k]=Math.max(0,skillCd[k]-cooldownDt);updateGasterHold(dt);updateGojoBlueHold(dt);updateBluePower(dt);updateGreenLantern(dt);mpFrierenTickSoloVoll(dt);uiTick-=dt;if(uiTick<=0){uiTick=PERF_LITE?.10:.05;updateAbilityIndicators();updateBorrowed()}if(bRecharge){bRechargeT-=dt;if(bRechargeT<=0){bRecharge=false;bRing=100;updateRing()}}if(zolHold){if(frierenBoostT>0)zolFieldBoost=true;zolT=Math.min(MP_FRI_ZOL.maxHold,zolT+mpFrierenZolEarnedDelta(zolT,dt,frierenBoostT,frierenTier,mpFrierenSoloZolField(),true));mpFrierenUpdateZolCircle(zolCircle,zolT,mpFrierenSoloZolField(),true)}if(purpleHold){purpleT=Math.min(1.15,purpleT+dt);player.classList.add('purple-charging');player.classList.toggle('purple-release-ready',purpleT>=1.15)}else player.classList.remove('purple-release-ready','purple-charging');if(char==='gojo'&&!infReady){infCd-=dt;if(infCd<=0)infReady=true;infEl.textContent=infReady?'∞ READY':'∞ '+Math.max(0,infCd).toFixed(1)+'s'}if(domainHold){domainHoldT+=dt;if(domainHoldT>=2){domainHold=false;if(char==='sukuna'){domainCdMax=14;domainCd=domainCdMax;startSukunaCutscene()}else if(char==='gojo')startGojoDomainCutscene(false);else{domainCdMax=14;domainCd=domainCdMax;activateDomain(char)}}}if(domainActive>0){domainActive-=dt;if(domainType==='sukuna'){domainTick-=dt;if(domainTick<=0){domainTick=.36;domainSlash()}}if(domainActive<=0)endDomain()}updateFrierenEffects(dt);updateFireBurn(dt);updateVollBurn(dt);updateEnemyStun(dt);updateGojoDomainRush(dt);const frozen=domainType==='gojo'&&domainActive>0,enemyDisabled=frozen||enemyStunT>0||(soloGunslinger.active&&mpMovementLocked('guest'));updateMaho(dt,enemyDisabled);updateBigRush(dt);updateSpiegelBlackHole(dt);updateSpiegelHex(dt);if(!transition&&!over){if(!grabbed&&bigRushState==='idle'&&gojoRushState==='idle'&&!recharging)pY=clamp(pY+(soloGunslinger.active?0:move)*1.05*dt*(fieldT>0?1.35:1)*soloGunslingerReloadMoveScale(now),0,1);if(!enemyDisabled&&!campaignOutlawCombatTick(dt)){if(!(stage===3&&mahoState!=='idle')){if(!blueActive){target=clamp(pY+(Math.random()-.5)*.2,.04,.96);eY+=(target-eY)*dt*soloEncounterStage().speed*mpFrierenSoloVollMoveScale()*soloGunslingerNpcMoveScale()}}shootT-=dt;if(shootT<=0){shootT=(stage===4&&spiegelPhase===2)?(.26+Math.random()*.16):(soloEncounterStage().fire+Math.random()*.55);enemyAttack()}}pickT-=dt;if(pickT<=0)spawnPickup()}pos();if(zolCircle){const p=box(player);zolCircle.style.left=p.x+p.w*.79+'px';zolCircle.style.top=p.y+p.h*.43+'px'}if(!frozen){bg-=95*dt;if(bg<-120)bg+=120}streaks.style.transform='translateX('+bg+'px)';const pb=campaign.active&&soloGunslinger.active?campaignCombatBodyBox('host'):box(player),eb=box(enemy);for(const q of pickups){if(q.dead)continue;if(!frozen)q.x-=72*dt;q.el.style.left=q.x+'px';q.el.style.top=q.y+'px';if(hit({x:q.x,y:q.y,w:46,h:46},pb)){q.dead=true;q.el.remove();snd.pickup();if(q.type==='health'){pHp=Math.min(6,pHp+2);hpEl.textContent=pHp}else{multi=Math.min(3,multi+1);updateMulti()}}}compactAlive(pickups);for(const p of projs){if(p.dead)continue;const[w,h]=soloGunslinger.active&&p.owner==='enemy'&&p.kind==='bullet'?[32,14]:dims(p.kind);
+function loop(now){const realDt=Math.min(.04,(now-last)/1000);last=now;frameArenaRect=null;campaignChaseTick(realDt);campaignShootingTick(realDt);campaignDodgeTick(realDt);const dt=realDt*campaignDodgeTimeScale();frameArenaRect=null;if(campaignLobbyTick(dt)){requestAnimationFrame(loop);return}campaignDamageTick(dt);campaignCorpsesTick(dt);if(campaignFlowTick(dt)){soloGunslingerBeforeFrame(dt);requestAnimationFrame(loop);return}campaignCountdownTick(dt);soloGunslingerBeforeFrame(dt);if(campaignCountdown.t>0){requestAnimationFrame(loop);return}if(soloGunslinger.active&&(multiplayerPrototype.pvpSequenceT>0||multiplayerPrototype.domainCinematicT>0)){requestAnimationFrame(loop);return}mpFrierenSoloVollLifecycle();mpFrierenSoloFieldLifecycle();if(campaignExploring()){campaignTick(dt);requestAnimationFrame(loop);return}if(started&&!paused){if(cutsceneActive){requestAnimationFrame(loop);return}if(hitStop>0){hitStop=Math.max(0,hitStop-dt);requestAnimationFrame(loop);return}const frierenBoostT=mpFrierenSoloFieldTime(dt),frierenTier=mpFrierenSoloFieldTier(),cooldownDt=dt+frierenBoostT*mpFrierenFieldCooldownBoost(frierenTier);pCd=Math.max(0,pCd-cooldownDt);c1=Math.max(0,c1-cooldownDt);c2=Math.max(0,c2-cooldownDt);domainCd=Math.max(0,domainCd-cooldownDt);bConstructCd=Math.max(0,bConstructCd-dt);for(const k in skillCd)skillCd[k]=Math.max(0,skillCd[k]-cooldownDt);updateGasterHold(dt);updateGojoBlueHold(dt);updateBluePower(dt);updateGreenLantern(dt);mpFrierenTickSoloVoll(dt);uiTick-=dt;if(uiTick<=0){uiTick=PERF_LITE?.10:.05;updateAbilityIndicators();updateBorrowed()}if(bRecharge){bRechargeT-=dt;if(bRechargeT<=0){bRecharge=false;bRing=100;updateRing()}}if(zolHold){if(frierenBoostT>0)zolFieldBoost=true;zolT=Math.min(MP_FRI_ZOL.maxHold,zolT+mpFrierenZolEarnedDelta(zolT,dt,frierenBoostT,frierenTier,mpFrierenSoloZolField(),true));mpFrierenUpdateZolCircle(zolCircle,zolT,mpFrierenSoloZolField(),true)}if(purpleHold){purpleT=Math.min(1.15,purpleT+dt);player.classList.add('purple-charging');player.classList.toggle('purple-release-ready',purpleT>=1.15)}else player.classList.remove('purple-release-ready','purple-charging');if(char==='gojo'&&!infReady){infCd-=dt;if(infCd<=0)infReady=true;infEl.textContent=infReady?'∞ READY':'∞ '+Math.max(0,infCd).toFixed(1)+'s'}if(domainHold){domainHoldT+=dt;if(domainHoldT>=2){domainHold=false;if(char==='sukuna'){domainCdMax=14;domainCd=domainCdMax;startSukunaCutscene()}else if(char==='gojo')startGojoDomainCutscene(false);else{domainCdMax=14;domainCd=domainCdMax;activateDomain(char)}}}if(domainActive>0){domainActive-=dt;if(domainType==='sukuna'){domainTick-=dt;if(domainTick<=0){domainTick=.36;domainSlash()}}if(domainActive<=0)endDomain()}updateFrierenEffects(dt);updateFireBurn(dt);updateVollBurn(dt);updateEnemyStun(dt);updateGojoDomainRush(dt);const frozen=domainType==='gojo'&&domainActive>0,enemyDisabled=frozen||enemyStunT>0||(soloGunslinger.active&&mpMovementLocked('guest'));updateMaho(dt,enemyDisabled);updateBigRush(dt);updateSpiegelBlackHole(dt);updateSpiegelHex(dt);if(!transition&&!over){if(!grabbed&&bigRushState==='idle'&&gojoRushState==='idle'&&!recharging)pY=clamp(pY+(soloGunslinger.active?0:move)*1.05*dt*(fieldT>0?1.35:1)*soloGunslingerReloadMoveScale(now),0,1);if(!enemyDisabled&&!campaignOutlawCombatTick(dt)){if(!(stage===3&&mahoState!=='idle')){if(!blueActive){target=clamp(pY+(Math.random()-.5)*.2,.04,.96);eY+=(target-eY)*dt*soloEncounterStage().speed*mpFrierenSoloVollMoveScale()*soloGunslingerNpcMoveScale()}}shootT-=dt;if(shootT<=0){shootT=(stage===4&&spiegelPhase===2)?(.26+Math.random()*.16):(soloEncounterStage().fire+Math.random()*.55);enemyAttack()}}pickT-=dt;if(pickT<=0)spawnPickup()}pos();if(zolCircle){const p=box(player);zolCircle.style.left=p.x+p.w*.79+'px';zolCircle.style.top=p.y+p.h*.43+'px'}if(!frozen){bg-=95*dt;if(bg<-120)bg+=120}streaks.style.transform='translateX('+bg+'px)';const pb=campaign.active&&soloGunslinger.active?campaignCombatBodyBox('host'):box(player),eb=box(enemy);for(const q of pickups){if(q.dead)continue;if(!frozen)q.x-=72*dt;q.el.style.left=q.x+'px';q.el.style.top=q.y+'px';if(hit({x:q.x,y:q.y,w:46,h:46},pb)){q.dead=true;q.el.remove();snd.pickup();if(q.type==='health'){pHp=Math.min(6,pHp+2);hpEl.textContent=pHp}else{multi=Math.min(3,multi+1);updateMulti()}}}compactAlive(pickups);for(const p of projs){if(p.dead)continue;const[w,h]=soloGunslinger.active&&p.owner==='enemy'&&p.kind==='bullet'?[32,14]:dims(p.kind);
 if(p.kind==='lanternPlane'){
   p.flightT+=dt;
   const u=clamp(p.flightT/p.flightDuration,0,1);
@@ -33080,7 +33709,7 @@ if(spiegelHoleT>0&&p.kind!=='lanternPlane'){
     if(dist<36){p.dead=true;p.el.remove();blackHoleSwallow(pcx,pcy);continue}
   }
 }
-const fromX=p.x,sp=frozen&&p.owner==='enemy'?0:p.kind==='purple'?255:p.kind==='bigslash'?360:p.kind==='bomb'?255:p.kind==='vollzanbel'?235:p.kind==='mahoSlash'?285:campaignNpcBulletSpeed(p);p.x+=(p.owner==='player'?sp:-sp)*dt;p.el.style.left=p.x+'px';p.el.style.top=p.y+'px';if(p.owner==='player'&&hit({x:p.x,y:p.y,w,h},eb)){const sansPass=stage===5;if(sansPass&&p.sansPassedBoss){}else{if(sansPass)p.sansPassedBoss=true;else if(spiegelHexT>0||p.kind!=='purple')p.dead=true;if(p.dead)p.el.remove();const head=p.y+h/2<eb.y+eb.h*.38,base=p.kind==='bigslash'?3:p.kind==='firearrow'?2.5:p.kind==='purple'?5:p.kind==='car'?2:p.kind==='bomb'?2:p.kind==='vollzanbel'?1.5:1,canCrit=!['firearrow','purple','car','bomb','vollzanbel'].includes(p.kind),d=head&&canCrit?base*2:base;damageEnemy(d,impactFor(p.kind,head),head&&canCrit,p.kind);if(p.kind==='redshot'&&stage!==5)gojoRedImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5);if(p.kind==='purple')gojoPurpleImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5);if(p.kind==='car')snd.carHit();if(p.kind==='bomb'){snd.bombHit();const ex=document.createElement('div');ex.className='bombBlast';ex.style.left=eb.x+eb.w*.5+'px';ex.style.top=eb.y+eb.h*.5+'px';effects.appendChild(ex);setTimeout(()=>ex.remove(),420)}if(p.kind==='firearrow'){if(stage!==5)fireArrowImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5,false);if(eHp>0)startFireBurn();}if(p.kind==='vollzanbel'&&eHp>0)startVollBurn()}}else if(p.owner==='enemy'&&!frozen&&char==='frieren'&&golemFx&&golemT>0&&golemHits>0&&!p.golemTagged&&hit({x:p.x,y:p.y,w,h},box(golemFx))){p.golemTagged=true;const gb=box(golemFx);consumeGolemHit(gb.x+gb.w*.5,gb.y+gb.h*.5)}else if(p.owner==='enemy'&&!frozen&&!p.soloDodgePassed&&soloGunslingerNpcContact(p,fromX,w,h,pb)){if(soloGunslinger.active&&(mpStateFor('host')?.rollInvuln||0)>0){p.soloDodgePassed=true}else if(char==='sans'){if(!p.sansPassedPlayer){p.sansPassedPlayer=true;damagePlayer(1)}}else{p.dead=true;p.el.remove();if(char==='greenlantern'&&parryT>0)perfectParry();else damagePlayer(1,false,p.y+h/2)}}if(!p.dead&&(p.x<(p.kind==='slash'?-260:-130)||p.x>arenaW+(p.kind==='slash'?260:140))){p.dead=true;p.el.remove()}}compactAlive(projs)}requestAnimationFrame(loop)}
+const fromX=p.x,sp=frozen&&p.owner==='enemy'?0:p.kind==='purple'?255:p.kind==='bigslash'?360:p.kind==='bomb'?255:p.kind==='vollzanbel'?235:p.kind==='mahoSlash'?285:campaignNpcBulletSpeed(p);p.x+=(p.owner==='player'?sp:-sp)*dt;p.el.style.left=p.x+'px';p.el.style.top=p.y+'px';if(campaignDodgeResolveBullet(p,fromX,w,h,pb))continue;if(p.owner==='player'&&hit({x:p.x,y:p.y,w,h},eb)){const sansPass=stage===5;if(sansPass&&p.sansPassedBoss){}else{if(sansPass)p.sansPassedBoss=true;else if(spiegelHexT>0||p.kind!=='purple')p.dead=true;if(p.dead)p.el.remove();const head=p.y+h/2<eb.y+eb.h*.38,base=p.kind==='bigslash'?3:p.kind==='firearrow'?2.5:p.kind==='purple'?5:p.kind==='car'?2:p.kind==='bomb'?2:p.kind==='vollzanbel'?1.5:1,canCrit=!['firearrow','purple','car','bomb','vollzanbel'].includes(p.kind),d=head&&canCrit?base*2:base;damageEnemy(d,impactFor(p.kind,head),head&&canCrit,p.kind);if(p.kind==='redshot'&&stage!==5)gojoRedImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5);if(p.kind==='purple')gojoPurpleImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5);if(p.kind==='car')snd.carHit();if(p.kind==='bomb'){snd.bombHit();const ex=document.createElement('div');ex.className='bombBlast';ex.style.left=eb.x+eb.w*.5+'px';ex.style.top=eb.y+eb.h*.5+'px';effects.appendChild(ex);setTimeout(()=>ex.remove(),420)}if(p.kind==='firearrow'){if(stage!==5)fireArrowImpactVfx(eb.x+eb.w*.5,eb.y+eb.h*.5,false);if(eHp>0)startFireBurn();}if(p.kind==='vollzanbel'&&eHp>0)startVollBurn()}}else if(p.owner==='enemy'&&!frozen&&char==='frieren'&&golemFx&&golemT>0&&golemHits>0&&!p.golemTagged&&hit({x:p.x,y:p.y,w,h},box(golemFx))){p.golemTagged=true;const gb=box(golemFx);consumeGolemHit(gb.x+gb.w*.5,gb.y+gb.h*.5)}else if(p.owner==='enemy'&&!frozen&&!p.soloDodgePassed&&soloGunslingerNpcContact(p,fromX,w,h,pb)){if(soloGunslinger.active&&(mpStateFor('host')?.rollInvuln||0)>0){p.soloDodgePassed=true}else if(char==='sans'){if(!p.sansPassedPlayer){p.sansPassedPlayer=true;damagePlayer(1)}}else{p.dead=true;p.el.remove();if(char==='greenlantern'&&parryT>0)perfectParry();else damagePlayer(1,false,p.y+h/2)}}if(!p.dead&&(p.x<(p.kind==='slash'?-260:-130)||p.x>arenaW+(p.kind==='slash'?260:140))){p.dead=true;p.el.remove()}}compactAlive(projs)}requestAnimationFrame(loop)}
 soloGunslingerBoot();campaignBoot();renderEnemy();renderAmmo();pos(true);requestAnimationFrame(loop);
 })();
 </script>
@@ -33095,8 +33724,8 @@ soloGunslingerBoot();campaignBoot();renderEnemy();renderAmmo();pos(true);request
 (()=>{
 'use strict';
 const FIDGET_UPDATE=Object.freeze({
-  build:'41.53',
-  release:'41.53',
+  build:'41.54',
+  release:'41.54',
   protocol:88,
   manifestUrl:'https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/version.json',
   checkDelayMs:1400,
