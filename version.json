@@ -1,14 +1,14 @@
 {
-  "version": "41.54",
+  "version": "41.55",
   "protocol": 88,
   "required": false,
-  "summary": "Guided horse chase, mobile aiming and dialogue import/export.",
+  "summary": "Exploration lasso, PRIMETIME, Memory discoveries and Crossroads refinements.",
   "notes": [
-    "Mounted Tutorial teaches aiming, movement and rolling through pursuit and retaliation",
-    "Pocket sand attacks, a mounted victory ending and the failed-memory death screen",
-    "Mobile hold/drag/release aiming, smoother Outlaw tracking and correct bush/rider depth",
-    "Import dialogue and export an edited playable HTML from campaign Settings",
-    "Existing Crossroads and manual saves are preserved; multiplayer remains on protocol 88"
+    "Lasso restraints, weighted pulling, climbing and momentum-driven chasm swings with airborne landings",
+    "PRIMETIME slow time earns charge from successful dodges and actual damage",
+    "Discovery-based bullet/reaction Memory, QUESTS and day/night lighting with warm interiors",
+    "Mobile HUD, campfire/crafting, healing forecasts and traversal audio/VFX refinements",
+    "Existing local campaign/manual saves remain compatible; multiplayer stays on protocol 88"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
