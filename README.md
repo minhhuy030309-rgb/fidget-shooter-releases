@@ -2,16 +2,18 @@
 
 Public distribution channel for protected stable Fidget Shooter builds.
 
-## v41.54
+## v41.55
 
-[Download the playable HTML](https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html) and open the saved file in your browser. Choose single player, open **Gunslinger · Lobby**, then select **Tutorial** or **Crossroads**.
+[Download the playable HTML](https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html?v=41.55) and open the saved file in your browser. Choose single player, open **Gunslinger · Lobby**, then select **Tutorial** or **Crossroads**.
 
-Tutorial now teaches aiming, movement and rolling in a mounted chase through town. The Outlaw switches from pursuit to retaliation, using bullets and pocket sand. Winning plays the mounted ending; dying cuts to the failed-memory screen. This release also includes mobile hold/drag/release aiming, smoother Outlaw movement, correct rider/bush depth, and dialogue import/export in campaign Settings.
+Crossroads now includes an exploration lasso for temporary restraints, weighted pulling, climbing and momentum-driven chasm swings with airborne landings. **PRIMETIME** slows time while held and restores some charge for successful dodges and damage. Discover bullet effects and reactions in **Memory**, track **QUESTS**, and explore day/night lighting with warm interiors. Campfire/crafting, healing forecasts, mobile HUD, side-profile layering and traversal sound/effects are refined.
 
-Crossroads retains its tavern, civilians, campfire rest/manual saves/crafting and rideable horses with blended gaits, steering, pace and stamina. Existing local campaign and manual saves remain compatible. The original solo routes and multiplayer remain available. Multiplayer uses **protocol 88**; both players need compatible files.
+On desktop, middle mouse equips the lasso; hold/release the primary control to cast, wheel down to pull a bound civilian, and middle mouse to release a swing. Mobile has a lasso button beside health and a tap-to-pull prompt. Hold **T** or the mobile PRIMETIME button for slow time; controls can be rebound in Settings.
 
-The horse-chase milestone passed 28 unique suites and 75 repeated scene cycles with preserved saves and stable DOM counts. The user completed the mobile follow-up and reported no problems. Five final release suites cover standalone packaging, older-version updater downloads, authoring editors and in-game dialogue import/export.
+The guided horse-chase Tutorial, Portrait/Dialogue authoring tools and in-game dialogue import/export remain available. Existing local campaign/manual saves remain compatible. Multiplayer uses **protocol 88**; both players need compatible files.
 
-The identical public HTML was downloaded and verified before announcing this release. SHA-256: `c2e0a666367d238ddf6662ff6058168c10e0e7916e387f7c1ffa4a1f1710f6e2`.
+The campaign integration passed 140 unique audit suites after follow-ups. Five final release checks cover standalone packaging, older-version updater downloads, both authoring editors and dialogue import/export. Browser automation covers desktop and touch layouts; physical-device performance remains a manual validation limit.
 
-Music attribution and license links are in campaign Settings → Credits. Portrait Studio, Dialogue Studio, development source and history live in the private `fidget-shooter` repository. Waystation supplies and ammunition grants remain prototype testing content.
+The identical public HTML was downloaded and verified before announcing this release. SHA-256: `ae4b2d8d6822ee290c580f3394abfd0e38b6c803b855938ef87aad886f863a98`.
+
+Music attribution and license links are in campaign Settings → Credits. Development source, authoring editors and history live in the private `fidget-shooter` repository. Waystation supplies and ammunition grants remain prototype testing content.
