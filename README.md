@@ -2,18 +2,20 @@
 
 Public distribution channel for protected stable Fidget Shooter builds.
 
-## v41.55
+## v41.56
 
-[Download the playable HTML](https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html?v=41.55) and open the saved file in your browser. Choose single player, open **Gunslinger · Lobby**, then select **Tutorial** or **Crossroads**.
+[Download the playable HTML](https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html?v=41.56) and open the saved file in your browser. Choose single player, open **Gunslinger · Lobby**, then select **Tutorial**, **Crossroads** or **Flower Meadow**.
 
-Crossroads now includes an exploration lasso for temporary restraints, weighted pulling, climbing and momentum-driven chasm swings with airborne landings. **PRIMETIME** slows time while held and restores some charge for successful dodges and damage. Discover bullet effects and reactions in **Memory**, track **QUESTS**, and explore day/night lighting with warm interiors. Campfire/crafting, healing forecasts, mobile HUD, side-profile layering and traversal sound/effects are refined.
+Flower Meadow family scene, dialogue and quest authoring checkpoint.
 
-On desktop, middle mouse equips the lasso; hold/release the primary control to cast, wheel down to pull a bound civilian, and middle mouse to release a swing. Mobile has a lasso button beside health and a tap-to-pull prompt. Hold **T** or the mobile PRIMETIME button for slow time; controls can be rebound in Settings.
+- Flower Meadow cottage, furnished bedrooms, Maria and Harvey routines and a fresh childhood opening
+- Quest Studio supports sequential objectives, quest-only pickups and authored NPC routes
+- The Meadow retrieve quest includes GS's revolver with six empty chambers
+- Dialogue Studio and versioned dialogue/quest folders refresh with each build and support GitHub saves
+- Existing Crossroads saves remain compatible; Meadow progression resets on entry; multiplayer remains on protocol 88
 
-The guided horse-chase Tutorial, Portrait/Dialogue authoring tools and in-game dialogue import/export remain available. Existing local campaign/manual saves remain compatible. Multiplayer uses **protocol 88**; both players need compatible files.
+Multiplayer uses **protocol 88**; both players need compatible files.
 
-The campaign integration passed 140 unique audit suites after follow-ups. Five final release checks cover standalone packaging, older-version updater downloads, both authoring editors and dialogue import/export. Browser automation covers desktop and touch layouts; physical-device performance remains a manual validation limit.
+SHA-256 of the playable HTML: `513fee073b6c9e2672c8b10bc04300ded90861af397146c69a1c0d04ece3e843`.
 
-The identical public HTML was downloaded and verified before announcing this release. SHA-256: `ae4b2d8d6822ee290c580f3394abfd0e38b6c803b855938ef87aad886f863a98`.
-
-Music attribution and license links are in campaign Settings → Credits. Development source, authoring editors and history live in the private `fidget-shooter` repository. Waystation supplies and ammunition grants remain prototype testing content.
+Music attribution and license links are in campaign Settings → Credits. Portrait Studio, Dialogue Studio, Quest Studio, development source and history live in the private source repository. Waystation supplies and ammunition grants remain prototype testing content.
