@@ -1,14 +1,14 @@
 {
-  "version": "41.55",
+  "version": "41.56",
   "protocol": 88,
   "required": false,
-  "summary": "Exploration lasso, PRIMETIME, Memory discoveries and Crossroads refinements.",
+  "summary": "Flower Meadow family scene, dialogue and quest authoring checkpoint.",
   "notes": [
-    "Lasso restraints, weighted pulling, climbing and momentum-driven chasm swings with airborne landings",
-    "PRIMETIME slow time earns charge from successful dodges and actual damage",
-    "Discovery-based bullet/reaction Memory, QUESTS and day/night lighting with warm interiors",
-    "Mobile HUD, campfire/crafting, healing forecasts and traversal audio/VFX refinements",
-    "Existing local campaign/manual saves remain compatible; multiplayer stays on protocol 88"
+    "Flower Meadow cottage, furnished bedrooms, Maria and Harvey routines and a fresh childhood opening",
+    "Quest Studio supports sequential objectives, quest-only pickups and authored NPC routes",
+    "The Meadow retrieve quest includes GS's revolver with six empty chambers",
+    "Dialogue Studio and versioned dialogue/quest folders refresh with each build and support GitHub saves",
+    "Existing Crossroads saves remain compatible; Meadow progression resets on entry; multiplayer remains on protocol 88"
   ],
   "downloadUrl": "https://raw.githubusercontent.com/minhhuy030309-rgb/fidget-shooter-releases/main/latest.html",
   "releasePage": "https://github.com/minhhuy030309-rgb/fidget-shooter-releases"
